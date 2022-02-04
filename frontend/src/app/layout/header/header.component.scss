@@ -1,0 +1,26 @@
+.header {
+    background-color: black;
+    color: white;
+    padding: .8rem;
+}
+
+.header__container {
+    margin: 0 auto;
+    max-width: 120rem;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.header__brand {
+    flex: 1;
+
+    h1 {
+        margin: 0;
+    }
+}
+
+.header__login {
+    flex: 1;
+    text-align: right;
+}

@@ -8,4 +8,4 @@ RUN yarn install
 RUN yarn build
 
 # Run the web service on container startup.
-CMD [ "yarn", "start:production" ]
+CMD [ "yarn", "start:prod" ]

@@ -8,6 +8,7 @@ export class AppResolver {
     @Query()
     async codeVote(@Args('id') id: string): Promise<CodeVote> {
         return {
+            id: 'boguss',
             snippet1: 'Some code snippetss 1',
             snippet2: 'Some code snippetss 2',
             creator: {

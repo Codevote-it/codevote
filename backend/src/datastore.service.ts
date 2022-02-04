@@ -3,7 +3,7 @@ import {Datastore} from'@google-cloud/datastore';
 import { google } from "@google-cloud/datastore/build/protos/protos";
 import ICommitResponse = google.datastore.v1.ICommitResponse;
 import { entity } from "@google-cloud/datastore/build/src/entity";
-import { User } from "./types";
+import { CodeVote, User } from "./types";
 import { logger } from "./logger";
 
 interface DatastoreEntity {
@@ -117,5 +117,12 @@ export class DatastoreService<T extends DatastoreEntity> {
 export class UserDatastoreService extends DatastoreService<User>{
     constructor() {
         super('User');
+    }
+}
+
+@Injectable()
+export class CodeVoteDatastoreService extends DatastoreService<CodeVote>{
+    constructor() {
+        super('CodeVote');
     }
 }

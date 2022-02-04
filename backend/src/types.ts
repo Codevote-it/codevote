@@ -6,6 +6,7 @@ export interface User {
 }
 
 export interface CodeVote {
+    id: string
     snippet1: string
     snippet2: string
     creator: User

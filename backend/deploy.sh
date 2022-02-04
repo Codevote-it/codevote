@@ -5,6 +5,6 @@ gcloud run deploy codevote-api \
             --region "europe-west1" \
             --platform "managed" \
             --allow-unauthenticated \
-            --memory=256MiB \
+            --memory=256Mi \
             --project=codevote \
             --set-env-vars=$ENV_VARS

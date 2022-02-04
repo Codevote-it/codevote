@@ -1,0 +1,9 @@
+type Query {
+    codeVote(id: String!): CodeVote
+}
+
+type CodeVote {
+    snippet1: String!
+    snippet2: String!
+    creator: String!
+}

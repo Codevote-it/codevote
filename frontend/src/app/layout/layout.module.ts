@@ -4,6 +4,7 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { ContainerComponent } from './container/container.component';
 import { ComponentsModule } from '../components/components.module';
+import { AppRoutingModule } from '../app-routing.module';
 
 const COMPONENTS = [
   HeaderComponent,
@@ -21,6 +22,7 @@ const COMPONENTS = [
   imports: [
     CommonModule,
     ComponentsModule,
+    AppRoutingModule,
   ]
 })
 export class LayoutModule { }

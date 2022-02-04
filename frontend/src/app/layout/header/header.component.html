@@ -1,10 +1,13 @@
 <div class="header">
     <div class="header__container">
         <div class="header__brand">
-            <h1>Codevote</h1>
+            <a routerLink="/">
+                <h1>Codevote</h1>
+            </a>
         </div>
         <div class="header__login">
-            <app-button>Login with GitHub</app-button>
+            <app-button *ngIf="!authenticated" (click)="onLogin()">Login with GitHub</app-button>
+            <app-user-profile *ngIf="authenticated" [user]="user"></app-user-profile>
         </div>
     </div>
 </div>

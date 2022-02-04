@@ -1,0 +1,19 @@
+.user-profile {
+    display: flex;
+    align-items: center;
+}
+
+.user-profile__username {
+    flex: 10;
+    text-align: right;
+}
+
+.user-profile__image {
+    height: 3rem;
+    width: 3rem;
+    flex: 1;
+
+    img {
+        max-height: 100%;
+    }
+}

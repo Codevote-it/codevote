@@ -1,9 +1,19 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ButtonComponent } from './button/button.component';
+import { SnippetComponent } from './snippet/snippet.component';
+import { RowComponent } from './row/row.component';
+import { ColComponent } from './col/col.component';
+import { FormsModule } from '@angular/forms';
+import { BrowserModule } from '@angular/platform-browser';
+import { UserProfileComponent } from './user-profile/user-profile.component';
 
 const COMPONENTS = [
   ButtonComponent,
+  SnippetComponent,
+  RowComponent,
+  ColComponent,
+  UserProfileComponent,
 ]
 
 @NgModule({
@@ -14,7 +24,9 @@ const COMPONENTS = [
     ...COMPONENTS,
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    FormsModule,
+    BrowserModule,
   ]
 })
 export class ComponentsModule { }

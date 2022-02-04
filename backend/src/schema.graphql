@@ -1,9 +1,18 @@
 type Query {
     codeVote(id: String!): CodeVote
+    # Login via /auth/github/login and use the retrieved token as Bearer token
+    me: User
 }
 
 type CodeVote {
     snippet1: String!
     snippet2: String!
-    creator: String!
+    creator: User
+}
+
+type User {
+    id: String!
+    displayName: String
+    username: String
+    profileImageUrl: String
 }

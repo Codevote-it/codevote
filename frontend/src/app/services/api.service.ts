@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { GraphQLClient } from 'graphql-request';
 import { Observable, Subject } from 'rxjs';
+import { environment } from '../../environments/environment';
 
 const endpoint = 'https://dry-rattlesnake-81.loca.lt/graphql';
 
@@ -8,15 +9,10 @@ const endpoint = 'https://dry-rattlesnake-81.loca.lt/graphql';
     providedIn: 'root'
 })
 export class ApiService {
-
-    constructor(
-    ) {
-    }
-
     public request$<T>(query: string): Observable<T> {
         const token = this.getToken();
         const request$ = new Subject<T>();
-        const graphQLClient = new GraphQLClient(endpoint, {
+        const graphQLClient = new GraphQLClient(environment.endpoint, {
             headers: {
               authorization: `Bearer ${token}`,
             },

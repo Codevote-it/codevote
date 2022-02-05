@@ -3,7 +3,8 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  endpoint: 'https://codevote-api-u3o3eb6q2a-ew.a.run.app/graphql',
 };
 
 /*

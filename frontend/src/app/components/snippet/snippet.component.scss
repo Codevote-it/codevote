@@ -1,0 +1,17 @@
+.snippet {
+    padding: 1.6rem;
+    background-color: gray;
+    margin-bottom: 1.6rem;
+    position: relative;
+}
+
+textarea {
+    background: transparent;
+    width: 100%;
+    border: none;
+    resize: none;
+
+    &:focus {
+        outline: none;
+    }
+}

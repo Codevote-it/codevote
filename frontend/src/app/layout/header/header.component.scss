@@ -1,7 +1,6 @@
 .header {
     background-color: black;
     color: white;
-    padding: .8rem;
 }
 
 .header__container {
@@ -10,17 +9,25 @@
     width: 100%;
     display: flex;
     align-items: center;
+    height: 8rem;
 }
 
 .header__brand {
     flex: 1;
+    padding-left: .8rem;
 
     h1 {
         margin: 0;
+    }
+
+    a {
+        color: white;
+        text-decoration: none;
     }
 }
 
 .header__login {
     flex: 1;
     text-align: right;
+    padding-right: .8rem;
 }

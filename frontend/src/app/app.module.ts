@@ -7,7 +7,6 @@ import { IndexComponent } from './pages/index/index.component';
 import { CodevoteComponent } from './pages/codevote/codevote.component';
 import { PagesModule } from './pages/pages.module';
 import { LayoutModule } from './layout/layout.module';
-import { ComponentsModule } from './components/components.module';
 
 @NgModule({
   declarations: [AppComponent],

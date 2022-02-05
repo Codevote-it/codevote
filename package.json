@@ -6,7 +6,8 @@
   "author": "<martijn.brug@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "lint": "eslint --fix --ext .js,.jsx,.ts ."
+    "lint": "eslint --fix --ext .js,.jsx,.ts .",
+    "lint-frontend": "npx eslint frontend/src/ --fix"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^5.10.2",

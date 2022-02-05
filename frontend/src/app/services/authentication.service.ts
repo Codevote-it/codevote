@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { gql } from 'graphql-request';
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
 import { UserInterface } from '../interfaces/user.interface';
 import { ApiService } from './api.service';
 

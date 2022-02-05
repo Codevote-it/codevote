@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params, Router } from '@angular/router';
+import { ActivatedRoute, Params } from '@angular/router';
 import { UserInterface } from 'src/app/interfaces/user.interface';
 import { AuthenticationService } from 'src/app/services/authentication.service';
+import { environment } from '../../../environments/environment';
 
-const loginUrl = 'https://green-bird-84.loca.lt/auth/github/login';
+const githubLogin = '/auth/github/login';
 
 @Component({
   selector: 'app-header',
@@ -23,9 +24,6 @@ export class HeaderComponent implements OnInit {
     this.route.queryParams.subscribe((queryParams) =>
       this.onQueryParams(queryParams),
     );
-
-    this.getUser();
-    this.isAuthenticated();
   }
 
   public getUser(): void {
@@ -40,20 +38,23 @@ export class HeaderComponent implements OnInit {
       .subscribe((response) => (this.user = response));
   }
 
-  public isAuthenticated(): void {
-    this.authenticated = this.authenticationService.isAuthenticated();
-  }
-
   public onLogin(): void {
-    document.location.href = loginUrl;
+    document.location.href = `${environment.endpoint}${githubLogin}`;
   }
 
   public onQueryParams(queryParams: Params): void {
-    if (!queryParams) {
-      return;
-    }
+    const queryParamsToken = queryParams['token'];
+    const localStorageToken = this.authenticationService.getToken();
 
-    this.authenticationService.saveToken(queryParams['token']);
-    this.authenticated = true; // TODO: save in subject in authenticationService
+    if (queryParamsToken) {
+      this.authenticationService.saveToken(queryParamsToken);
+      this.authenticated = true; // TODO: save in subject in authenticationService
+      this.getUser();
+    } else if (localStorageToken) {
+      this.authenticated = true;
+      this.getUser();
+    } else {
+      this.authenticated = false;
+    }
   }
 }

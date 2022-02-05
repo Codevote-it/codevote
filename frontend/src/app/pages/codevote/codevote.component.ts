@@ -7,7 +7,7 @@ import { CodevoteService } from '../../services/codevote.service';
   styleUrls: ['./codevote.component.scss'],
 })
 export class CodevoteComponent implements OnInit {
-  public timer: any = null;
+  public timer: ReturnType<typeof setTimeout> | null = null;
   public displayName = '';
   public snippet1 = '';
   public snippet2 = '';
@@ -28,8 +28,7 @@ export class CodevoteComponent implements OnInit {
     }
 
     this.timer = setTimeout(() => {
-      // this.codeVoteService.saveSnippet(value, id)
-      //   .subscribe();
+      console.log(`save: ${value} with id ${id}`);
     }, 1000);
   }
 }

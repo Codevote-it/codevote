@@ -28,9 +28,4 @@ export class CodevoteService {
 
     return this.apiService.request$<CodevoteInterface>(query);
   }
-
-  public saveSnippet(value: string, id: string): Observable<boolean> {
-    const query = gql``;
-    return this.apiService.request$<boolean>(query);
-  }
 }

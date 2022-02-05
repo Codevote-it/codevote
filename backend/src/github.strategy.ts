@@ -2,6 +2,7 @@ import { PassportStrategy } from '@nestjs/passport';
 import { Injectable } from '@nestjs/common';
 import { Strategy } from 'passport-github2';
 import { User } from './types';
+import { oauthCallback } from "./constants";
 
 interface GithubUser {
   id: string;

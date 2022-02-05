@@ -10,6 +10,7 @@ import { AuthGuard } from '@nestjs/passport';
 import { User } from './types';
 import * as jwt from 'jsonwebtoken';
 import { UserDatastoreService } from './datastore.service';
+import { frontendHost } from "./constants";
 
 @Controller('auth')
 export class AuthController {

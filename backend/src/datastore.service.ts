@@ -3,8 +3,8 @@ import { Datastore } from '@google-cloud/datastore';
 import { google } from '@google-cloud/datastore/build/protos/protos';
 import ICommitResponse = google.datastore.v1.ICommitResponse;
 import { entity } from '@google-cloud/datastore/build/src/entity';
-import { CodeVote, User } from './types';
 import { logger } from './logger';
+import { CodeVote, User } from "./generated/graphql";
 
 interface DatastoreEntity {
   id: string;

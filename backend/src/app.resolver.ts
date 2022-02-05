@@ -1,10 +1,11 @@
 import { Args, Query, Resolver } from '@nestjs/graphql';
-import { CodeVote } from './types';
 import { AuthController } from './auth.controller';
 import { AuthenticationError } from 'apollo-server-express';
+import { CodeVote } from "./generated/graphql";
 
 @Resolver()
 export class AppResolver {
+
   @Query()
   async codeVote(@Args('id') id: string): Promise<CodeVote> {
     return {

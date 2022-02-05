@@ -3,16 +3,13 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 @Component({
   selector: 'app-snippet',
   templateUrl: './snippet.component.html',
-  styleUrls: ['./snippet.component.scss']
+  styleUrls: ['./snippet.component.scss'],
 })
 export class SnippetComponent implements OnInit {
-
-  @Input() snippet: string = '';
+  @Input() snippet = '';
   @Output() snippetChanged = new EventEmitter<string>();
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }

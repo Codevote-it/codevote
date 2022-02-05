@@ -6,23 +6,11 @@ import { ContainerComponent } from './container/container.component';
 import { ComponentsModule } from '../components/components.module';
 import { AppRoutingModule } from '../app-routing.module';
 
-const COMPONENTS = [
-  HeaderComponent,
-  FooterComponent,
-  ContainerComponent,
-]
+const COMPONENTS = [HeaderComponent, FooterComponent, ContainerComponent];
 
 @NgModule({
-  declarations: [
-    ...COMPONENTS,
-  ],
-  exports: [
-    ...COMPONENTS,
-  ],
-  imports: [
-    CommonModule,
-    ComponentsModule,
-    AppRoutingModule,
-  ]
+  declarations: [...COMPONENTS],
+  exports: [...COMPONENTS],
+  imports: [CommonModule, ComponentsModule, AppRoutingModule],
 })
-export class LayoutModule { }
+export class LayoutModule {}

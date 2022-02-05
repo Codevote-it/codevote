@@ -5,22 +5,21 @@ import { CodevoteInterface } from 'src/app/interfaces';
 import { ApiService } from './api.service';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class CodevoteService {
-  
-  constructor(private apiService: ApiService) { }
+  constructor(private apiService: ApiService) {}
 
   public getCodeVote(): Observable<CodevoteInterface> {
     const query = gql`
       {
         codeVote(id: "") {
-          snippet1,
-          snippet2,
+          snippet1
+          snippet2
           creator {
-            id,
-            displayName,
-            username,
+            id
+            displayName
+            username
             profileImageUrl
           }
         }

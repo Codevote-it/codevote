@@ -8,9 +8,8 @@ describe('ColComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ColComponent ]
-    })
-    .compileComponents();
+      declarations: [ColComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

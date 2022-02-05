@@ -8,11 +8,10 @@ const loginUrl = 'https://green-bird-84.loca.lt/auth/github/login';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss']
+  styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
-
-  public authenticated: boolean = false;
+  public authenticated = false;
   public user: UserInterface | null = null;
 
   constructor(
@@ -21,8 +20,9 @@ export class HeaderComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.route.queryParams
-      .subscribe((queryParams) => this.onQueryParams(queryParams))
+    this.route.queryParams.subscribe((queryParams) =>
+      this.onQueryParams(queryParams),
+    );
 
     this.getUser();
     this.isAuthenticated();
@@ -35,8 +35,9 @@ export class HeaderComponent implements OnInit {
       return;
     }
 
-    this.authenticationService.getUser()
-      .subscribe((response) => this.user = response);
+    this.authenticationService
+      .getUser()
+      .subscribe((response) => (this.user = response));
   }
 
   public isAuthenticated(): void {
@@ -55,5 +56,4 @@ export class HeaderComponent implements OnInit {
     this.authenticationService.saveToken(queryParams['token']);
     this.authenticated = true; // TODO: save in subject in authenticationService
   }
-
 }

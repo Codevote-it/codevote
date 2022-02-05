@@ -7,10 +7,11 @@
   "license": "UNLICENSED",
   "scripts": {
     "deploy": "build && ./build.sh && deploy.sh",
-    "prebuild": "rimraf dist",
+    "prebuild": "rimraf dist && yarn generate",
+    "generate": "yarn graphql-codegen",
     "build": "nest build",
-    "start": "nest start --watch",
-    "start:prod": "node dist/main.js"
+    "serve": "yarn generate && nest start --watch",
+    "start": "node dist/main.js"
   },
   "dependencies": {
     "@google-cloud/datastore": "^6.6.2",
@@ -29,6 +30,8 @@
     "rxjs": "^7.2.0"
   },
   "devDependencies": {
+    "@graphql-codegen/cli": "^2.5.0",
+    "@graphql-codegen/typescript": "^2.4.3",
     "@nestjs/cli": "^8.2.0",
     "@nestjs/schematics": "^8.0.0",
     "@nestjs/testing": "^8.0.0",

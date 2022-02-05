@@ -25,7 +25,7 @@ export class ApiService {
         return request$.asObservable();
     }
 
-    public getToken(): string {
+    private getToken(): string {
         const token = localStorage.getItem('token');
     
         if (!token) {

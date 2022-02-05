@@ -9,9 +9,7 @@ import { Router } from '@angular/router';
 export class IndexComponent {
   public authenticated = true;
 
-  constructor(
-    public router: Router,
-  ) {}
+  constructor(private router: Router) {}
 
   onAddSnippet(): void {
     this.router.navigate(['codevote']);

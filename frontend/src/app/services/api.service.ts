@@ -3,8 +3,6 @@ import { GraphQLClient } from 'graphql-request';
 import { Observable, Subject } from 'rxjs';
 import { environment } from '../../environments/environment';
 
-const endpoint = 'https://dry-rattlesnake-81.loca.lt/graphql';
-
 @Injectable({
     providedIn: 'root'
 })
@@ -12,7 +10,7 @@ export class ApiService {
     public request$<T>(query: string): Observable<T> {
         const token = this.getToken();
         const request$ = new Subject<T>();
-        const graphQLClient = new GraphQLClient(environment.endpoint, {
+        const graphQLClient = new GraphQLClient(`${environment.endpoint}/graphql`, {
             headers: {
               authorization: `Bearer ${token}`,
             },

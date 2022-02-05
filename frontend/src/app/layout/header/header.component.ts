@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { UserInterface } from 'src/app/interfaces/user.interface';
 import { AuthenticationService } from 'src/app/services/authentication.service';
-
-const loginUrl = 'https://green-bird-84.loca.lt/auth/github/login';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-header',
@@ -44,7 +43,7 @@ export class HeaderComponent implements OnInit {
   }
 
   public onLogin(): void {
-    document.location.href = loginUrl;
+    document.location.href = `${environment.endpoint}/auth/github/login`;
   }
 
   public onQueryParams(queryParams: Params): void {

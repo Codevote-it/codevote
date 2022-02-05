@@ -1,17 +1,14 @@
 import { Injectable } from '@angular/core';
 import { gql } from 'graphql-request';
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
 import { UserInterface } from '../interfaces/user.interface';
 import { ApiService } from './api.service';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthenticationService {
-
-  constructor(
-    private apiService: ApiService,
-  ) { }
+  constructor(private apiService: ApiService) {}
 
   public isAuthenticated(): boolean {
     return Boolean(this.getToken());
@@ -39,10 +36,10 @@ export class AuthenticationService {
     const query = gql`
       {
         me {
-          id,
-          displayName,
-          username,
-          profileImageUrl,
+          id
+          displayName
+          username
+          profileImageUrl
         }
       }
     `;

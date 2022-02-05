@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params, Router } from '@angular/router';
+import { ActivatedRoute, Params } from '@angular/router';
 import { UserInterface } from 'src/app/interfaces/user.interface';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { environment } from '../../../environments/environment';
@@ -9,11 +9,10 @@ const githubLogin = '/auth/github/login';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss']
+  styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
-
-  public authenticated: boolean = false;
+  public authenticated = false;
   public user: UserInterface | null = null;
 
   constructor(
@@ -22,8 +21,9 @@ export class HeaderComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.route.queryParams
-      .subscribe((queryParams) => this.onQueryParams(queryParams))
+    this.route.queryParams.subscribe((queryParams) =>
+      this.onQueryParams(queryParams),
+    );
   }
 
   public getUser(): void {
@@ -33,8 +33,9 @@ export class HeaderComponent implements OnInit {
       return;
     }
 
-    this.authenticationService.getUser()
-      .subscribe((response) => this.user = response);
+    this.authenticationService
+      .getUser()
+      .subscribe((response) => (this.user = response));
   }
 
   public onLogin(): void {
@@ -49,12 +50,11 @@ export class HeaderComponent implements OnInit {
       this.authenticationService.saveToken(queryParamsToken);
       this.authenticated = true; // TODO: save in subject in authenticationService
       this.getUser();
-    } else if(localStorageToken) {
+    } else if (localStorageToken) {
       this.authenticated = true;
       this.getUser();
     } else {
       this.authenticated = false;
     }
-
   }
 }

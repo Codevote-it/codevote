@@ -14,19 +14,11 @@ const COMPONENTS = [
   RowComponent,
   ColComponent,
   UserProfileComponent,
-]
+];
 
 @NgModule({
-  declarations: [
-    ...COMPONENTS,
-  ],
-  exports: [
-    ...COMPONENTS,
-  ],
-  imports: [
-    CommonModule,
-    FormsModule,
-    BrowserModule,
-  ]
+  declarations: [...COMPONENTS],
+  exports: [...COMPONENTS],
+  imports: [CommonModule, FormsModule, BrowserModule],
 })
-export class ComponentsModule { }
+export class ComponentsModule {}

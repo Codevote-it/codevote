@@ -5,22 +5,11 @@ import { FooterComponent } from './footer/footer.component';
 import { ContainerComponent } from './container/container.component';
 import { ComponentsModule } from '../components/components.module';
 
-const COMPONENTS = [
-  HeaderComponent,
-  FooterComponent,
-  ContainerComponent,
-]
+const COMPONENTS = [HeaderComponent, FooterComponent, ContainerComponent];
 
 @NgModule({
-  declarations: [
-    ...COMPONENTS,
-  ],
-  exports: [
-    ...COMPONENTS,
-  ],
-  imports: [
-    CommonModule,
-    ComponentsModule,
-  ]
+  declarations: [...COMPONENTS],
+  exports: [...COMPONENTS],
+  imports: [CommonModule, ComponentsModule],
 })
-export class LayoutModule { }
+export class LayoutModule {}

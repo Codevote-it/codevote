@@ -1,35 +1,36 @@
-import { PassportStrategy } from "@nestjs/passport";
-import { Injectable } from "@nestjs/common";
-import { Strategy } from "passport-github2";
-import { User } from "./types";
+import { PassportStrategy } from '@nestjs/passport';
+import { Injectable } from '@nestjs/common';
+import { Strategy } from 'passport-github2';
+import { User } from './types';
 
 interface GithubUser {
-    id: string
-    displayName: string
-    username: string
-    photos: [ { value: string } ],
+  id: string;
+  displayName: string;
+  username: string;
+  photos: [{ value: string }];
 }
 
 @Injectable()
 export class GithubStrategy extends PassportStrategy(Strategy, 'github') {
+  constructor() {
+    super({
+      clientID: process.env.GITHUB_CLIENT_ID,
+      clientSecret: process.env.GITHUB_CLIENT_SECRET,
+      callbackURL: oauthCallback,
+    });
+  }
 
-    constructor() {
-        super({
-            clientID: process.env.GITHUB_CLIENT_ID,
-            clientSecret: process.env.GITHUB_CLIENT_SECRET,
-            // callbackURL: "http://localhost:3000/auth/github/callback"
-            callbackURL: "https://dry-rattlesnake-81.loca.lt/auth/github/callback"
-
-        });
-    }
-
-    async validate(accessToken, _, user: GithubUser, _done: (err: any, obj: any) => void): Promise<User> {
-        return {
-            id: user.id,
-            username: user.username,
-            displayName: user.displayName,
-            profileImageUrl: user.photos[0]?.value
-        }
-
-    }
+  async validate(
+    accessToken,
+    _,
+    user: GithubUser,
+    _done: (err: any, obj: any) => void,
+  ): Promise<User> {
+    return {
+      id: user.id,
+      username: user.username,
+      displayName: user.displayName,
+      profileImageUrl: user.photos[0]?.value,
+    };
+  }
 }

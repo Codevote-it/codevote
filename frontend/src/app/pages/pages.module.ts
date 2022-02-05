@@ -4,21 +4,11 @@ import { IndexComponent } from './index/index.component';
 import { CodevoteComponent } from './codevote/codevote.component';
 import { ComponentsModule } from '../components/components.module';
 
-const COMPONENTS = [
-  IndexComponent,
-  CodevoteComponent
-];
+const COMPONENTS = [IndexComponent, CodevoteComponent];
 
 @NgModule({
-  declarations: [
-    ...COMPONENTS
-  ],
-  exports: [
-    ...COMPONENTS
-  ],
-  imports: [
-    CommonModule,
-    ComponentsModule,
-  ]
+  declarations: [...COMPONENTS],
+  exports: [...COMPONENTS],
+  imports: [CommonModule, ComponentsModule],
 })
-export class PagesModule { }
+export class PagesModule {}

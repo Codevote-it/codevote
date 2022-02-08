@@ -1,4 +1,11 @@
+@import 'settings';
+@import 'tools';
+
 :host {
-    display: flex;
-    margin-bottom: 1.6rem;
+    display: block;
+    margin-bottom: $unit-default;
+    
+    @include breakpoint('small') {
+        display: flex;
+    }
 }

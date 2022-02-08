@@ -1,6 +1,8 @@
+@import 'settings';
+
 .footer {
-    background-color: black;
-    color: white;
+    background-color: $color-dark;
+    color: $color-light;
     position: fixed;
     bottom: 0;
     left: 0;
@@ -9,11 +11,11 @@
 
 .footer__container {
     margin: 0 auto;
-    max-width: 120rem;
+    max-width: $max-screen;
     width: 100%;
     display: flex;
     align-items: center;
-    height: 8rem;
+    padding: $unit-default;
 }
 
 .footer__brand {

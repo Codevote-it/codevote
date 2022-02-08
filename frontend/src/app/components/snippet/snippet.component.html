@@ -1,3 +1,6 @@
 <div class="snippet">
-    <textarea rows="10" [ngModel]="snippet" (ngModelChange)="snippetChanged.emit($event)"></textarea>
+    <div class="snippet__title">{{ title }}</div>
+    <div class="snippet__content">
+        <textarea class="snippet__textarea" rows="10" [ngModel]="snippet" (ngModelChange)="snippetChanged.emit($event)"></textarea>
+    </div>
 </div>

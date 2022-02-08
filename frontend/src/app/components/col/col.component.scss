@@ -1,4 +1,7 @@
+@import 'settings';
+
 :host {
+    display: block;
     flex: 1;
-    margin: 0 1.6rem;
+    margin: 0 $unit-default;
 }

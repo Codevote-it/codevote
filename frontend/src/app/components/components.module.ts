@@ -7,6 +7,7 @@ import { ColComponent } from './col/col.component';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { UserProfileComponent } from './user-profile/user-profile.component';
+import { SectionComponent } from '../components/section/section.component';
 
 const COMPONENTS = [
   ButtonComponent,
@@ -14,6 +15,7 @@ const COMPONENTS = [
   RowComponent,
   ColComponent,
   UserProfileComponent,
+  SectionComponent,
 ];
 
 @NgModule({

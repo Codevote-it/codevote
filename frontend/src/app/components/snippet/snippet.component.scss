@@ -1,17 +1,25 @@
+@import 'settings';
+
 .snippet {
-    padding: 1.6rem;
-    background-color: gray;
-    margin-bottom: 1.6rem;
+    background-color: $color-dark;
+    margin-bottom: $unit-default;
+    position: relative;
+    border-radius: $unit-default;
+}
+
+.snippet__title {
+    padding: $unit-large;
+    background-color: darken($color-dark, 10%);
+    border-top-left-radius: $unit-default; 
+    border-top-right-radius: $unit-default;
+    color: darken($color-light, 20%);
+}
+
+.snippet__content {
+    padding: $unit-large;
     position: relative;
 }
 
-textarea {
-    background: transparent;
-    width: 100%;
-    border: none;
-    resize: none;
-
-    &:focus {
-        outline: none;
-    }
+.snippet__textarea {
+    color: $color-light;
 }

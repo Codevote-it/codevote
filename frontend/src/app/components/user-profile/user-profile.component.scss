@@ -1,3 +1,5 @@
+@import 'tools';
+
 .user-profile {
     display: flex;
     align-items: center;
@@ -6,6 +8,11 @@
 .user-profile__username {
     flex: 10;
     text-align: right;
+    display: none;
+
+    @include breakpoint('small') {
+        display: block;
+    }
 }
 
 .user-profile__image {

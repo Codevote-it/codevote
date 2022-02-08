@@ -1,0 +1,15 @@
+$font-size: (
+    $font-size-large,
+    $font-size-default,
+    $font-size-small,
+    $font-size-small,
+    $font-size-small,
+    $font-size-small
+);
+
+@for $i from 1 through 4 {
+    h#{$i}, .h#{$i} {
+        font-size: nth($font-size, $i);
+        margin: nth($font-size, $i) 0;
+    }
+}

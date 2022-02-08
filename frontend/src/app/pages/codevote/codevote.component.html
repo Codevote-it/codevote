@@ -1,21 +1,17 @@
-<app-row>
-    <app-col>
-        <h2>{{ displayName }}</h2>
-    </app-col>
-</app-row>
-<app-row>
-    <app-col>
-        <app-snippet [snippet]="snippet1" (snippetChanged)="onSnippetChanged($event, '1')"></app-snippet>
-    </app-col>
-    <app-col>
-        <app-snippet [snippet]="snippet2" (snippetChanged)="onSnippetChanged($event, '2')"></app-snippet>
-    </app-col>
-</app-row>
-<app-row>
-    <app-col>
-        <app-button>Vote</app-button>
-    </app-col>
-    <app-col>
-        <app-button>Vote</app-button>
-    </app-col>
-</app-row>
+<app-section>
+    <app-row>
+        <app-col>
+            <h1>{{ displayName }}</h1>
+        </app-col>
+    </app-row>
+    <app-row>
+        <app-col>
+            <app-snippet title="Snippet 1" [snippet]="snippet1" (snippetChanged)="onSnippetChanged($event, '1')"></app-snippet>
+            <app-button>Vote</app-button>
+        </app-col>
+        <app-col>
+            <app-snippet title="Snippet 2" [snippet]="snippet2" (snippetChanged)="onSnippetChanged($event, '2')"></app-snippet>
+            <app-button>Vote</app-button>
+        </app-col>
+    </app-row>
+</app-section>

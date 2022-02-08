@@ -1,0 +1,11 @@
+textarea {
+    background: transparent;
+    width: 100%;
+    border: none;
+    resize: none;
+    font-size: $font-size-default;
+
+    &:focus {
+        outline: none;
+    }
+}

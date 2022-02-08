@@ -1,0 +1,10 @@
+@import 'settings';
+
+.section {
+    padding: $unit-default 0;
+}
+
+.section__container {
+    max-width: $max-screen;
+    margin: 0 auto;
+}

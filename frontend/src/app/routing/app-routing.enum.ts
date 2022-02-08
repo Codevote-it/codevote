@@ -1,4 +1,4 @@
 export enum AppRoutingEnum {
-    Index = '',
-    Codevote = 'codevote',
+  Index = '',
+  Codevote = 'codevote',
 }

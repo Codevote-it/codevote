@@ -2,7 +2,14 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
-import { ButtonComponent, SnippetComponent, RowComponent, ColComponent, UserProfileComponent, SectionComponent } from './';
+import {
+  ButtonComponent,
+  SnippetComponent,
+  RowComponent,
+  ColComponent,
+  UserProfileComponent,
+  SectionComponent,
+} from './';
 
 const COMPONENTS = [
   ButtonComponent,

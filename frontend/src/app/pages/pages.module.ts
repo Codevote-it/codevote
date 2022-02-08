@@ -4,10 +4,7 @@ import { IndexComponent } from './index/';
 import { CodevoteComponent } from './codevote/';
 import { ComponentsModule } from '../components/';
 
-const COMPONENTS = [
-  IndexComponent,
-  CodevoteComponent,
-];
+const COMPONENTS = [IndexComponent, CodevoteComponent];
 
 @NgModule({
   declarations: [...COMPONENTS],

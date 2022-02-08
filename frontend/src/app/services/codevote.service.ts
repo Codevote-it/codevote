@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { gql } from 'graphql-request';
 import { Observable } from 'rxjs';
-import { CodevoteInterface } from 'src/app/interfaces';
+import { CodevoteInterface } from '@app/interfaces';
 import { ApiService } from './api.service';
 
 @Injectable({

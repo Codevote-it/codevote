@@ -1,16 +1,15 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HeaderComponent } from './header/header.component';
-import { FooterComponent } from './footer/footer.component';
-import { ContainerComponent } from './container/container.component';
-import { ComponentsModule } from '../components/components.module';
-import { AppRoutingModule } from '../app-routing.module';
+import { HeaderComponent } from './header';
+import { FooterComponent } from './footer';
+import { ContainerComponent } from './container';
+import { ComponentsModule } from '@app/components';
 
 const COMPONENTS = [HeaderComponent, FooterComponent, ContainerComponent];
 
 @NgModule({
   declarations: [...COMPONENTS],
   exports: [...COMPONENTS],
-  imports: [CommonModule, ComponentsModule, AppRoutingModule],
+  imports: [CommonModule, ComponentsModule],
 })
 export class LayoutModule {}

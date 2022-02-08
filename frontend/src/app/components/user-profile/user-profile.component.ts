@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { UserInterface } from 'src/app/interfaces/user.interface';
+import { UserInterface } from '@app/interfaces';
 
 @Component({
   selector: 'app-user-profile',

@@ -1,10 +1,9 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
-import { AppRoutingModule } from './app-routing.module';
+import { AppRoutingModule } from '@app/routing';
 import { AppComponent } from './app.component';
-import { PagesModule } from './pages/pages.module';
-import { LayoutModule } from './layout/layout.module';
+import { LayoutModule } from '@app/layout';
+import { PagesModule } from '@app/pages';
 
 @NgModule({
   declarations: [AppComponent],

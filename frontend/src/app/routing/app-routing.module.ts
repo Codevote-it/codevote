@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CodevoteComponent } from './pages/codevote/codevote.component';
-import { IndexComponent } from './pages/index/index.component';
+import { CodevoteComponent, IndexComponent } from '@app/pages';
+import { AppRoutingEnum } from './';
 
 const routes: Routes = [
-  { path: '', component: IndexComponent },
-  { path: 'codevote', component: CodevoteComponent },
+  { path: AppRoutingEnum.Index, component: IndexComponent },
+  { path: AppRoutingEnum.Codevote, component: CodevoteComponent },
 ];
 
 @NgModule({

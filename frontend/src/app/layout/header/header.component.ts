@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
-import { UserInterface } from 'src/app/interfaces/user.interface';
-import { AuthenticationService } from 'src/app/services/authentication.service';
+import { UserInterface } from '@app/interfaces';
+import { AuthenticationService } from '@app/services';
 import { environment } from '../../../environments/environment';
 
 const githubLogin = '/auth/github/login';

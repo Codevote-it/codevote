@@ -5,6 +5,8 @@
 	cursor: pointer;
 	display: inline-block;
 	text-decoration: none;
+	background-color: $color-primary;
+	color: $color-light;
 }
 
 .button:disabled {
@@ -16,8 +18,22 @@
 	font-size: $font-size-default;
 	line-height: $font-size-default;
 	padding: $unit-default;
-	background-color: $color-primary;
 	border-radius: $unit-default;
-	color: $color-light;
 	margin-bottom: $unit-default;
+}
+
+.button--small {
+	font-size: $font-size-small;
+	line-height: $font-size-small;
+	padding: $unit-small;
+	border-radius: $unit-small;
+	margin-bottom: $unit-small;
+}
+
+.button--large {
+	font-size: $font-size-small;
+	line-height: $font-size-small;
+	padding: $unit-small;
+	border-radius: $unit-small;
+	margin-bottom: $unit-small;
 }

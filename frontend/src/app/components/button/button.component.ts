@@ -7,4 +7,5 @@ import { Component, Input } from '@angular/core';
 })
 export class ButtonComponent {
   @Input() disabled = false;
+  @Input() size: 'small' | 'default' | 'large' = 'default';
 }

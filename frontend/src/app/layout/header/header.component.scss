@@ -29,3 +29,8 @@
     text-align: right;
     margin: 0 $unit-default;
 }
+
+// Little hack for button margin in header.
+.header__login ::ng-deep .button {
+    margin: 0;
+}

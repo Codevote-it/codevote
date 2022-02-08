@@ -7,10 +7,10 @@ import {
   UseGuards,
 } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
-import { User } from './types';
 import * as jwt from 'jsonwebtoken';
 import { UserDatastoreService } from './datastore.service';
-import { frontendHost } from "./constants";
+import { frontendHost } from './constants';
+import { User } from "./generated/graphql";
 
 @Controller('auth')
 export class AuthController {

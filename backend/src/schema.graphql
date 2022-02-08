@@ -1,6 +1,6 @@
 type Query {
     codeVote(id: ID!): CodeVote
-    # Login via /auth/github/login and use the retrieved token as Bearer token
+    """ Login via /auth/github/login and use the retrieved token as Bearer token"""
     me: User
 }
 

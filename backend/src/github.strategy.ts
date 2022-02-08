@@ -1,8 +1,8 @@
 import { PassportStrategy } from '@nestjs/passport';
 import { Injectable } from '@nestjs/common';
 import { Strategy } from 'passport-github2';
-import { User } from './types';
-import { oauthCallback } from "./constants";
+import { oauthCallback } from './constants';
+import { User } from "./generated/graphql";
 
 interface GithubUser {
   id: string;

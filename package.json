@@ -8,6 +8,7 @@
   "scripts": {
     "lint": "eslint --fix --ext .js,.jsx,.ts .",
     "lint-frontend": "npx eslint frontend/src/ --fix",
+    "build-frontend": "npm run build --prefix frontend",
     "prepare": "husky install"
   },
   "devDependencies": {

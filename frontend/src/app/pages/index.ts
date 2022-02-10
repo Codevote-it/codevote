@@ -1,3 +1,4 @@
 export * from './codevote/';
-export * from './index/';
+export * from './create/';
+export * from './home';
 export * from './pages.module';

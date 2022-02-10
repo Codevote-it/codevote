@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { IndexComponent } from './index/';
-import { CodevoteComponent } from './codevote/';
-import { ComponentsModule } from '../components/';
 
-const COMPONENTS = [IndexComponent, CodevoteComponent];
+import { HomeComponent, CodevoteComponent, CreateComponent } from '@app/pages';
+import { ComponentsModule } from '@app/components';
+
+const COMPONENTS = [HomeComponent, CodevoteComponent, CreateComponent];
 
 @NgModule({
   declarations: [...COMPONENTS],

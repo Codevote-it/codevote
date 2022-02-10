@@ -9,6 +9,7 @@ import {
   ColComponent,
   UserProfileComponent,
   SectionComponent,
+  InputComponent,
 } from './';
 
 const COMPONENTS = [
@@ -18,6 +19,7 @@ const COMPONENTS = [
   ColComponent,
   UserProfileComponent,
   SectionComponent,
+  InputComponent,
 ];
 
 @NgModule({

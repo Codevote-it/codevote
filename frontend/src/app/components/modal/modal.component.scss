@@ -1,0 +1,111 @@
+@import 'settings';
+
+.modal {
+    position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background-color: rgba($color-light, .5);
+	justify-content: center;
+    align-items: center;
+    display: flex;
+    z-index: 100;
+    opacity: 0; // initial animation state
+	animation-name: fade-in;
+	animation-duration: .3s;
+	animation-fill-mode: forwards;
+}
+
+.modal__container {
+    max-width: $max-screen;
+    width: 100%;
+    background-color: $color-dark;
+    border-radius: $unit-default;
+    box-shadow: 0px 0px $unit-default $unit-default rgba($color-dark, .5);
+    transform: scale(0); // initial animation state
+	animation: scale-in .3s .3s;
+	animation-name: scale-in;
+	animation-duration: .3s;
+	animation-fill-mode: forwards;
+}
+
+.modal__header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: $unit-large;
+    background-color: darken($color-dark, 10%);
+    border-top-left-radius: $unit-large; 
+    border-top-right-radius: $unit-large;
+    color: $color-light;
+}
+
+.modal__title {
+    flex: 1;
+}
+
+.modal__close {
+    flex: 1;
+    text-align: right;
+}
+
+.modal__close ::ng-deep button {
+    margin: 0;
+}
+
+// TODO: Move to more generic place
+@keyframes fade-in {
+	0% {
+		opacity: 0;
+	}
+
+	100% {
+		opacity: 1;
+	}
+}
+
+@keyframes scale-in {
+	0% {
+		transform: scale(0);
+	}
+
+	100% {
+		transform: scale(1);
+	}
+}
+
+@keyframes bounce {
+
+	0% {
+		transform: scaleX(1) scaleY(1);
+	}
+	
+	86% {
+		transform: scaleX(1) scaleY(1);
+	}
+
+	90% {
+		transform: scaleX(.85) scaleY(.85);
+	}
+	
+	92% {
+		transform: scaleX(1.1) scaleY(1.1);
+	}
+
+	94% {
+		transform: scaleX(.9) scaleY(.9);
+	}
+
+	96% {
+		transform: scaleX(1.05) scaleY(1.05);
+	}
+
+	98% {
+		transform: scaleX(.95) scaleY(.95);
+	}
+
+	100% {
+		transform: scaleX(1) scaleY(1);
+	}
+}

@@ -8,11 +8,10 @@ import { AppRoutingEnum } from '@app/routing';
 })
 export class HomeComponent {
   public authenticated = true;
-  public appRoutingEnum = AppRoutingEnum;
 
   constructor(private router: Router) {}
 
   onAddSnippet(): void {
-    this.router.navigate([this.appRoutingEnum.Create]);
+    this.router.navigate([AppRoutingEnum.Create]);
   }
 }

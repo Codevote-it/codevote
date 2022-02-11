@@ -1,6 +1,6 @@
 <div class="snippet">
     <div class="snippet__title">{{ title }}</div>
     <div class="snippet__content">
-        <textarea class="snippet__textarea" rows="10" [ngModel]="snippet" (ngModelChange)="snippetChanged.emit($event)"></textarea>
+        <textarea class="snippet__textarea" rows="10" [value]="snippet" readonly></textarea>
     </div>
 </div>

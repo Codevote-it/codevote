@@ -1,17 +1,22 @@
 <app-section>
     <app-row>
         <app-col>
-            <h1>{{ displayName }}</h1>
+            <h1>{{ displayName }} <app-button size="small" (click)="onEditTitle()">Edit</app-button></h1>
         </app-col>
     </app-row>
     <app-row>
         <app-col>
-            <app-snippet title="Snippet 1" [snippet]="snippet1" (snippetChanged)="onSnippetChanged($event, '1')"></app-snippet>
+            <app-snippet title="Snippet 1" [snippet]="snippet1"></app-snippet>
             <app-button>Vote</app-button>
+            <app-button (click)="onEditSnippet()">Edit snippet</app-button>
         </app-col>
         <app-col>
-            <app-snippet title="Snippet 2" [snippet]="snippet2" (snippetChanged)="onSnippetChanged($event, '2')"></app-snippet>
+            <app-snippet title="Snippet 2" [snippet]="snippet2"></app-snippet>
             <app-button>Vote</app-button>
+            <app-button (click)="onEditSnippet()">Edit snippet</app-button>
         </app-col>
     </app-row>
 </app-section>
+
+<app-edit-title *ngIf="showEditTitleModal" (onClose)="onCloseEditTitleModal()"></app-edit-title>
+<app-edit-snippet *ngIf="showEditSnippetModal" (onClose)="onCloseEditSnippetModal()"></app-edit-snippet>

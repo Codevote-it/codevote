@@ -1,0 +1,13 @@
+<div class="modal">
+    <div class="modal__container">
+        <div class="modal__header">
+            <div class="modal__title">
+                <strong>{{ title }}</strong>
+            </div>
+            <div class="modal__close">
+                <app-button size="small" (click)="onClose()">Close</app-button>
+            </div>
+        </div>
+        <ng-content></ng-content>
+    </div>
+</div>

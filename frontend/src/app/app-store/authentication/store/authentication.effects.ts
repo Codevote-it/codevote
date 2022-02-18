@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
-import { UserInterface } from '@app/interfaces';
-import { TokenService } from '@app/services/token.service';
+import { TokenService } from '@app/services';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { map, switchMap } from 'rxjs/operators';
-import { AuthenticationGqlService } from '../services/authentication-gql.service';
+import { AuthenticationGqlService } from '@app/app-store/authentication/services';
 import { actionTypes, getUserSuccessAction } from './authentication.actions';
 
 @Injectable()

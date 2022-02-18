@@ -1,10 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
+import {
+  AuthenticationActionService,
+  AuthenticationSelectorService,
+} from '@app/app-store';
 import { UserInterface } from '@app/interfaces';
-import { AuthenticationService } from '@app/services';
+import { filter } from 'rxjs/operators';
 import { environment } from '../../../environments/environment';
 
-const githubLogin = '/auth/github/login';
+const GITHUB_LOGIN_URL = '/auth/github/login';
+const TOKEN_KEY = 'token';
 
 @Component({
   selector: 'app-header',
@@ -17,44 +22,41 @@ export class HeaderComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private authenticationService: AuthenticationService,
+    private authenticationActionService: AuthenticationActionService,
+    private authenticationSelectorService: AuthenticationSelectorService,
   ) {}
 
   ngOnInit(): void {
     this.route.queryParams.subscribe((queryParams) =>
       this.onQueryParams(queryParams),
     );
+
+    this.authenticationSelectorService
+      .isAuthenticated$()
+      .pipe(filter((isAuthenticated) => isAuthenticated))
+      .subscribe((isAuthenticated) => {
+        this.getUser();
+        this.authenticated = isAuthenticated;
+      });
+
+    this.authenticationSelectorService
+      .getUser$()
+      .subscribe((user) => (this.user = user));
   }
 
-  public getUser(): void {
-    const isAuthenticated = this.authenticationService.isAuthenticated();
-
-    if (!isAuthenticated) {
-      return;
-    }
-
-    this.authenticationService
-      .getUser()
-      .subscribe((response) => (this.user = response));
+  private getUser(): void {
+    this.authenticationActionService.getUser();
   }
 
   public onLogin(): void {
-    document.location.href = `${environment.endpoint}${githubLogin}`;
+    document.location.href = `${environment.endpoint}${GITHUB_LOGIN_URL}`;
   }
 
   public onQueryParams(queryParams: Params): void {
-    const queryParamsToken = queryParams['token'];
-    const localStorageToken = this.authenticationService.getToken();
+    const token = queryParams[TOKEN_KEY];
 
-    if (queryParamsToken) {
-      this.authenticationService.saveToken(queryParamsToken);
-      this.authenticated = true; // TODO: save in subject in authenticationService
-      this.getUser();
-    } else if (localStorageToken) {
-      this.authenticated = true;
-      this.getUser();
-    } else {
-      this.authenticated = false;
+    if (token) {
+      this.authenticationActionService.saveToken({ token });
     }
   }
 }

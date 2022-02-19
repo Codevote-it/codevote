@@ -5,7 +5,6 @@ import {
   AuthenticationSelectorService,
 } from '@app/data';
 import { MeInterface } from '@app/data/authentication/interfaces';
-import { filter } from 'rxjs/operators';
 import { environment } from 'environments/environment';
 
 const GITHUB_LOGIN_URL = '/auth/github/login';
@@ -17,7 +16,7 @@ const TOKEN_KEY = 'token';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
-  public authenticated = false;
+  public isAuthenticated = false;
   public me: MeInterface | null = null;
 
   constructor(
@@ -32,20 +31,22 @@ export class HeaderComponent implements OnInit {
     );
 
     this.authenticationSelectorService
+      .getToken$()
+      .subscribe((token) => this.getMe(token));
+
+    this.authenticationSelectorService
       .isAuthenticated$()
-      .pipe(filter((isAuthenticated) => isAuthenticated))
-      .subscribe((isAuthenticated) => {
-        this.getMet();
-        this.authenticated = isAuthenticated;
-      });
+      .subscribe((isAuthenticated) => (this.isAuthenticated = isAuthenticated));
 
     this.authenticationSelectorService
       .getMe$()
       .subscribe((me) => (this.me = me));
   }
 
-  private getMet(): void {
-    this.authenticationActionService.getMe();
+  private getMe(token: string): void {
+    if (token) {
+      this.authenticationActionService.getMe();
+    }
   }
 
   public onLogin(): void {

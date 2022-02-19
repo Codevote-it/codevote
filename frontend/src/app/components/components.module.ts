@@ -17,6 +17,7 @@ import {
   FooterComponent,
   HeaderComponent,
 } from './';
+import { RouterModule } from '@angular/router';
 
 const COMPONENTS = [
   ButtonComponent,
@@ -37,6 +38,6 @@ const COMPONENTS = [
 @NgModule({
   declarations: [...COMPONENTS],
   exports: [...COMPONENTS],
-  imports: [CommonModule, FormsModule, BrowserModule],
+  imports: [CommonModule, FormsModule, BrowserModule, RouterModule],
 })
 export class ComponentsModule {}

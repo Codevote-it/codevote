@@ -13,12 +13,9 @@ export class CodevoteEffects {
     this.actions$.pipe(
       ofType(codevoteActionTypes.GET_CODEVOTE),
       switchMap(() =>
-        this.codevoteGraphqlService.getCodevote$().pipe(
-          map((response) => {
-            console.log(response);
-            return getCodevoteSuccessAction({ response });
-          }),
-        ),
+        this.codevoteGraphqlService
+          .getCodevote$()
+          .pipe(map((response) => getCodevoteSuccessAction({ response }))),
       ),
     ),
   );

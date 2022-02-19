@@ -16,16 +16,15 @@ export const authenticationReducer = createReducer(
   on(saveTokenAction, (state, { token }) => ({
     ...state,
     token,
-    authenticated: true,
   })),
   on(removeTokenAction, (state) => ({
     ...state,
     token: '',
-    authenticated: false,
   })),
   on(getMeSuccessAction, (state, { response }) => ({
     ...state,
     ...response,
+    authenticated: true,
   })),
   on(resetAuthenticationAction, () => initialAuthenticationState),
 );
@@ -39,7 +38,6 @@ function getInitalState(
   if (token) {
     return {
       ...initialState,
-      authenticated: true,
       token,
     };
   }

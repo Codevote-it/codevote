@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 import { TokenService } from '@app/data/services';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { map, switchMap } from 'rxjs/operators';
+import { catchError, map, switchMap } from 'rxjs/operators';
 import { AuthenticationGraphqlService } from '@app/data/authentication/services';
 import {
   authenticationActionTypes,
+  getMeErrorAction,
   getMeSuccessAction,
 } from './authentication.actions';
-import { EMPTY } from 'rxjs';
+import { EMPTY, of } from 'rxjs';
 
 @Injectable()
 export class AuthenticationEffects {
@@ -39,9 +40,10 @@ export class AuthenticationEffects {
     this.actions$.pipe(
       ofType(authenticationActionTypes.GET_ME),
       switchMap(() =>
-        this.authenticationGraphqlService
-          .getMe$()
-          .pipe(map((response) => getMeSuccessAction({ response }))),
+        this.authenticationGraphqlService.getMe$().pipe(
+          map((response) => getMeSuccessAction({ response })),
+          catchError(() => of(getMeErrorAction())),
+        ),
       ),
     ),
   );

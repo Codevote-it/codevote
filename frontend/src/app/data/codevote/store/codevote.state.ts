@@ -1,4 +1,4 @@
-import { CodevoteInterface } from '@app/app-store/codevote/interfaces';
+import { CodevoteInterface } from '@app/data/codevote/interfaces';
 
 export interface CodevoteState {
   codevote: CodevoteInterface | null;

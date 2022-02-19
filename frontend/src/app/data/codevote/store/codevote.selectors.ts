@@ -1,4 +1,4 @@
-import { AppState } from '@app/app-store/app-store.state';
+import { AppState } from '@app/data';
 import { createSelector } from '@ngrx/store';
 import { CodevoteState } from './codevote.state';
 

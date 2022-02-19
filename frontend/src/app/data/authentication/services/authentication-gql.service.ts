@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { MeResponse } from '@app/app-store/authentication/interfaces';
-import { ApiService } from '@app/services';
+import { MeResponse } from '@app/data/authentication/interfaces';
+import { ApiService } from '@app/data/services';
 import { gql } from 'graphql-request';
 import { Observable } from 'rxjs';
 

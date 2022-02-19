@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ApiService } from '@app/services';
+import { ApiService } from '@app/data/services';
 import { gql } from 'graphql-request';
 import { Observable } from 'rxjs';
 import { CodevoteResponse } from '../interfaces';

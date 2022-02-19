@@ -1,4 +1,4 @@
-import { CodevoteResponse } from '@app/app-store/codevote/interfaces';
+import { CodevoteResponse } from '@app/data/codevote/interfaces';
 import { createAction, props } from '@ngrx/store';
 
 export const enum actionTypes {

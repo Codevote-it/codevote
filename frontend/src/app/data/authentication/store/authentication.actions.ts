@@ -1,4 +1,4 @@
-import { MeResponse } from '@app/app-store/authentication/interfaces';
+import { MeResponse } from '@app/data/authentication/interfaces';
 import { createAction, props } from '@ngrx/store';
 
 export const enum actionTypes {

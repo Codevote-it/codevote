@@ -1,4 +1,4 @@
-import { MeInterface } from '@app/app-store/authentication/interfaces';
+import { MeInterface } from '@app/data/authentication/interfaces';
 
 export interface AuthenticationState {
   token: string;

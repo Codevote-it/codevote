@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {
   CodevoteActionService,
   CodevoteSelectorService,
-} from '@app/app-store/codevote';
-import { CodevoteInterface } from '@app/app-store/codevote/interfaces';
+} from '@app/data/codevote';
+import { CodevoteInterface } from '@app/data/codevote/interfaces';
 
 @Component({
   selector: 'app-codevote',

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { AppState } from '@app/app-store/app-store.state';
-import { MeInterface } from '@app/app-store/authentication/interfaces';
+import { AppState } from '@app/data';
+import { MeInterface } from '@app/data/authentication/interfaces';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import {

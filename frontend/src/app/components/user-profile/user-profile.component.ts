@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { MeInterface } from '@app/app-store/authentication/interfaces';
+import { MeInterface } from '@app/data/authentication/interfaces';
 
 @Component({
   selector: 'app-user-profile',

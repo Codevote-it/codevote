@@ -3,8 +3,8 @@ import { ActivatedRoute, Params } from '@angular/router';
 import {
   AuthenticationActionService,
   AuthenticationSelectorService,
-} from '@app/app-store';
-import { MeInterface } from '@app/app-store/authentication/interfaces';
+} from '@app/data';
+import { MeInterface } from '@app/data/authentication/interfaces';
 import { filter } from 'rxjs/operators';
 import { environment } from '../../../environments/environment';
 

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { AppState } from '@app/app-store/app-store.state';
-import { CodevoteInterface } from '@app/app-store/codevote/interfaces';
+import { AppState } from '@app/data/app.state';
+import { CodevoteInterface } from '@app/data/codevote/interfaces';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { selectCodevote } from '../store';

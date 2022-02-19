@@ -1,22 +1,22 @@
 import { CodevoteResponse } from '@app/data/codevote/interfaces';
 import { createAction, props } from '@ngrx/store';
 
-export const enum actionTypes {
+export const enum codevoteActionTypes {
   GET_CODEVOTE = '[Codevote Action Service] Get Codevote',
   GET_CODEVOTE_SUCCESS = '[Codevote Action Effect] Get Codevote Success',
   GET_CODEVOTE_ERROR = '[Codevote Action Effect] Get Codevote Error',
   RESET = '[Codevote Action Service] Reset',
 }
 
-export const getCodevoteAction = createAction(actionTypes.GET_CODEVOTE);
+export const getCodevoteAction = createAction(codevoteActionTypes.GET_CODEVOTE);
 
 export const getCodevoteSuccessAction = createAction(
-  actionTypes.GET_CODEVOTE_SUCCESS,
+  codevoteActionTypes.GET_CODEVOTE_SUCCESS,
   props<{ response: CodevoteResponse }>(),
 );
 
 export const getCodevoteErrorAction = createAction(
-  actionTypes.GET_CODEVOTE_ERROR,
+  codevoteActionTypes.GET_CODEVOTE_ERROR,
 );
 
-export const resetAction = createAction(actionTypes.RESET);
+export const resetCodevoteAction = createAction(codevoteActionTypes.RESET);

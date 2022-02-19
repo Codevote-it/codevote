@@ -2,14 +2,17 @@ import { TokenService } from '@app/data/services';
 import { createReducer, on } from '@ngrx/store';
 import {
   saveTokenAction,
-  resetAction,
+  resetAuthenticationAction,
   removeTokenAction,
   getMeSuccessAction,
 } from './authentication.actions';
-import { AuthenticationState, initialState } from './authentication.state';
+import {
+  AuthenticationState,
+  initialAuthenticationState,
+} from './authentication.state';
 
 export const authenticationReducer = createReducer(
-  getInitalState(),
+  getInitalState(initialAuthenticationState),
   on(saveTokenAction, (state, { token }) => ({
     ...state,
     token,
@@ -24,10 +27,12 @@ export const authenticationReducer = createReducer(
     ...state,
     ...response,
   })),
-  on(resetAction, () => initialState),
+  on(resetAuthenticationAction, () => initialAuthenticationState),
 );
 
-function getInitalState(): AuthenticationState {
+function getInitalState(
+  initialState: AuthenticationState,
+): AuthenticationState {
   const tokenService = new TokenService();
   const token = tokenService.get();
 

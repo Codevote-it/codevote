@@ -3,7 +3,7 @@ import { Store } from '@ngrx/store';
 import {
   getMeAction,
   removeTokenAction,
-  resetAction,
+  resetAuthenticationAction,
   saveTokenAction,
 } from '../store';
 
@@ -26,6 +26,6 @@ export class AuthenticationActionService {
   }
 
   public reset(): void {
-    this.store.dispatch(resetAction());
+    this.store.dispatch(resetAuthenticationAction());
   }
 }

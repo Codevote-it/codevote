@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { getCodevoteAction, resetAction } from '../store';
+import { getCodevoteAction, resetCodevoteAction } from '../store';
 
 @Injectable({
   providedIn: 'root',
@@ -13,6 +13,6 @@ export class CodevoteActionService {
   }
 
   public reset(): void {
-    this.store.dispatch(resetAction());
+    this.store.dispatch(resetCodevoteAction());
   }
 }

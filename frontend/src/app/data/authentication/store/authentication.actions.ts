@@ -1,7 +1,7 @@
 import { MeResponse } from '@app/data/authentication/interfaces';
 import { createAction, props } from '@ngrx/store';
 
-export const enum actionTypes {
+export const enum authenticationActionTypes {
   SAVE_TOKEN = '[Authentication Action Service] Save Token',
   REMOVE_TOKEN = '[Authentication Action Service] Remove Token',
   GET_ME = '[Authentication Action Service] Get Me',
@@ -11,19 +11,25 @@ export const enum actionTypes {
 }
 
 export const saveTokenAction = createAction(
-  actionTypes.SAVE_TOKEN,
+  authenticationActionTypes.SAVE_TOKEN,
   props<{ token: string }>(),
 );
 
-export const removeTokenAction = createAction(actionTypes.REMOVE_TOKEN);
+export const removeTokenAction = createAction(
+  authenticationActionTypes.REMOVE_TOKEN,
+);
 
-export const getMeAction = createAction(actionTypes.GET_ME);
+export const getMeAction = createAction(authenticationActionTypes.GET_ME);
 
 export const getMeSuccessAction = createAction(
-  actionTypes.GET_ME_SUCCESS,
+  authenticationActionTypes.GET_ME_SUCCESS,
   props<{ response: MeResponse }>(),
 );
 
-export const getMeErrorAction = createAction(actionTypes.GET_ME_ERROR);
+export const getMeErrorAction = createAction(
+  authenticationActionTypes.GET_ME_ERROR,
+);
 
-export const resetAction = createAction(actionTypes.RESET);
+export const resetAuthenticationAction = createAction(
+  authenticationActionTypes.RESET,
+);

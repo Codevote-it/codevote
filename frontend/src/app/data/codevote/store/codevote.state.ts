@@ -4,6 +4,6 @@ export interface CodevoteState {
   codevote: CodevoteInterface | null;
 }
 
-export const initialState: CodevoteState = {
+export const initialCodevoteState: CodevoteState = {
   codevote: null,
 };

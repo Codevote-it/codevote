@@ -6,7 +6,7 @@ export interface AuthenticationState {
   me: MeInterface | null;
 }
 
-export const initialState: AuthenticationState = {
+export const initialAuthenticationState: AuthenticationState = {
   token: '',
   authenticated: false,
   me: null,

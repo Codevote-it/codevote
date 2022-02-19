@@ -6,7 +6,7 @@ import { Observable, Subject } from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
-export class ApiService {
+export class GraphglService {
   public request$<T>(query: string): Observable<T> {
     const token = this.getToken();
     const request$ = new Subject<T>();

@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
 import { MeResponse } from '@app/data/authentication/interfaces';
-import { ApiService } from '@app/data/services';
+import { GraphglService } from '@app/data/services';
 import { gql } from 'graphql-request';
 import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
-export class AuthenticationGqlService {
-  constructor(private apiService: ApiService) {}
+export class AuthenticationGraphqlService {
+  constructor(private graphglService: GraphglService) {}
 
   public getMe$(): Observable<MeResponse> {
     const query = gql`
@@ -22,6 +22,6 @@ export class AuthenticationGqlService {
       }
     `;
 
-    return this.apiService.request$(query);
+    return this.graphglService.request$(query);
   }
 }

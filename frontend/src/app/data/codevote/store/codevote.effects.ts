@@ -5,7 +5,7 @@ import {
   codevoteActionTypes,
   getCodevoteSuccessAction,
 } from './codevote.actions';
-import { CodevoteGqlService } from '../services';
+import { CodevoteGraphqlService } from '../services';
 
 @Injectable()
 export class CodevoteEffects {
@@ -13,7 +13,7 @@ export class CodevoteEffects {
     this.actions$.pipe(
       ofType(codevoteActionTypes.GET_CODEVOTE),
       switchMap(() =>
-        this.codevoteGqlService.getCodevote$().pipe(
+        this.codevoteGraphqlService.getCodevote$().pipe(
           map((response) => {
             console.log(response);
             return getCodevoteSuccessAction({ response });
@@ -25,6 +25,6 @@ export class CodevoteEffects {
 
   constructor(
     private actions$: Actions,
-    private codevoteGqlService: CodevoteGqlService,
+    private codevoteGraphqlService: CodevoteGraphqlService,
   ) {}
 }

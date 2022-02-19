@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ApiService } from '@app/data/services';
+import { GraphglService } from '@app/data/services';
 import { gql } from 'graphql-request';
 import { Observable } from 'rxjs';
 import { CodevoteResponse } from '../interfaces';
@@ -7,8 +7,8 @@ import { CodevoteResponse } from '../interfaces';
 @Injectable({
   providedIn: 'root',
 })
-export class CodevoteGqlService {
-  constructor(private apiService: ApiService) {}
+export class CodevoteGraphqlService {
+  constructor(private graphglService: GraphglService) {}
 
   public getCodevote$(): Observable<CodevoteResponse> {
     const query = gql`
@@ -26,6 +26,6 @@ export class CodevoteGqlService {
       }
     `;
 
-    return this.apiService.request$(query);
+    return this.graphglService.request$(query);
   }
 }

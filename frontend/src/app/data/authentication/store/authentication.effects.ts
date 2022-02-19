@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { TokenService } from '@app/data/services';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { map, switchMap } from 'rxjs/operators';
-import { AuthenticationGqlService } from '@app/data/authentication/services';
+import { AuthenticationGraphqlService } from '@app/data/authentication/services';
 import {
   authenticationActionTypes,
   getMeSuccessAction,
@@ -39,7 +39,7 @@ export class AuthenticationEffects {
     this.actions$.pipe(
       ofType(authenticationActionTypes.GET_ME),
       switchMap(() =>
-        this.authenticationGqlService
+        this.authenticationGraphqlService
           .getMe$()
           .pipe(map((response) => getMeSuccessAction({ response }))),
       ),
@@ -49,6 +49,6 @@ export class AuthenticationEffects {
   constructor(
     private actions$: Actions,
     private tokenService: TokenService,
-    private authenticationGqlService: AuthenticationGqlService,
+    private authenticationGraphqlService: AuthenticationGraphqlService,
   ) {}
 }

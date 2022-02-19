@@ -1,2 +1,2 @@
-export * from './api.service';
+export * from './graphql.service';
 export * from './token.service';

@@ -6,7 +6,7 @@ import {
 } from '@app/data';
 import { MeInterface } from '@app/data/authentication/interfaces';
 import { filter } from 'rxjs/operators';
-import { environment } from '../../../environments/environment';
+import { environment } from 'environments/environment';
 
 const GITHUB_LOGIN_URL = '/auth/github/login';
 const TOKEN_KEY = 'token';

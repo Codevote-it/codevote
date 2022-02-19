@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { CodevoteService } from '@app/services';
+import {
+  CodevoteActionService,
+  CodevoteSelectorService,
+} from '@app/app-store/codevote';
+import { CodevoteInterface } from '@app/app-store/codevote/interfaces';
 
 @Component({
   selector: 'app-codevote',
@@ -7,20 +11,20 @@ import { CodevoteService } from '@app/services';
   styleUrls: ['./codevote.component.scss'],
 })
 export class CodevoteComponent implements OnInit {
-  public displayName = '';
-  public snippet1 = '';
-  public snippet2 = '';
+  public codevote: CodevoteInterface | null = null;
   public showEditSnippetModal = false;
   public showEditTitleModal = false;
 
-  constructor(private codeVoteService: CodevoteService) {}
+  constructor(
+    private codevoteActionService: CodevoteActionService,
+    private codevoteSelectorService: CodevoteSelectorService,
+  ) {}
 
   ngOnInit(): void {
-    this.codeVoteService.getCodeVote().subscribe((response) => {
-      this.displayName = response.codeVote.creator.displayName;
-      this.snippet1 = response.codeVote.snippet1;
-      this.snippet2 = response.codeVote.snippet2;
-    });
+    this.codevoteActionService.getCodevote();
+    this.codevoteSelectorService
+      .getCodevote$()
+      .subscribe((codevote) => (this.codevote = codevote));
   }
 
   public onEditSnippet(): void {

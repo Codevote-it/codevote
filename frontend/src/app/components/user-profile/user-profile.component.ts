@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { UserInterface } from '@app/interfaces';
+import { MeInterface } from '@app/app-store/authentication/interfaces';
 
 @Component({
   selector: 'app-user-profile',
@@ -7,5 +7,6 @@ import { UserInterface } from '@app/interfaces';
   styleUrls: ['./user-profile.component.scss'],
 })
 export class UserProfileComponent {
-  @Input() user: UserInterface | null = null;
+  @Input() me: MeInterface | null = null;
 }
+// todo: profile picture

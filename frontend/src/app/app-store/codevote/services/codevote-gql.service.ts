@@ -1,23 +1,27 @@
 import { Injectable } from '@angular/core';
-import { MeResponse } from '@app/app-store/authentication/interfaces';
 import { ApiService } from '@app/services';
 import { gql } from 'graphql-request';
 import { Observable } from 'rxjs';
+import { CodevoteResponse } from '../interfaces';
 
 @Injectable({
   providedIn: 'root',
 })
-export class AuthenticationGqlService {
+export class CodevoteGqlService {
   constructor(private apiService: ApiService) {}
 
-  public getMe$(): Observable<MeResponse> {
+  public getCodevote$(): Observable<CodevoteResponse> {
     const query = gql`
       {
-        me {
-          id
-          displayName
-          username
-          profileImageUrl
+        codeVote(id: "") {
+          snippet1
+          snippet2
+          creator {
+            id
+            displayName
+            username
+            profileImageUrl
+          }
         }
       }
     `;

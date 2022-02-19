@@ -1,13 +1,13 @@
-import { UserInterface } from '@app/interfaces';
+import { MeInterface } from '@app/app-store/authentication/interfaces';
 
 export interface AuthenticationState {
   token: string;
   authenticated: boolean;
-  user: UserInterface | null;
+  me: MeInterface | null;
 }
 
 export const initialState: AuthenticationState = {
   token: '',
   authenticated: false,
-  user: null,
+  me: null,
 };

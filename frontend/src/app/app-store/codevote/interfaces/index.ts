@@ -1,2 +1,2 @@
 export * from './codevote.interface';
-export * from './user.interface';
+export * from './codevote.response';

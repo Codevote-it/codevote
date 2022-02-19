@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { AppState } from '@app/app-store/app-store.state';
-import { UserInterface } from '@app/interfaces';
+import { MeInterface } from '@app/app-store/authentication/interfaces';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import {
   selectAuthenticated,
   selectToken,
-  selectUser,
+  selectMe,
 } from '../store/authentication.selectors';
 
 @Injectable({
@@ -23,7 +23,7 @@ export class AuthenticationSelectorService {
     return this.store.select(selectAuthenticated);
   }
 
-  public getUser$(): Observable<UserInterface | null> {
-    return this.store.select(selectUser);
+  public getMe$(): Observable<MeInterface | null> {
+    return this.store.select(selectMe);
   }
 }

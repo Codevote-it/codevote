@@ -14,7 +14,7 @@ export const selectAuthenticated = createSelector(
   (state: AuthenticationState) => state.authenticated,
 );
 
-export const selectUser = createSelector(
+export const selectMe = createSelector(
   authenticationState,
-  (state: AuthenticationState) => state.user,
+  (state: AuthenticationState) => state.me,
 );

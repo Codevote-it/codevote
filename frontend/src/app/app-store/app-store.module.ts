@@ -6,6 +6,7 @@ import { environment } from 'environments/environment';
 import { EffectsModule } from '@ngrx/effects';
 import { AuthenticationEffects } from './authentication/store/authentication.effects';
 import { appReducers } from './app-store.state';
+import { CodevoteEffects } from './codevote';
 
 @NgModule({
   imports: [
@@ -15,7 +16,7 @@ import { appReducers } from './app-store.state';
       maxAge: 25,
       logOnly: environment.production,
     }),
-    EffectsModule.forRoot([AuthenticationEffects]),
+    EffectsModule.forRoot([AuthenticationEffects, CodevoteEffects]),
   ],
 })
 export class AppStoreModule {}

@@ -4,7 +4,7 @@ import {
   saveTokenAction,
   resetAction,
   removeTokenAction,
-  getUserSuccessAction,
+  getMeSuccessAction,
 } from './authentication.actions';
 import { AuthenticationState, initialState } from './authentication.state';
 
@@ -20,9 +20,9 @@ export const authenticationReducer = createReducer(
     token: '',
     authenticated: false,
   })),
-  on(getUserSuccessAction, (state, { response }) => ({
+  on(getMeSuccessAction, (state, { response }) => ({
     ...state,
-    user: response,
+    ...response,
   })),
   on(resetAction, () => initialState),
 );

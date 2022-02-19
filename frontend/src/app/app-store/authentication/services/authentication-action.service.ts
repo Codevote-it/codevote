@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import {
-  getUserAction,
+  getMeAction,
   removeTokenAction,
   resetAction,
   saveTokenAction,
@@ -21,8 +21,8 @@ export class AuthenticationActionService {
     this.store.dispatch(removeTokenAction());
   }
 
-  public getUser(): void {
-    this.store.dispatch(getUserAction());
+  public getMe(): void {
+    this.store.dispatch(getMeAction());
   }
 
   public reset(): void {

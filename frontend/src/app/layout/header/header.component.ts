@@ -4,7 +4,7 @@ import {
   AuthenticationActionService,
   AuthenticationSelectorService,
 } from '@app/app-store';
-import { UserInterface } from '@app/interfaces';
+import { MeInterface } from '@app/app-store/authentication/interfaces';
 import { filter } from 'rxjs/operators';
 import { environment } from '../../../environments/environment';
 
@@ -18,7 +18,7 @@ const TOKEN_KEY = 'token';
 })
 export class HeaderComponent implements OnInit {
   public authenticated = false;
-  public user: UserInterface | null = null;
+  public me: MeInterface | null = null;
 
   constructor(
     private route: ActivatedRoute,
@@ -35,17 +35,17 @@ export class HeaderComponent implements OnInit {
       .isAuthenticated$()
       .pipe(filter((isAuthenticated) => isAuthenticated))
       .subscribe((isAuthenticated) => {
-        this.getUser();
+        this.getMet();
         this.authenticated = isAuthenticated;
       });
 
     this.authenticationSelectorService
-      .getUser$()
-      .subscribe((user) => (this.user = user));
+      .getMe$()
+      .subscribe((me) => (this.me = me));
   }
 
-  private getUser(): void {
-    this.authenticationActionService.getUser();
+  private getMet(): void {
+    this.authenticationActionService.getMe();
   }
 
   public onLogin(): void {

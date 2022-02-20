@@ -1,5 +1,5 @@
 export interface CodevoteInterface {
-  codeVote: {
+  codevote: {
     snippet1: string;
     snippet2: string;
     creator: {

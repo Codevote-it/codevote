@@ -13,13 +13,13 @@ export class CodevoteComponent implements OnInit {
   public showEditSnippetModal = false;
   public showEditTitleModal = false;
 
-  constructor(private codeVoteService: CodevoteService) {}
+  constructor(private codevoteService: CodevoteService) {}
 
   ngOnInit(): void {
-    this.codeVoteService.getCodeVote().subscribe((response) => {
-      this.displayName = response.codeVote.creator.displayName;
-      this.snippet1 = response.codeVote.snippet1;
-      this.snippet2 = response.codeVote.snippet2;
+    this.codevoteService.getCodevote().subscribe((response) => {
+      this.displayName = response.codevote.creator.displayName;
+      this.snippet1 = response.codevote.snippet1;
+      this.snippet2 = response.codevote.snippet2;
     });
   }
 

@@ -3,8 +3,9 @@ import { Datastore } from '@google-cloud/datastore';
 import { google } from '@google-cloud/datastore/build/protos/protos';
 import ICommitResponse = google.datastore.v1.ICommitResponse;
 import { entity } from '@google-cloud/datastore/build/src/entity';
-import { logger } from './logger';
-import { CodeVote, User } from "./generated/graphql";
+import { logger } from '../logger';
+import { Codevote, User } from "../generated/graphql";
+import { project } from "../constants";
 
 interface DatastoreEntity {
   id: string;
@@ -16,11 +17,11 @@ export interface DatastoreQuery {
   value: {};
 }
 
-export class DatastoreService<T extends DatastoreEntity> {
+export class DatastoreRepository<T extends DatastoreEntity> {
   datastore: Datastore;
 
   constructor(private readonly kind: string) {
-    this.datastore = new Datastore();
+    this.datastore = new Datastore({projectId: project});
   }
 
   /**
@@ -113,15 +114,15 @@ export class DatastoreService<T extends DatastoreEntity> {
 }
 
 @Injectable()
-export class UserDatastoreService extends DatastoreService<User> {
+export class UserRepository extends DatastoreRepository<User> {
   constructor() {
     super('User');
   }
 }
 
 @Injectable()
-export class CodeVoteDatastoreService extends DatastoreService<CodeVote> {
+export class CodevoteRepository extends DatastoreRepository<Codevote> {
   constructor() {
-    super('CodeVote');
+    super('Codevote');
   }
 }

@@ -16,7 +16,7 @@ export class CreateComponent {
     console.log($event);
   }
 
-  public onCreateCodeVote(): void {
+  public onCreateCodevote(): void {
     this.router.navigate([AppRoutingEnum.Codevote]);
   }
 }

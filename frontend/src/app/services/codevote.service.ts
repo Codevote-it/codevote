@@ -10,10 +10,10 @@ import { ApiService } from './api.service';
 export class CodevoteService {
   constructor(private apiService: ApiService) {}
 
-  public getCodeVote(): Observable<CodevoteInterface> {
+  public getCodevote(): Observable<CodevoteInterface> {
     const query = gql`
       {
-        codeVote(id: "") {
+        codevote(id: "") {
           snippet1
           snippet2
           creator {

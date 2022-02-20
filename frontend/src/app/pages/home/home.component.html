@@ -1,0 +1,9 @@
+<app-section>
+    <app-row>
+        <app-col>
+            <h1>Codevote</h1>
+            <p>Create code snippets, share and vote.</p>
+            <app-button [disabled]="!authenticated" (click)="onAddSnippet()">Create codevote</app-button>
+        </app-col>
+    </app-row>
+</app-section>

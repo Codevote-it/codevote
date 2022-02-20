@@ -1,4 +1,5 @@
 export enum AppRoutingEnum {
-  Index = '',
+  Home = '',
   Codevote = 'codevote',
+  Create = 'create',
 }

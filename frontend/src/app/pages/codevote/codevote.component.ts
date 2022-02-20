@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CodevoteService } from '../../services/codevote.service';
+import { CodevoteService } from '@app/services';
 
 @Component({
   selector: 'app-codevote',
@@ -7,10 +7,11 @@ import { CodevoteService } from '../../services/codevote.service';
   styleUrls: ['./codevote.component.scss'],
 })
 export class CodevoteComponent implements OnInit {
-  public timer: ReturnType<typeof setTimeout> | null = null;
   public displayName = '';
   public snippet1 = '';
   public snippet2 = '';
+  public showEditSnippetModal = false;
+  public showEditTitleModal = false;
 
   constructor(private codeVoteService: CodevoteService) {}
 
@@ -22,13 +23,19 @@ export class CodevoteComponent implements OnInit {
     });
   }
 
-  public onSnippetChanged(value: string, id: string): void {
-    if (this.timer) {
-      clearTimeout(this.timer);
-    }
+  public onEditSnippet(): void {
+    this.showEditSnippetModal = true;
+  }
 
-    this.timer = setTimeout(() => {
-      console.log(`save: ${value} with id ${id}`);
-    }, 1000);
+  public onEditTitle(): void {
+    this.showEditTitleModal = true;
+  }
+
+  public onCloseEditTitleModal(): void {
+    this.showEditTitleModal = false;
+  }
+
+  public onCloseEditSnippetModal(): void {
+    this.showEditSnippetModal = false;
   }
 }

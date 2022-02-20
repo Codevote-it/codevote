@@ -1,5 +1,7 @@
 export * from './button';
 export * from './col';
+export * from './input';
+export * from './modal';
 export * from './row';
 export * from './section';
 export * from './snippet';

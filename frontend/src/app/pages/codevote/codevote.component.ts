@@ -1,6 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
-import { saveTokenAction } from '@app/data';
 import {
   CodevoteActionService,
   CodevoteSelectorService,

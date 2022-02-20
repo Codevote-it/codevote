@@ -5,6 +5,7 @@ import {
   CodevoteInterface,
 } from '@app/data/codevote';
 import { Subscription } from 'rxjs';
+import { tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-codevote',
@@ -27,12 +28,12 @@ export class CodevoteComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    const getCodevote = this.codevoteActionService.getCodevote();
     const getCodevote$ = this.codevoteSelectorService
       .getCodevote$()
       .subscribe((codevote) => (this.codevote = codevote));
 
-    this.subscription.add(getCodevote).add(getCodevote$);
+    this.codevoteActionService.getCodevote();
+    this.subscription.add(getCodevote$);
   }
 
   ngOnDestroy(): void {

@@ -1,26 +1,42 @@
-import { Component, OnInit } from '@angular/core';
-import { CodevoteService } from '@app/services';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import {
+  CodevoteActionService,
+  CodevoteSelectorService,
+  CodevoteInterface,
+} from '@app/data/codevote';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-codevote',
   templateUrl: './codevote.component.html',
-  styleUrls: ['./codevote.component.scss'],
 })
-export class CodevoteComponent implements OnInit {
-  public displayName = '';
-  public snippet1 = '';
-  public snippet2 = '';
-  public showEditSnippetModal = false;
-  public showEditTitleModal = false;
+export class CodevoteComponent implements OnInit, OnDestroy {
+  public codevote: CodevoteInterface | null;
+  public showEditSnippetModal;
+  public showEditTitleModal;
+  public subscription: Subscription;
 
-  constructor(private codevoteService: CodevoteService) {}
+  constructor(
+    private codevoteActionService: CodevoteActionService,
+    private codevoteSelectorService: CodevoteSelectorService,
+  ) {
+    this.codevote = null;
+    this.showEditSnippetModal = false;
+    this.showEditTitleModal = false;
+    this.subscription = new Subscription();
+  }
 
   ngOnInit(): void {
-    this.codevoteService.getCodevote().subscribe((response) => {
-      this.displayName = response.codevote.creator.displayName;
-      this.snippet1 = response.codevote.snippet1;
-      this.snippet2 = response.codevote.snippet2;
-    });
+    const getCodevote = this.codevoteActionService.getCodevote();
+    const getCodevote$ = this.codevoteSelectorService
+      .getCodevote$()
+      .subscribe((codevote) => (this.codevote = codevote));
+
+    this.subscription.add(getCodevote).add(getCodevote$);
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 
   public onEditSnippet(): void {

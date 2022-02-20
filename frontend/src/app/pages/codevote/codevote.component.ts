@@ -5,7 +5,6 @@ import {
   CodevoteInterface,
 } from '@app/data/codevote';
 import { Subscription } from 'rxjs';
-import { tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-codevote',

@@ -10,8 +10,15 @@ export class CodevoteService {
     async getCodevote(id: string): Promise<Codevote> {
         return {
             id: 'boguss',
-            snippet1: 'Some code snippetss 1',
-            snippet2: 'Some code snippetss 2',
+            createdAt: new Date(),
+            snippet1: {
+                title: 'Bad code sample',
+                content: 'Some code snippetss 1',
+            },
+            snippet2: {
+                title: 'Good code sample',
+                content: 'Some code snippetss 2',
+            },
             creator: {
                 id: 'boguss',
                 username: 'username',

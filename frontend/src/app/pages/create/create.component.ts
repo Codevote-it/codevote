@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { CodevoteActionService } from '@app/data';
-import { AppRoutingEnum } from '@app/routing';
 
 @Component({
   selector: 'app-create',
@@ -22,7 +21,6 @@ export class CreateComponent {
   }
 
   public onCreateCodevote(): void {
-    // this.router.navigate([AppRoutingEnum.Codevote]);
     this.codevoteActionService.createCodevote({
       snippet1: {
         title: 'My first codevote A',

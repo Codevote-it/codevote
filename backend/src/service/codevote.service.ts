@@ -1,23 +1,55 @@
 import { Injectable } from '@nestjs/common';
-import { Codevote } from "../generated/graphql";
+import { Codevote, CodevoteInput } from "../generated/graphql";
+import { Ctx } from "../context";
+import { Authenticated } from "./auth.service";
+import { DatastoreRepository } from "../lib/datastore.repository";
+import ShortUniqueId from "short-unique-id";
+
+/**
+ * Database version of a CodeVote
+ */
+export interface CodevoteEntity extends Omit<Codevote, 'creator'> {
+    userId: string;
+}
+
+@Injectable()
+export class CodevoteRepository extends DatastoreRepository<CodevoteEntity> {
+    constructor() {
+        super('Codevote');
+    }
+}
 
 @Injectable()
 export class CodevoteService {
 
-    constructor() {
+    generateId = new ShortUniqueId({ length: 12 });
+
+    constructor(private codevoteRepo: CodevoteRepository) {
     }
 
-    async getCodevote(id: string): Promise<Codevote> {
-        return {
-            id: 'boguss',
-            snippet1: 'Some code snippetss 1',
-            snippet2: 'Some code snippetss 2',
-            creator: {
-                id: 'boguss',
-                username: 'username',
-                displayName: 'Martinho',
-                profileImageUrl: 'https://avatars.githubusercontent.com/u/6604455?v=4',
-            },
-        };
+    @Authenticated()
+    async creatCodevote(ctx: Ctx, input: CodevoteInput): Promise<CodevoteEntity> {
+        let id;
+        let exists = true;
+        while(exists) { // Generate new id if exists
+            id = this.generateId();
+            exists = await this.codevoteRepo.exists(id);
+        }
+        await this.codevoteRepo.save({
+            id,
+            createdAt: new Date(),
+            userId: ctx.user.id,
+            snippet1: input.snippet1,
+            snippet2: input.snippet2
+        });
+        return this.codevoteRepo.get(id);
+    }
+
+    async getCodevote(ctx: Ctx, id: string): Promise<CodevoteEntity> {
+        return this.codevoteRepo.get(id);
+    }
+
+    async getAllCodevotes(ctx: Ctx): Promise<CodevoteEntity[]> {
+        return this.codevoteRepo.getAll();
     }
 }

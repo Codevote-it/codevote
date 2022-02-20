@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { UserRepository } from "../lib/datastore.repository";
+import { DatastoreRepository } from "../lib/datastore.repository";
 import { GithubUser } from "../lib/github.strategy";
 import * as jwt from "jsonwebtoken";
 import { AuthenticationError } from "apollo-server-express";
@@ -9,6 +9,13 @@ import { User } from "../generated/graphql";
 export interface JwtPayload {
     id: string,
     username: string
+}
+
+@Injectable()
+export class UserRepository extends DatastoreRepository<User> {
+    constructor() {
+        super('User');
+    }
 }
 
 @Injectable()
@@ -30,6 +37,10 @@ export class AuthService {
     @Authenticated()
     async getLoggedInUser(ctx: Ctx): Promise<User> {
         return this.userRepository.get(ctx.user.id);
+    }
+
+    async getUser(userId: string): Promise<User | undefined> {
+        return this.userRepository.get(userId);
     }
 
     private createToken(payload: JwtPayload): string {

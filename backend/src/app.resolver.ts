@@ -1,8 +1,8 @@
-import { Args, Context, Query, Resolver } from '@nestjs/graphql';
-import { Codevote, User } from "./generated/graphql";
+import { Args, Context, Mutation, Parent, Query, ResolveField, Resolver } from '@nestjs/graphql';
+import { Codevote, CodevoteInput, User } from "./generated/graphql";
 import { Ctx } from "./context";
 import { AuthService } from "./service/auth.service";
-import { CodevoteService } from "./service/codevote.service";
+import { CodevoteEntity, CodevoteService } from "./service/codevote.service";
 
 @Resolver()
 export class AppResolver {
@@ -11,12 +11,28 @@ export class AppResolver {
     }
 
     @Query()
-    async codevote(@Args('id') id: string): Promise<Codevote> {
-        return this.codevoteService.getCodevote(id);
+    async codevote(@Context() ctx: Ctx, @Args('id') id: string): Promise<Omit<Codevote, 'creator'>> {
+        return this.codevoteService.getCodevote(ctx, id);
+    }
+
+    @Query()
+    async allCodevotes(@Context() ctx: Ctx, @Args('id') id: string): Promise<Omit<Codevote, 'creator'>[]> {
+        return this.codevoteService.getAllCodevotes(ctx);
+    }
+
+    @Mutation()
+    async createCodevote(@Context() ctx: Ctx, @Args('input') input: CodevoteInput): Promise<Omit<Codevote, 'creator'>> {
+        return this.codevoteService.creatCodevote(ctx, input);
     }
 
     @Query()
     async me(@Context() ctx: Ctx): Promise<User> {
         return this.authService.getLoggedInUser(ctx);
+    }
+
+    @ResolveField()
+    @Resolver('Codevote')
+    async creator(@Parent() { userId }: CodevoteEntity): Promise<User> {
+        return this.authService.getUser(userId);
     }
 }

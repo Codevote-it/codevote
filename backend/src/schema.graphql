@@ -2,12 +2,23 @@ scalar Date
 
 type Query {
     codevote(id: ID!): Codevote
+    allCodevotes: [Codevote!]!
     """ Login via /auth/github/login and use the retrieved token as Bearer token"""
     me: User
 }
 
 type Mutation {
-    createCodevote: Codevote
+    createCodevote(input: CodevoteInput): Codevote
+}
+
+input CodevoteInput {
+    snippet1: SnippetInput!
+    snippet2: SnippetInput!
+}
+
+input SnippetInput {
+    title: String!
+    content: String!
 }
 
 type Codevote {

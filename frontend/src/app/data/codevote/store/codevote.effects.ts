@@ -3,6 +3,8 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { catchError, map, switchMap } from 'rxjs/operators';
 import {
   codevoteActionTypes,
+  createCodevoteErrorAction,
+  createCodevoteSuccessAction,
   getAllCodevotesErrorAction,
   getAllCodevotesSuccessAction,
   getCodevoteErrorAction,
@@ -10,6 +12,7 @@ import {
 } from './codevote.actions';
 import { CodevoteGraphqlService } from '../services';
 import { of } from 'rxjs';
+import { CreateCodevoteProps } from '../interfaces';
 
 @Injectable()
 export class CodevoteEffects {
@@ -33,6 +36,24 @@ export class CodevoteEffects {
         this.codevoteGraphqlService.getAllCodevotes$().pipe(
           map((response) => getAllCodevotesSuccessAction({ response })),
           catchError(() => of(getAllCodevotesErrorAction())),
+        ),
+      ),
+    ),
+  );
+
+  createCodevote$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(codevoteActionTypes.CREATE_CODEVOTE),
+      map(
+        (action: { type: string; props: CreateCodevoteProps }) => action.props,
+      ),
+      switchMap((props) =>
+        this.codevoteGraphqlService.createCodevote$(props).pipe(
+          map((response) => {
+            console.log(response);
+            return createCodevoteSuccessAction();
+          }),
+          catchError(() => of(createCodevoteErrorAction())),
         ),
       ),
     ),

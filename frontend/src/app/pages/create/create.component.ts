@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { CodevoteActionService } from '@app/data';
 import { AppRoutingEnum } from '@app/routing';
 
 @Component({
@@ -9,7 +10,10 @@ import { AppRoutingEnum } from '@app/routing';
 export class CreateComponent {
   public name: string;
 
-  constructor(private router: Router) {
+  constructor(
+    private router: Router,
+    private codevoteActionService: CodevoteActionService,
+  ) {
     this.name = '';
   }
 
@@ -18,6 +22,16 @@ export class CreateComponent {
   }
 
   public onCreateCodevote(): void {
-    this.router.navigate([AppRoutingEnum.Codevote]);
+    // this.router.navigate([AppRoutingEnum.Codevote]);
+    this.codevoteActionService.createCodevote({
+      snippet1: {
+        title: 'My first codevote A',
+        content: '// TODO: add snippet A',
+      },
+      snippet2: {
+        title: 'My first codevote B',
+        content: '// TODO: add snippet B',
+      },
+    });
   }
 }

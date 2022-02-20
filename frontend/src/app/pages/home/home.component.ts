@@ -38,7 +38,7 @@ export class HomeComponent implements OnInit, OnDestroy {
       .getAllCodevotes$()
       .subscribe((allCodevotes) => (this.allCodevotes = allCodevotes));
 
-    this.codevoteActionService.getAllCodevotesAction();
+    this.codevoteActionService.getAllCodevotes();
     this.subscription.add(isAuthenticated$).add(getAllCodevotes$);
   }
 

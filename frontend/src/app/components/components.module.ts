@@ -11,13 +11,24 @@ import {
   SectionComponent,
   InputComponent,
   ModalComponent,
+  ContainerComponent,
+  EditSnippetComponent,
+  EditTitleComponent,
+  FooterComponent,
+  HeaderComponent,
 } from './';
+import { RouterModule } from '@angular/router';
 
 const COMPONENTS = [
   ButtonComponent,
+  ColComponent,
+  ContainerComponent,
+  EditSnippetComponent,
+  EditTitleComponent,
+  FooterComponent,
+  HeaderComponent,
   SnippetComponent,
   RowComponent,
-  ColComponent,
   UserProfileComponent,
   SectionComponent,
   InputComponent,
@@ -27,6 +38,6 @@ const COMPONENTS = [
 @NgModule({
   declarations: [...COMPONENTS],
   exports: [...COMPONENTS],
-  imports: [CommonModule, FormsModule, BrowserModule],
+  imports: [CommonModule, FormsModule, BrowserModule, RouterModule],
 })
 export class ComponentsModule {}

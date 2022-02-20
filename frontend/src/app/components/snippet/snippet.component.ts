@@ -7,5 +7,5 @@ import { Component, Input } from '@angular/core';
 })
 export class SnippetComponent {
   @Input() title = '';
-  @Input() snippet = '';
+  @Input() snippet? = '';
 }

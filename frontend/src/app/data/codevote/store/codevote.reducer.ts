@@ -9,7 +9,7 @@ export const codevoteReducer = createReducer(
   initialCodevoteState,
   on(getCodevoteSuccessAction, (state, { response }) => ({
     ...state,
-    codevote: response.codeVote,
+    ...response,
   })),
   on(resetCodevoteAction, () => initialCodevoteState),
 );

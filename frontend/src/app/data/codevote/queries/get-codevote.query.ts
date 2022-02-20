@@ -2,7 +2,7 @@ import { gql } from 'graphql-request';
 
 export const getCodevoteQuery = gql`
   {
-    codeVote(id: "") {
+    codevote(id: "") {
       snippet1
       snippet2
       creator {

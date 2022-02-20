@@ -1,3 +1,5 @@
+scalar Date
+
 type Query {
     codevote(id: ID!): Codevote
     """ Login via /auth/github/login and use the retrieved token as Bearer token"""
@@ -10,9 +12,15 @@ type Mutation {
 
 type Codevote {
     id: ID!
-    snippet1: String!
-    snippet2: String!
-    creator: User
+    createdAt: Date!
+    snippet1: Snippet!
+    snippet2: Snippet!
+    creator: User!
+}
+
+type Snippet {
+    title: String!
+    content: String!
 }
 
 type User {

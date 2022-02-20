@@ -1,3 +1,3 @@
 import { Logger } from '@nestjs/common';
 
-export const logger = new Logger('CodeVote');
+export const logger = new Logger('Codevote');

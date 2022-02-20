@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  endpoint: 'https://codevote-api-u3o3eb6q2a-ew.a.run.app',
+  endpoint: 'https://api.codevote.it',
 };
 
 /*

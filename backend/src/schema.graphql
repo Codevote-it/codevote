@@ -1,10 +1,14 @@
 type Query {
-    codeVote(id: ID!): CodeVote
+    codevote(id: ID!): Codevote
     """ Login via /auth/github/login and use the retrieved token as Bearer token"""
     me: User
 }
 
-type CodeVote {
+type Mutation {
+    createCodevote: Codevote
+}
+
+type Codevote {
     id: ID!
     snippet1: String!
     snippet2: String!
@@ -13,7 +17,7 @@ type CodeVote {
 
 type User {
     id: ID!
-    displayName: String
-    username: String
+    displayName: String!
+    username: String!
     profileImageUrl: String
 }

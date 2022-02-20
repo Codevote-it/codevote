@@ -1,10 +1,9 @@
 import { PassportStrategy } from '@nestjs/passport';
 import { Injectable } from '@nestjs/common';
 import { Strategy } from 'passport-github2';
-import { oauthCallback } from './constants';
-import { User } from "./generated/graphql";
+import { oauthCallback } from '../constants';
 
-interface GithubUser {
+export interface GithubUser {
   id: string;
   displayName: string;
   username: string;
@@ -26,12 +25,7 @@ export class GithubStrategy extends PassportStrategy(Strategy, 'github') {
     _,
     user: GithubUser,
     _done: (err: any, obj: any) => void,
-  ): Promise<User> {
-    return {
-      id: user.id,
-      username: user.username,
-      displayName: user.displayName,
-      profileImageUrl: user.photos[0]?.value,
-    };
+  ): Promise<GithubUser> {
+    return user;
   }
 }

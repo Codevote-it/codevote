@@ -61,7 +61,7 @@ export class DatastoreRepository<T extends DatastoreEntity> {
   /**
    * Retrieve complete entity by id
    */
-  async get(entityId: string): Promise<T> {
+  async get(entityId: string): Promise<T | undefined> {
     const key = this.createKey(entityId);
     const [entity] = await this.datastore.get(key);
     if (entity) {
@@ -113,16 +113,4 @@ export class DatastoreRepository<T extends DatastoreEntity> {
   }
 }
 
-@Injectable()
-export class UserRepository extends DatastoreRepository<User> {
-  constructor() {
-    super('User');
-  }
-}
 
-@Injectable()
-export class CodevoteRepository extends DatastoreRepository<Codevote> {
-  constructor() {
-    super('Codevote');
-  }
-}

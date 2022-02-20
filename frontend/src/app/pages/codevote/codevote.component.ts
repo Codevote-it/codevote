@@ -1,9 +1,12 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ActivatedRoute, ParamMap } from '@angular/router';
+import { saveTokenAction } from '@app/data';
 import {
   CodevoteActionService,
   CodevoteSelectorService,
   CodevoteInterface,
 } from '@app/data/codevote';
+import { AppRoutingEnum } from '@app/routing';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -17,6 +20,7 @@ export class CodevoteComponent implements OnInit, OnDestroy {
   public subscription: Subscription;
 
   constructor(
+    private route: ActivatedRoute,
     private codevoteActionService: CodevoteActionService,
     private codevoteSelectorService: CodevoteSelectorService,
   ) {
@@ -31,7 +35,7 @@ export class CodevoteComponent implements OnInit, OnDestroy {
       .getCodevote$()
       .subscribe((codevote) => (this.codevote = codevote));
 
-    this.codevoteActionService.getCodevote();
+    this.route.paramMap.subscribe((params) => this.handleParams(params));
     this.subscription.add(getCodevote$);
   }
 
@@ -53,5 +57,14 @@ export class CodevoteComponent implements OnInit, OnDestroy {
 
   public onCloseEditSnippetModal(): void {
     this.showEditSnippetModal = false;
+  }
+
+  private handleParams(params: ParamMap): void {
+    const id = params.get(AppRoutingEnum.CodevoteSegment1);
+    if (!id) {
+      return;
+    }
+
+    this.codevoteActionService.getCodevote({ id });
   }
 }

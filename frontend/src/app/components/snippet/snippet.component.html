@@ -1,6 +1,6 @@
 <div class="snippet">
-    <div class="snippet__title">{{ title }}</div>
+    <div class="snippet__title">{{ snippet?.title }}</div>
     <div class="snippet__content">
-        <textarea class="snippet__textarea" rows="10" [value]="snippet" readonly></textarea>
+        <textarea class="snippet__textarea" rows="10" [value]="snippet?.content" readonly></textarea>
     </div>
 </div>

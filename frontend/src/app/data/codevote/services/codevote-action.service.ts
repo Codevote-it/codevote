@@ -1,6 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { getCodevoteAction, resetCodevoteAction } from '../store';
+import {
+  getAllCodevotesAction,
+  getCodevoteAction,
+  resetCodevoteAction,
+} from '../store';
 
 @Injectable({
   providedIn: 'root',
@@ -8,8 +12,12 @@ import { getCodevoteAction, resetCodevoteAction } from '../store';
 export class CodevoteActionService {
   constructor(private store: Store) {}
 
-  public getCodevote(): void {
-    this.store.dispatch(getCodevoteAction());
+  public getCodevote(props: { id: string }): void {
+    this.store.dispatch(getCodevoteAction(props));
+  }
+
+  public getAllCodevotesAction(): void {
+    this.store.dispatch(getAllCodevotesAction());
   }
 
   public reset(): void {

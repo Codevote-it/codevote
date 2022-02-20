@@ -7,3 +7,15 @@
         </app-col>
     </app-row>
 </app-section>
+
+<app-section>
+    <app-row>
+        <app-col>
+            <h2>Top codevotes:</h2>
+            <ng-container *ngIf="allCodevotes.length">
+                <app-button size="small" *ngFor="let codevote of allCodevotes" (click)="onViewCodevote(codevote.id)">View: {{ codevote.id }}</app-button>
+            </ng-container>
+        </app-col>
+    </app-row>
+</app-section>
+

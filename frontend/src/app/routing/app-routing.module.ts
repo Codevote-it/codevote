@@ -5,7 +5,10 @@ import { AppRoutingEnum } from './';
 
 const routes: Routes = [
   { path: AppRoutingEnum.Home, component: HomeComponent },
-  { path: AppRoutingEnum.Codevote, component: CodevoteComponent },
+  {
+    path: `${AppRoutingEnum.Codevote}/:${AppRoutingEnum.CodevoteSegment1}`,
+    component: CodevoteComponent,
+  },
   { path: AppRoutingEnum.Create, component: CreateComponent },
 ];
 

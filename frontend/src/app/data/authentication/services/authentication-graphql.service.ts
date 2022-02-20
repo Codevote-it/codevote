@@ -11,6 +11,6 @@ export class AuthenticationGraphqlService {
   constructor(private graphglService: GraphglService) {}
 
   public getMe$(): Observable<MeResponse> {
-    return this.graphglService.request$(getMeQuery);
+    return this.graphglService.request$(getMeQuery());
   }
 }

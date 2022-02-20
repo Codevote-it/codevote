@@ -8,3 +8,8 @@ export const selectCodevote = createSelector(
   codevoteState,
   (state: CodevoteState) => state.codevote,
 );
+
+export const selectAllCodevotes = createSelector(
+  codevoteState,
+  (state: CodevoteState) => state.allCodevotes,
+);

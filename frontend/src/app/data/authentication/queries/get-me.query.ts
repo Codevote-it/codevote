@@ -1,12 +1,14 @@
 import { gql } from 'graphql-request';
 
-export const getMeQuery = gql`
-  {
-    me {
-      id
-      displayName
-      username
-      profileImageUrl
+export const getMeQuery = function (): string {
+  return gql`
+    {
+      me {
+        id
+        displayName
+        username
+        profileImageUrl
+      }
     }
-  }
-`;
+  `;
+};

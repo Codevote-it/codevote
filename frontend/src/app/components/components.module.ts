@@ -18,6 +18,7 @@ import {
   HeaderComponent,
 } from './';
 import { RouterModule } from '@angular/router';
+import { CreatorComponent } from './creator/creator.component';
 
 const COMPONENTS = [
   ButtonComponent,
@@ -33,6 +34,7 @@ const COMPONENTS = [
   SectionComponent,
   InputComponent,
   ModalComponent,
+  CreatorComponent,
 ];
 
 @NgModule({

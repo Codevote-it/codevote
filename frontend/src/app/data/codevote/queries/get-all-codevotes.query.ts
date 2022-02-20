@@ -1,9 +1,9 @@
 import { gql } from 'graphql-request';
 
-export const getCodevoteQuery = function (props: { id: string }): string {
+export const getAllCodevotesQuery = function (): string {
   return gql`
     {
-      codevote(id: "${props.id}") {
+      allCodevotes {
         id
         createdAt
         snippet1 {

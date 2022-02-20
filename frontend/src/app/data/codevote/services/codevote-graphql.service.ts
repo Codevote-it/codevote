@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { GraphglService } from '@app/data/services';
 import { Observable } from 'rxjs';
-import { CodevoteResponse } from '../interfaces';
-import { getCodevoteQuery } from '../queries';
+import { AllCodevotesResponse, CodevoteResponse } from '../interfaces';
+import { getAllCodevotesQuery, getCodevoteQuery } from '../queries';
 
 @Injectable({
   providedIn: 'root',
@@ -10,7 +10,11 @@ import { getCodevoteQuery } from '../queries';
 export class CodevoteGraphqlService {
   constructor(private graphglService: GraphglService) {}
 
-  public getCodevote$(): Observable<CodevoteResponse> {
-    return this.graphglService.request$(getCodevoteQuery);
+  public getCodevote$(props: { id: string }): Observable<CodevoteResponse> {
+    return this.graphglService.request$(getCodevoteQuery(props));
+  }
+
+  public getAllCodevotes$(): Observable<AllCodevotesResponse> {
+    return this.graphglService.request$(getAllCodevotesQuery());
   }
 }

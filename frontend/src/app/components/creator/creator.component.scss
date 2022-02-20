@@ -1,0 +1,37 @@
+@import 'settings';
+
+.creator {
+    margin: $unit-default;
+    height: 10rem;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.creator__profile {
+    width: 10rem;
+    height: 10rem;
+    overflow: hidden;
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    img {
+        max-width: 100%;
+    }
+}
+
+.creator__display-name {
+    margin-left: 10rem;
+    padding-left: $unit-large;
+
+    h1 {
+        margin: 0;
+    }
+
+    p {
+        margin: 0;
+        font-size: $font-size-small;
+    }
+}

@@ -1,19 +1,13 @@
 <app-section>
     <app-row>
-        <app-col>
-            <h1>{{ codevote?.creator?.displayName }} <app-button size="small" (click)="onEditTitle()">Edit</app-button></h1>
-        </app-col>
+        <app-creator [creator]="codevote?.creator" createdAt="20-02-2022"></app-creator>
     </app-row>
     <app-row>
         <app-col>
-            <app-snippet title="Snippet 1" [snippet]="codevote?.snippet1"></app-snippet>
-            <app-button>Vote</app-button>
-            <app-button (click)="onEditSnippet()">Edit snippet</app-button>
+            <app-snippet [snippet]="codevote?.snippet1"></app-snippet>
         </app-col>
         <app-col>
-            <app-snippet title="Snippet 2" [snippet]="codevote?.snippet2"></app-snippet>
-            <app-button>Vote</app-button>
-            <app-button (click)="onEditSnippet()">Edit snippet</app-button>
+            <app-snippet [snippet]="codevote?.snippet2"></app-snippet>
         </app-col>
     </app-row>
 </app-section>

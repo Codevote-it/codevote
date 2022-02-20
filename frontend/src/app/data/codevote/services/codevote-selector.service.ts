@@ -3,7 +3,7 @@ import { AppState } from '@app/data/app.state';
 import { CodevoteInterface } from '@app/data/codevote/interfaces';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { selectCodevote } from '../store';
+import { selectAllCodevotes, selectCodevote } from '../store';
 
 @Injectable({
   providedIn: 'root',
@@ -13,5 +13,9 @@ export class CodevoteSelectorService {
 
   public getCodevote$(): Observable<CodevoteInterface | null> {
     return this.store.select(selectCodevote);
+  }
+
+  public getAllCodevotes$(): Observable<CodevoteInterface[] | []> {
+    return this.store.select(selectAllCodevotes);
   }
 }

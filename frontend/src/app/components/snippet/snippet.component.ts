@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { SnippetInterface } from '@app/data';
 
 @Component({
   selector: 'app-snippet',
@@ -6,6 +7,5 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./snippet.component.scss'],
 })
 export class SnippetComponent {
-  @Input() title = '';
-  @Input() snippet? = '';
+  @Input() snippet?: SnippetInterface;
 }

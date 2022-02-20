@@ -1,6 +1,11 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthenticationSelectorService } from '@app/data';
+import {
+  AuthenticationSelectorService,
+  CodevoteActionService,
+  CodevoteInterface,
+  CodevoteSelectorService,
+} from '@app/data';
 import { AppRoutingEnum } from '@app/routing';
 import { Subscription } from 'rxjs';
 
@@ -10,13 +15,17 @@ import { Subscription } from 'rxjs';
 })
 export class HomeComponent implements OnInit, OnDestroy {
   public isAuthenticated: boolean;
+  public allCodevotes: CodevoteInterface[];
   public subscription: Subscription;
 
   constructor(
     private router: Router,
     private authenticationSelectorService: AuthenticationSelectorService,
+    private codevoteActionService: CodevoteActionService,
+    private codevoteSelectorService: CodevoteSelectorService,
   ) {
     this.isAuthenticated = false;
+    this.allCodevotes = [];
     this.subscription = new Subscription();
   }
 
@@ -25,7 +34,12 @@ export class HomeComponent implements OnInit, OnDestroy {
       .isAuthenticated$()
       .subscribe((isAuthenticated) => (this.isAuthenticated = isAuthenticated));
 
-    this.subscription.add(isAuthenticated$);
+    const getAllCodevotes$ = this.codevoteSelectorService
+      .getAllCodevotes$()
+      .subscribe((allCodevotes) => (this.allCodevotes = allCodevotes));
+
+    this.codevoteActionService.getAllCodevotesAction();
+    this.subscription.add(isAuthenticated$).add(getAllCodevotes$);
   }
 
   ngOnDestroy(): void {
@@ -34,5 +48,9 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   public onAddSnippet(): void {
     this.router.navigate([AppRoutingEnum.Create]);
+  }
+
+  public onViewCodevote(id: string): void {
+    this.router.navigate([AppRoutingEnum.Codevote, id]);
   }
 }

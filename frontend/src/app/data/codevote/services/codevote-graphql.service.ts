@@ -4,7 +4,8 @@ import { Observable } from 'rxjs';
 import {
   AllCodevotesResponse,
   CodevoteResponse,
-  CreateCodevoteProps,
+  CreateCodevoteRequest,
+  CreateCodevoteResponse,
 } from '../interfaces';
 import {
   getAllCodevotesQuery,
@@ -27,8 +28,8 @@ export class CodevoteGraphqlService {
   }
 
   public createCodevote$(
-    props: CreateCodevoteProps,
-  ): Observable<CodevoteResponse> {
-    return this.graphglService.request$(createCodevoteMutation(props));
+    request: CreateCodevoteRequest,
+  ): Observable<CreateCodevoteResponse> {
+    return this.graphglService.request$(createCodevoteMutation(request));
   }
 }

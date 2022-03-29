@@ -12,7 +12,8 @@ import {
 } from './codevote.actions';
 import { CodevoteGraphqlService } from '../services';
 import { of } from 'rxjs';
-import { CreateCodevoteProps } from '../interfaces';
+import { CodevoteResponse, CreateCodevoteRequest } from '../interfaces';
+import { StoreCommunicationService } from '@app/data/services';
 
 @Injectable()
 export class CodevoteEffects {
@@ -45,15 +46,25 @@ export class CodevoteEffects {
     this.actions$.pipe(
       ofType(codevoteActionTypes.CREATE_CODEVOTE),
       map(
-        (action: { type: string; props: CreateCodevoteProps }) => action.props,
+        (action: { type: string; request: CreateCodevoteRequest }) =>
+          action.request,
       ),
-      switchMap((props) =>
-        this.codevoteGraphqlService.createCodevote$(props).pipe(
+      switchMap((request) =>
+        this.codevoteGraphqlService.createCodevote$(request).pipe(
           map((response) => {
-            console.log(response);
+            this.storeCommunicationService.complete(
+              codevoteActionTypes.CREATE_CODEVOTE,
+              response,
+            );
             return createCodevoteSuccessAction();
           }),
-          catchError(() => of(createCodevoteErrorAction())),
+          catchError((error) => {
+            this.storeCommunicationService.error(
+              codevoteActionTypes.CREATE_CODEVOTE,
+              error,
+            );
+            return of(createCodevoteErrorAction());
+          }),
         ),
       ),
     ),
@@ -62,5 +73,6 @@ export class CodevoteEffects {
   constructor(
     private actions$: Actions,
     private codevoteGraphqlService: CodevoteGraphqlService,
+    private storeCommunicationService: StoreCommunicationService,
   ) {}
 }

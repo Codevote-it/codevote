@@ -1,12 +1,21 @@
 import { gql } from 'graphql-request';
-import { CreateCodevoteProps } from '../interfaces';
+import { CreateCodevoteRequest } from '../interfaces';
 
 export const createCodevoteMutation = function (
-  props: CreateCodevoteProps,
+  request: CreateCodevoteRequest,
 ): string {
   return gql`
-    {
-      createCodevote(input: "${props}") {
+    mutation {
+      createCodevote(input: {
+        snippet1: {
+          title: "${request.snippet1.title}",
+          content: "${request.snippet1.content}",
+        },
+        snippet2: {
+          title: "${request.snippet2.title}",
+          content: "${request.snippet2.content}",
+        }
+      }) {
         id
       }
     }

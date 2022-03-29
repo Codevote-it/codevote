@@ -7,6 +7,6 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 })
 export class InputComponent {
   @Input() placeholder = '';
-  @Input() inputValue = '';
-  @Output() inputValueChanged = new EventEmitter<string>();
+  @Input() value = '';
+  @Output() valueChange = new EventEmitter<string>();
 }

@@ -1,35 +1,52 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { CodevoteActionService } from '@app/data';
+import { CodevoteActionService, CreateCodevoteRequest } from '@app/data';
+import { AppRoutingEnum } from '@app/routing';
 
 @Component({
   selector: 'app-create',
   templateUrl: './create.component.html',
 })
 export class CreateComponent {
-  public name: string;
+  public titleSnippet1: string;
+  public titleSnippet2: string;
 
   constructor(
-    private router: Router,
     private codevoteActionService: CodevoteActionService,
+    private router: Router,
   ) {
-    this.name = '';
+    this.titleSnippet1 = '';
+    this.titleSnippet2 = '';
   }
 
-  public onInputValueChanged($event: string): void {
-    console.log($event);
+  public isInvalid(): boolean {
+    return Boolean(!this.titleSnippet1 || !this.titleSnippet2);
   }
 
   public onCreateCodevote(): void {
-    this.codevoteActionService.createCodevote({
+    const request: CreateCodevoteRequest = {
       snippet1: {
-        title: 'My first codevote A',
-        content: '// TODO: add snippet A',
+        title: this.titleSnippet1,
+        content: '// TODO: add snippet',
       },
       snippet2: {
-        title: 'My first codevote B',
-        content: '// TODO: add snippet B',
+        title: this.titleSnippet2,
+        content: '// TODO: add snippet',
       },
-    });
+    };
+
+    if (this.isInvalid()) {
+      return;
+    }
+
+    this.codevoteActionService
+      .createCodevote(request)
+      .subscribe(({ createCodevote }) =>
+        this.onCreateCodevoteSuccess(createCodevote.id),
+      );
+  }
+
+  private onCreateCodevoteSuccess(id: string): void {
+    this.router.navigate([AppRoutingEnum.Codevote, id]);
   }
 }

@@ -2,8 +2,15 @@
     <app-row>
         <app-col>
             <h1>Create codevote</h1>
-            <app-input placeholder="Codevote example 1..." [inputValue]="name" (inputValueChanged)="onInputValueChanged($event)"></app-input>
-            <app-button (click)="onCreateCodevote()">Create codevote</app-button>
+            <app-input
+                placeholder="Title snippet 1"
+                [(value)]="titleSnippet1"
+            ></app-input>
+            <app-input
+                placeholder="Title snippet 2"
+                [(value)]="titleSnippet2"
+            ></app-input>
+            <app-button [disabled]="isInvalid()" (click)="onCreateCodevote()">Create codevote</app-button>
         </app-col>
     </app-row>
 </app-section>

@@ -1,7 +1,7 @@
 import {
   AllCodevotesResponse,
   CodevoteResponse,
-  CreateCodevoteProps,
+  CreateCodevoteRequest,
 } from '@app/data/codevote/interfaces';
 import { createAction, props } from '@ngrx/store';
 
@@ -50,7 +50,7 @@ export const getAllCodevotesErrorAction = createAction(
 
 export const createCodevoteAction = createAction(
   codevoteActionTypes.CREATE_CODEVOTE,
-  props<CreateCodevoteProps>(),
+  props<{ request: CreateCodevoteRequest }>(),
 );
 
 export const createCodevoteSuccessAction = createAction(

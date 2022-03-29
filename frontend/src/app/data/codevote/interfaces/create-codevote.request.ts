@@ -1,4 +1,4 @@
-export interface CreateCodevoteProps {
+export interface CreateCodevoteRequest {
   snippet1: {
     title: string;
     content: string;

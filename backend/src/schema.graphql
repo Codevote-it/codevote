@@ -8,6 +8,10 @@ type Query {
 }
 
 type Mutation {
+    vote(input:  VoteInput!): Codevote!
+}
+
+type Mutation {
     createCodevote(input: CodevoteInput): Codevote
 }
 
@@ -21,6 +25,11 @@ input SnippetInput {
     content: String!
 }
 
+input VoteInput {
+    codevoteId: ID!
+    snippetId: ID!
+}
+
 type Codevote {
     id: ID!
     createdAt: Date!
@@ -30,8 +39,16 @@ type Codevote {
 }
 
 type Snippet {
+    id: ID!
     title: String!
     content: String!
+    votes: [Vote!]!
+    voteCount: Int!
+}
+type Vote {
+    id: ID!
+    createdAt: Date!
+    user: User!
 }
 
 type User {

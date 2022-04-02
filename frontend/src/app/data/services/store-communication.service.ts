@@ -5,9 +5,8 @@ import { Observable, Subject } from 'rxjs';
   providedIn: 'root',
 })
 export class StoreCommunicationService {
-  // eslint-disable: Subject can ben any type of responseInterface
+  // eslint-disable-line: Subject can be any type
   private actions: { [id: string]: Subject<any> };
-  // eslint-enable
 
   constructor() {
     this.actions = {};

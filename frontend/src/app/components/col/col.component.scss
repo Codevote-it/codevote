@@ -5,3 +5,9 @@
     flex: 1;
     margin: 0 $unit-default;
 }
+
+@for $i from 1 through 12 {
+    :host(.col--#{$i}) {
+        flex: #{$i};
+    }
+}

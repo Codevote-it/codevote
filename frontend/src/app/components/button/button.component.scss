@@ -7,19 +7,16 @@
 	text-decoration: none;
 	background-color: $color-primary;
 	color: $color-light;
-}
-
-.button:disabled {
-	background-color: $color-dark;
-	cursor: not-allowed;
-}
-
-.button {
 	font-size: $font-size-default;
 	line-height: $font-size-default;
 	padding: $unit-default;
 	border-radius: $unit-default;
 	margin-bottom: $unit-default;
+}
+
+.button:disabled {
+	background-color: $color-dark;
+	cursor: not-allowed;
 }
 
 .button--small {

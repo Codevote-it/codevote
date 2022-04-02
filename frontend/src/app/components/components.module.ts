@@ -16,9 +16,11 @@ import {
   EditTitleComponent,
   FooterComponent,
   HeaderComponent,
+  NavigationListComponent,
+  NavigationListItemComponent,
+  CreatorComponent,
 } from './';
 import { RouterModule } from '@angular/router';
-import { CreatorComponent } from './creator/creator.component';
 
 const COMPONENTS = [
   ButtonComponent,
@@ -35,6 +37,8 @@ const COMPONENTS = [
   InputComponent,
   ModalComponent,
   CreatorComponent,
+  NavigationListComponent,
+  NavigationListItemComponent,
 ];
 
 @NgModule({

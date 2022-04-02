@@ -1,8 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-col',
   templateUrl: './col.component.html',
   styleUrls: ['./col.component.scss'],
 })
-export class ColComponent {}
+export class ColComponent {
+  @Input() flex = '1';
+}

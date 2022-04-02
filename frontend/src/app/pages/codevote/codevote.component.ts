@@ -5,8 +5,8 @@ import {
   CodevoteSelectorService,
   CodevoteInterface,
 } from '@app/data/codevote';
-import { AppRoutingEnum } from '@app/routing';
 import { Subscription } from 'rxjs';
+import { CodevoteParamsEnum } from './codevote.params.enum';
 
 @Component({
   selector: 'app-codevote',
@@ -59,7 +59,7 @@ export class CodevoteComponent implements OnInit, OnDestroy {
   }
 
   private handleParams(params: ParamMap): void {
-    const id = params.get(AppRoutingEnum.CodevoteSegment1);
+    const id = params.get(CodevoteParamsEnum.Segment1);
     if (!id) {
       return;
     }

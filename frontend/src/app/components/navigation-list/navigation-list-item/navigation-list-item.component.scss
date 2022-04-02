@@ -1,0 +1,19 @@
+@import 'settings';
+
+.navigation-list-item {
+    margin-bottom: $unit-small;
+}
+
+.navigation-list-item__url {
+    width: 100%;
+    border: none;
+	cursor: pointer;
+	display: inline-block;
+	text-decoration: none;
+	background-color: $color-mid;
+	color: $color-light;
+	font-size: $font-size-small;
+	line-height: $font-size-small;
+	padding: $unit-small;
+	border-radius: $unit-small;
+}

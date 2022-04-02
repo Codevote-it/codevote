@@ -1,6 +1,7 @@
 export enum AppRoutingEnum {
+  NotFound = '**',
   Home = '',
   Codevote = 'codevote',
-  CodevoteSegment1 = 'id',
   Create = 'create',
+  Library = 'library',
 }

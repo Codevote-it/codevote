@@ -12,7 +12,7 @@ import {
 } from './codevote.actions';
 import { CodevoteGraphqlService } from '../services';
 import { of } from 'rxjs';
-import { CodevoteResponse, CreateCodevoteRequest } from '../interfaces';
+import { CreateCodevoteRequest } from '../interfaces';
 import { StoreCommunicationService } from '@app/data/services';
 
 @Injectable()

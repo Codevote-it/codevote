@@ -2,29 +2,7 @@ import { Injectable } from '@angular/core';
 import { environment } from 'environments/environment';
 import { GraphQLClient } from 'graphql-request';
 import { Observable, Subject } from 'rxjs';
-import { TokenService } from './token.service';
-
-export interface GraphglErrorInterface {
-  request: any;
-  response: {
-    data: any;
-    errors: {
-      extensions: {
-        code: string;
-        exception: {
-          message: string;
-          name: string;
-          stacktrace: string[];
-        };
-      };
-      locations: any[];
-      message: string;
-      path: string[];
-      headers: any;
-      status: number;
-    }[];
-  };
-}
+import { GraphglErrorInterface, TokenService } from './';
 
 const GRAPHQL_URL = `${environment.endpoint}/graphql`;
 
@@ -66,7 +44,9 @@ export class GraphglService {
     return new GraphQLClient(GRAPHQL_URL, options);
   }
 
-  private parseGraphqlError(error: any): GraphglErrorInterface {
+  private parseGraphqlError(
+    error: GraphglErrorInterface,
+  ): GraphglErrorInterface {
     const jsonString: string = JSON.stringify(error);
     const jsonParse: GraphglErrorInterface = JSON.parse(jsonString);
     return jsonParse;

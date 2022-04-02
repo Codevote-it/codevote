@@ -1,0 +1,20 @@
+<app-section>
+    <app-row>
+        <app-col class="col--6">
+            <app-navigation-list>
+                <app-navigation-list-item
+                    *ngFor="let data of libraryData"
+                    url="/{{ appRoutingEnum.Library }}/{{ data.segment }}"
+                >{{ data.title }}
+                </app-navigation-list-item>
+            </app-navigation-list>
+        </app-col>
+        <app-col class="col--6">
+            <ng-container *ngIf="selectedLibraryData">
+                <h1>{{ selectedLibraryData.title }}</h1>
+                <p>{{ selectedLibraryData.description }}</p>
+                <app-snippet [snippet]="selectedLibraryData.snippet"></app-snippet>
+            </ng-container>
+        </app-col>
+    </app-row>
+</app-section>

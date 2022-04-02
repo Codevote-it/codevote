@@ -5,7 +5,7 @@ import { GithubStrategy } from './lib/github.strategy';
 import { CodevoteRepository, CodevoteService } from "./service/codevote.service";
 import { getContext } from "./context";
 import { AppController } from "./app.controller";
-import { AuthService, UserRepository } from "./service/auth.service";
+import { UserService, UserRepository } from "./service/user.service";
 
 @Module({
   imports: [
@@ -16,7 +16,7 @@ import { AuthService, UserRepository } from "./service/auth.service";
     }),
   ],
   controllers: [AppController],
-  providers: [CodevoteService, AppResolver, GithubStrategy, UserRepository, CodevoteRepository, AuthService, CodevoteService],
+  providers: [CodevoteService, AppResolver, GithubStrategy, UserRepository, CodevoteRepository, UserService, CodevoteService],
 
 })
 export class AppModule {}

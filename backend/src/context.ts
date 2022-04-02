@@ -1,5 +1,5 @@
 import { Request } from "express";
-import { AuthService, JwtPayload } from "./service/auth.service";
+import { UserService, JwtPayload } from "./service/user.service";
 
 export interface Ctx {
     user?: JwtPayload
@@ -11,7 +11,7 @@ export function getContext(req: Request): Ctx {
         return {}
     } else {
         return {
-            user: AuthService.decode(token.replace('Bearer ', ''))
+            user: UserService.decode(token.replace('Bearer ', ''))
         };
     }
 }

@@ -19,7 +19,7 @@ export class UserRepository extends DatastoreRepository<User> {
 }
 
 @Injectable()
-export class AuthService {
+export class UserService {
 
     constructor(private userRepository: UserRepository) {
     }

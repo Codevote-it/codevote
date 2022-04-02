@@ -3,12 +3,12 @@ import { AuthGuard } from '@nestjs/passport';
 import * as jwt from 'jsonwebtoken';
 import { frontendHost } from './constants';
 import { GithubUser } from "./lib/github.strategy";
-import { AuthService } from "./service/auth.service";
+import { UserService } from "./service/user.service";
 import { logger } from "./logger";
 
 @Controller('auth')
 export class AppController {
-    constructor(private authService: AuthService) {
+    constructor(private authService: UserService) {
     }
 
     @Get('github/login')

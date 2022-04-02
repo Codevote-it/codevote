@@ -5,8 +5,9 @@ import { Observable, Subject } from 'rxjs';
   providedIn: 'root',
 })
 export class StoreCommunicationService {
-  // eslint-disable no-explicit-any
+  /* eslint-disable */
   private actions: { [id: string]: Subject<any> };
+  /* eslint-enable */
 
   constructor() {
     this.actions = {};

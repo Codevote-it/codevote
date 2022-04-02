@@ -32,23 +32,23 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    // const queryParams = this.route.queryParams.subscribe((queryParams) =>
-    //   this.onQueryParams(queryParams),
-    // );
-    // const getToken$ = this.authenticationSelectorService
-    //   .getToken$()
-    //   .subscribe((token) => this.getMe(token));
-    // const isAuthenticated$ = this.authenticationSelectorService
-    //   .isAuthenticated$()
-    //   .subscribe((isAuthenticated) => (this.isAuthenticated = isAuthenticated));
-    // const getMe$ = this.authenticationSelectorService
-    //   .getMe$()
-    //   .subscribe((me) => (this.me = me));
-    // this.subscription
-    //   .add(queryParams)
-    //   .add(getToken$)
-    //   .add(isAuthenticated$)
-    //   .add(getMe$);
+    const queryParams = this.route.queryParams.subscribe((queryParams) =>
+      this.onQueryParams(queryParams),
+    );
+    const getToken$ = this.authenticationSelectorService
+      .getToken$()
+      .subscribe((token) => this.getMe(token));
+    const isAuthenticated$ = this.authenticationSelectorService
+      .isAuthenticated$()
+      .subscribe((isAuthenticated) => (this.isAuthenticated = isAuthenticated));
+    const getMe$ = this.authenticationSelectorService
+      .getMe$()
+      .subscribe((me) => (this.me = me));
+    this.subscription
+      .add(queryParams)
+      .add(getToken$)
+      .add(isAuthenticated$)
+      .add(getMe$);
   }
 
   ngOnDestroy(): void {

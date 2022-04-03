@@ -5,6 +5,14 @@
     margin-bottom: $unit-default;
     position: relative;
     border-radius: $unit-default;
+    cursor: pointer;
+    transform: scale(1);
+    transition-duration: .3s;
+    transition-property: transform;
+}
+
+.snippet:hover {
+    transform: scale(.95);
 }
 
 .snippet__title {
@@ -13,14 +21,10 @@
     border-top-left-radius: $unit-default; 
     border-top-right-radius: $unit-default;
     color: darken($color-light, 20%);
+    user-select: none;
 }
 
 .snippet__content {
     padding: $unit-large;
     position: relative;
-}
-
-.snippet__textarea {
-    color: $color-light;
-    cursor: default;
 }

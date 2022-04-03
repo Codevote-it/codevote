@@ -1,0 +1,11 @@
+.horizontal-scroll {
+    overflow-y: hidden;
+    position: relative;
+}
+
+.horizontal-scroll__content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+}

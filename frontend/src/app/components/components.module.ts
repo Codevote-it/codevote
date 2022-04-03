@@ -26,6 +26,9 @@ import {
   TextareaComponent,
   TabsComponent,
   TabsContentComponent,
+  CodeComponent,
+  SnippetPreviewComponent,
+  HorizontalScrollComponent,
 } from './';
 
 const COMPONENTS = [
@@ -50,6 +53,9 @@ const COMPONENTS = [
   TextareaComponent,
   TabsComponent,
   TabsContentComponent,
+  CodeComponent,
+  SnippetPreviewComponent,
+  HorizontalScrollComponent,
 ];
 
 @NgModule({

@@ -8,14 +8,26 @@
     </app-row>
 </app-section>
 
-<app-section>
+<app-section color="mid">
     <app-row>
         <app-col>
-            <h2>Top codevotes:</h2>
-            <ng-container *ngIf="allCodevotes.length">
-                <app-button size="small" *ngFor="let codevote of allCodevotes" (click)="onViewCodevote(codevote.id)">View: {{ codevote.id }}</app-button>
-            </ng-container>
+            <h2>Top 5 codevotes:</h2>
+        </app-col>
+    </app-row>
+    <app-row>
+        <app-col>
+            <!-- Make horizontal-scroll more dynamic -->
+            <app-horizontal-scroll height="355px" width="1775px">
+                <ng-container *ngIf="allCodevotes.length">
+                    <ng-container *ngFor="let codevote of allCodevotes; let i = index">
+                        <app-snippet-preview *ngIf="i < 5"
+                            (click)="onViewCodevote(codevote.id)"
+                            [codevote]="codevote"
+                            >
+                        </app-snippet-preview>
+                    </ng-container>
+                </ng-container>
+            </app-horizontal-scroll>
         </app-col>
     </app-row>
 </app-section>
-

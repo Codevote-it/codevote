@@ -1,0 +1,60 @@
+@import 'settings';
+
+.snippet-preview {
+    margin-bottom: $unit-default;
+    margin-right: $unit-default;
+    position: relative;
+    cursor: pointer;
+    max-width: 64rem;
+    border-radius: $unit-default;
+    background-color: $color-dark;
+    transform: scale(1);
+    transition-duration: .3s;
+    transition-property: transform;
+}
+
+.snippet-preview:hover {
+    transform: scale(.95);
+}
+
+// Feels little crappy
+.snippet-preview ::ng-deep textarea {
+    cursor: pointer;
+}
+
+.snippet-preview__content {
+    border-radius: $unit-default;
+    background-color: $color-dark;
+}
+
+.snippet-preview__content--2 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+.snippet-preview__content--1 {
+    opacity: 1;
+    transition-duration: .3s;
+    transition-property: opacity;
+}
+
+.snippet-preview__content--2 {
+    opacity: 0;
+    transition-duration: .3s;
+    transition-property: opacity;
+}
+
+.snippet-preview__code {
+    padding: $unit-large;
+    display: block;
+}
+
+.snippet-preview:hover .snippet-preview__content--1 {
+    opacity: 0;
+}
+
+.snippet-preview:hover .snippet-preview__content--2 {
+    opacity: 1;
+}

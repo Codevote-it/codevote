@@ -2,9 +2,7 @@ import {
   AfterViewInit,
   Component,
   ContentChildren,
-  Input,
   QueryList,
-  ViewChildren,
 } from '@angular/core';
 import { TabsContentComponent } from './tabs-content';
 import { TabInterface } from './tabs.interface';

@@ -1,0 +1,36 @@
+@import 'settings';
+
+:host {
+    flex: 10;
+}
+
+.snippet-percentage {
+    user-select: none;
+}
+
+.snippet-percentage-bar {
+    text-align: center;
+    text-decoration: none;
+    background-color: $color-primary;
+	color: $color-light;
+	font-size: $font-size-default;
+	line-height: $font-size-default;
+	padding: $unit-default;
+	border-radius: $unit-default;
+    margin-bottom: $unit-default;
+    position: relative;
+    overflow: hidden;
+}
+
+.snippet-percentage-bar__content {
+    text-align: center;
+    position: relative;
+}
+
+.snippet-percentage-bar__background {
+    background-color: $color-dark;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+}

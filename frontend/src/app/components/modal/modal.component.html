@@ -5,9 +5,11 @@
                 <strong>{{ title }}</strong>
             </div>
             <div class="modal__close">
-                <app-button size="small" (click)="onClose()">Close</app-button>
+                <app-button size="small" (click)="onClose()"><fa-icon [icon]="faSlash"></fa-icon></app-button>
             </div>
         </div>
-        <ng-content></ng-content>
+        <div class="modal__content">
+            <ng-content></ng-content>
+        </div>
     </div>
 </div>

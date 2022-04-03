@@ -1,0 +1,9 @@
+@import 'settings';
+
+:host {
+    flex: 1;
+}
+
+.snippet-love-button {
+    padding-right: $unit-default;
+}

@@ -1,0 +1,14 @@
+<div class="tabs">
+    <div class="tabs__header">
+        <div *ngFor="let tab of tabs" class="tabs__button">
+            <app-button
+                [size]="selected === tab.id ? 'default' : 'small'"
+                (click)="onSelectTab(tab.id)">
+                {{ tab.title }}
+            </app-button>
+        </div>
+    </div>
+    <div class="tabs__content">
+        <ng-content></ng-content>
+    </div>
+</div>

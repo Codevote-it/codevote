@@ -1,0 +1,9 @@
+@import 'settings';
+
+:host {
+    flex: 1;
+}
+
+.snippet-edit-button {
+    padding-right: $unit-default;
+}

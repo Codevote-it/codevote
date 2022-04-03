@@ -18,7 +18,7 @@
 }
 
 .modal__container {
-    max-width: $max-screen;
+    max-width: $large;
     width: 100%;
     background-color: $color-dark;
     border-radius: $unit-default;
@@ -52,6 +52,10 @@
 
 .modal__close ::ng-deep button {
     margin: 0;
+}
+
+.modal__content {
+	margin: $unit-default;
 }
 
 // TODO: Move to more generic place

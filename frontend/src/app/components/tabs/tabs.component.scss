@@ -1,0 +1,23 @@
+@import "settings";
+
+.tabs {
+    border: solid 2px $color-mid;
+    border-radius: $unit-default;
+    padding: $unit-default;
+    margin-bottom: $unit-default;
+}
+
+.tabs__header {
+    border-bottom: solid 2px $color-mid;
+    margin-left: -$unit-default;
+    margin-right: -$unit-default;
+}
+
+.tabs__button {
+    display: inline-block;
+    margin-left: $unit-default;
+}
+
+.tabs__content {
+    margin: $unit-default 0;
+}

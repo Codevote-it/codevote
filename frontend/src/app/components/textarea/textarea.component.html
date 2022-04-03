@@ -1,0 +1,8 @@
+<div class="textarea">
+    <textarea
+        rows="10"
+        [ngModel]="value"
+        (ngModelChange)="valueChange.emit($event)"
+        [placeholder]="placeholder"
+    ></textarea>
+</div>

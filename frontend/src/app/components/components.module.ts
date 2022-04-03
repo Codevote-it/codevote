@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
+import { RouterModule } from '@angular/router';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import {
   ButtonComponent,
   SnippetComponent,
@@ -12,22 +14,24 @@ import {
   InputComponent,
   ModalComponent,
   ContainerComponent,
-  EditSnippetComponent,
-  EditTitleComponent,
   FooterComponent,
   HeaderComponent,
   NavigationListComponent,
   NavigationListItemComponent,
   CreatorComponent,
+  SnippetBarComponent,
+  SnippetLoveButtonComponent,
+  SnippetEditButtonComponent,
+  SnippetPercentageComponent,
+  TextareaComponent,
+  TabsComponent,
+  TabsContentComponent,
 } from './';
-import { RouterModule } from '@angular/router';
 
 const COMPONENTS = [
   ButtonComponent,
   ColComponent,
   ContainerComponent,
-  EditSnippetComponent,
-  EditTitleComponent,
   FooterComponent,
   HeaderComponent,
   SnippetComponent,
@@ -39,11 +43,24 @@ const COMPONENTS = [
   CreatorComponent,
   NavigationListComponent,
   NavigationListItemComponent,
+  SnippetBarComponent,
+  SnippetLoveButtonComponent,
+  SnippetEditButtonComponent,
+  SnippetPercentageComponent,
+  TextareaComponent,
+  TabsComponent,
+  TabsContentComponent,
 ];
 
 @NgModule({
   declarations: [...COMPONENTS],
   exports: [...COMPONENTS],
-  imports: [CommonModule, FormsModule, BrowserModule, RouterModule],
+  imports: [
+    CommonModule,
+    FormsModule,
+    BrowserModule,
+    RouterModule,
+    FontAwesomeModule,
+  ],
 })
 export class ComponentsModule {}

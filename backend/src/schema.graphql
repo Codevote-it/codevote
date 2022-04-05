@@ -8,11 +8,8 @@ type Query {
 }
 
 type Mutation {
-    vote(input:  VoteInput!): Codevote!
-}
-
-type Mutation {
     createCodevote(input: CodevoteInput): Codevote
+    vote(input:  VoteInput!): Codevote!
 }
 
 input CodevoteInput {

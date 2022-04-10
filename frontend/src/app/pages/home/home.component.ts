@@ -8,6 +8,7 @@ import {
 } from '@app/data';
 import { AppRoutingEnum } from '@app/routing';
 import { Subscription } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { PageBaseComponent } from '../_abstract';
 
 @Component({

@@ -17,17 +17,20 @@
     <app-row>
         <app-col>
             <!-- Make horizontal-scroll more dynamic -->
-            <app-horizontal-scroll height="355px" width="1775px">
-                <ng-container *ngIf="allCodevotes.length">
-                    <ng-container *ngFor="let codevote of allCodevotes; let i = index">
-                        <app-snippet-preview *ngIf="i < 5"
-                            (click)="onViewCodevote(codevote.id)"
-                            [codevote]="codevote"
-                            >
-                        </app-snippet-preview>
-                    </ng-container>
-                </ng-container>
-            </app-horizontal-scroll>
+            <ng-container *ngIf="allCodevotes.length; else skeleton">
+                <app-horizontal-scroll height="35.5rem" width="177.5rem">
+                        <ng-container *ngFor="let codevote of allCodevotes; let i = index">
+                            <app-snippet-preview *ngIf="i < 5"
+                                (click)="onViewCodevote(codevote.id)"
+                                [codevote]="codevote"
+                                >
+                            </app-snippet-preview>
+                        </ng-container>
+                </app-horizontal-scroll>
+            </ng-container>
+            <ng-template #skeleton>
+                <app-skeleton height="33.9rem"></app-skeleton>
+            </ng-template>
         </app-col>
     </app-row>
 </app-section>

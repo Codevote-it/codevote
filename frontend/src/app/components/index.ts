@@ -12,6 +12,7 @@ export * from './modal';
 export * from './navigation-list';
 export * from './row';
 export * from './section';
+export * from './skeleton';
 export * from './snippet';
 export * from './snippet-bar';
 export * from './snippet-preview';

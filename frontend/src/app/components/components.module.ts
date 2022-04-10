@@ -32,6 +32,7 @@ import {
   ToasterComponent,
   LoaderComponent,
   SpinnerComponent,
+  SkeletonComponent,
 } from './';
 
 const COMPONENTS = [
@@ -62,6 +63,7 @@ const COMPONENTS = [
   ToasterComponent,
   LoaderComponent,
   SpinnerComponent,
+  SkeletonComponent,
 ];
 
 @NgModule({

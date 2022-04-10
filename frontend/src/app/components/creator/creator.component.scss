@@ -2,13 +2,17 @@
 @import 'tools';
 
 $size-mobile: 4rem;
-$size-desktop: 8rem;
+$size-desktop: 6rem;
 
 .creator {
     margin: $unit-default;
     position: relative;
-    display: flex;
-    align-items: center;
+    display: block;
+
+    @include breakpoint('small') {
+        display: flex;
+        align-items: center;
+    }
 }
 
 .creator__profile {
@@ -16,24 +20,25 @@ $size-desktop: 8rem;
     height: $size-mobile;
     overflow: hidden;
     border-radius: 50%;
-    position: absolute;
-    top: 50%;
-    left: 0;
-    transform: translateY(-50%);
+    position: relative;
+    margin: 0 auto;
 
     img {
         max-width: 100%;
     }
 
     @include breakpoint('small') {
+        margin: 0;
+        position: absolute;
+        top: 0;
+        left: 0;
         width: $size-desktop;
         height: $size-desktop;
     }
 }
 
 .creator__display-name {
-    margin-left: $size-mobile;
-    padding-left: $unit-large;
+    text-align: center;
 
     h1 {
         margin: 0;
@@ -45,6 +50,8 @@ $size-desktop: 8rem;
     }
 
     @include breakpoint('small') {
+        text-align: left;
         margin-left: $size-desktop;
+        padding-left: $unit-default;
     }
 }

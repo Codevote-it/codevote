@@ -7,7 +7,6 @@ $size-desktop: 6rem;
 .creator {
     margin: $unit-default;
     position: relative;
-    display: block;
 
     @include breakpoint('small') {
         display: flex;

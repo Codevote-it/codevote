@@ -1,4 +1,5 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
+import { Component, Inject, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import {
   AuthenticationActionService,
@@ -25,6 +26,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     private route: ActivatedRoute,
     private authenticationActionService: AuthenticationActionService,
     private authenticationSelectorService: AuthenticationSelectorService,
+    @Inject(DOCUMENT) private document: Document,
   ) {
     this.isAuthenticated = false;
     this.me = null;
@@ -62,7 +64,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   public onLogin(): void {
-    document.location.href = `${environment.endpoint}${GITHUB_LOGIN_URL}`;
+    this.document.location.href = `${environment.endpoint}${GITHUB_LOGIN_URL}`;
   }
 
   public onQueryParams(queryParams: Params): void {

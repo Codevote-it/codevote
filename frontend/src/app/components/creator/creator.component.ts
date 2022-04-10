@@ -12,5 +12,5 @@ export class CreatorComponent {
     username: string;
     profileImageUrl: string;
   };
-  @Input() createdAt?: string;
+  @Input() createdAt?: string | null;
 }

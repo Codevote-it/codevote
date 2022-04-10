@@ -1,29 +1,38 @@
 @import 'settings';
+@import 'tools';
+
+$size-mobile: 4rem;
+$size-desktop: 8rem;
 
 .creator {
     margin: $unit-default;
-    height: 10rem;
     position: relative;
     display: flex;
     align-items: center;
 }
 
 .creator__profile {
-    width: 10rem;
-    height: 10rem;
+    width: $size-mobile;
+    height: $size-mobile;
     overflow: hidden;
     border-radius: 50%;
     position: absolute;
-    top: 0;
+    top: 50%;
     left: 0;
+    transform: translateY(-50%);
 
     img {
         max-width: 100%;
     }
+
+    @include breakpoint('small') {
+        width: $size-desktop;
+        height: $size-desktop;
+    }
 }
 
 .creator__display-name {
-    margin-left: 10rem;
+    margin-left: $size-mobile;
     padding-left: $unit-large;
 
     h1 {
@@ -33,5 +42,9 @@
     p {
         margin: 0;
         font-size: $font-size-small;
+    }
+
+    @include breakpoint('small') {
+        margin-left: $size-desktop;
     }
 }

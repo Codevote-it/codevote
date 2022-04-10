@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { environment } from 'environments/environment';
 import { GraphQLClient } from 'graphql-request';
 import { Observable, Subject } from 'rxjs';
-import { GraphglErrorInterface, TokenService } from './';
+import { GraphglErrorInterface, TokenService, LoaderService } from './';
 
 const GRAPHQL_URL = `${environment.endpoint}/graphql`;
 
@@ -10,7 +10,18 @@ const GRAPHQL_URL = `${environment.endpoint}/graphql`;
   providedIn: 'root',
 })
 export class GraphglService {
-  constructor(private tokenService: TokenService) {}
+  private error$: Subject<GraphglErrorInterface>;
+
+  constructor(
+    private tokenService: TokenService,
+    private loaderService: LoaderService,
+  ) {
+    this.error$ = new Subject<GraphglErrorInterface>();
+  }
+
+  public lastError$(): Observable<GraphglErrorInterface> {
+    return this.error$.asObservable();
+  }
 
   public request$<T>(query: string): Observable<T> {
     const request$ = new Subject<T>();
@@ -21,10 +32,16 @@ export class GraphglService {
       .then((data: T) => {
         request$.next(data);
         request$.complete();
+        this.loaderService.complete();
       })
       .catch((error) => {
-        request$.error(this.parseGraphqlError(error));
+        const _error = this.parseGraphqlError(error);
+        request$.error(_error);
+        this.error$.next(_error);
+        this.loaderService.complete();
       });
+
+    this.loaderService.start();
 
     return request$.asObservable();
   }

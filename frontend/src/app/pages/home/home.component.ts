@@ -8,12 +8,16 @@ import {
 } from '@app/data';
 import { AppRoutingEnum } from '@app/routing';
 import { Subscription } from 'rxjs';
+import { PageBaseComponent } from '../_abstract';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
 })
-export class HomeComponent implements OnInit, OnDestroy {
+export class HomeComponent
+  extends PageBaseComponent
+  implements OnInit, OnDestroy
+{
   public isAuthenticated: boolean;
   public allCodevotes: CodevoteInterface[];
   public subscription: Subscription;
@@ -24,6 +28,8 @@ export class HomeComponent implements OnInit, OnDestroy {
     private codevoteActionService: CodevoteActionService,
     private codevoteSelectorService: CodevoteSelectorService,
   ) {
+    super();
+
     this.isAuthenticated = false;
     this.allCodevotes = [];
     this.subscription = new Subscription();

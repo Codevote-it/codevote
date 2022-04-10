@@ -1,0 +1,29 @@
+
+@import 'settings';
+
+.spinner {
+    color: $color-light;
+    width: 24px;
+    height: 24px;
+    overflow: hidden;
+    animation-name: spinner;
+	animation-duration: 1.5s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: infinite;
+    margin: 0;
+}
+
+.spinner__icon {
+    transform: translateY(-1px);
+    display: inline-block;
+}
+
+@keyframes spinner {
+	0% {
+		transform: rotate(0deg);
+	}
+
+	100% {
+		transform: rotate(360deg);
+	}
+}

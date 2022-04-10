@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { AppRoutingEnum } from '@app/routing';
+import { PageBaseComponent } from '../_abstract';
 import { libraryData, LibraryDataInterface } from './library.data';
 import { LibraryParamsEnum } from './library.params.enum';
 
@@ -8,12 +9,14 @@ import { LibraryParamsEnum } from './library.params.enum';
   selector: 'app-library',
   templateUrl: './library.component.html',
 })
-export class LibraryComponent {
+export class LibraryComponent extends PageBaseComponent {
   public libraryData: LibraryDataInterface[];
   public selectedLibraryData: LibraryDataInterface | null;
   public appRoutingEnum: typeof AppRoutingEnum;
 
   constructor(private route: ActivatedRoute) {
+    super();
+
     this.libraryData = libraryData;
     this.selectedLibraryData = null;
     this.appRoutingEnum = AppRoutingEnum;

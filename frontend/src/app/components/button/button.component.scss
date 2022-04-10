@@ -12,11 +12,28 @@
 	padding: $unit-default;
 	border-radius: $unit-default;
 	margin-bottom: $unit-default;
+	position: relative;
 }
 
 .button:disabled {
 	background-color: $color-dark;
 	cursor: not-allowed;
+}
+
+.button__spinner {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	visibility: hidden;
+}
+
+.button--loading .button__spinner {
+	visibility: visible;
+}
+
+.button--loading .button__content {
+	visibility: hidden;
 }
 
 .button--small {

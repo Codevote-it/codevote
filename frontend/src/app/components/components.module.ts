@@ -29,6 +29,9 @@ import {
   CodeComponent,
   SnippetPreviewComponent,
   HorizontalScrollComponent,
+  ToasterComponent,
+  LoaderComponent,
+  SpinnerComponent,
 } from './';
 
 const COMPONENTS = [
@@ -56,6 +59,9 @@ const COMPONENTS = [
   CodeComponent,
   SnippetPreviewComponent,
   HorizontalScrollComponent,
+  ToasterComponent,
+  LoaderComponent,
+  SpinnerComponent,
 ];
 
 @NgModule({

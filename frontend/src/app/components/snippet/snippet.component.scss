@@ -15,6 +15,11 @@
     transform: scale(.95);
 }
 
+// Feels little crappy
+.snippet ::ng-deep textarea {
+    cursor: pointer;
+}
+
 .snippet__title {
     padding: $unit-large;
     background-color: darken($color-dark, 10%);

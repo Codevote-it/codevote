@@ -6,7 +6,7 @@
 }
 
 .skeleton {
-    border-radius: $unit-default;
+    border-radius: $border-radius;
     background: linear-gradient(-45deg, $color-dark, $color-mid);
     background-size: 200% 100%;
     animation: gradient 3s ease infinite;

@@ -3,6 +3,7 @@ import { environment } from 'environments/environment';
 import { GraphQLClient } from 'graphql-request';
 import { Observable, Subject } from 'rxjs';
 import { GraphglErrorInterface, TokenService, LoaderService } from './';
+import { ToasterMessageEnum, ToasterService } from './toaster.service';
 
 const GRAPHQL_URL = `${environment.endpoint}/graphql`;
 
@@ -15,6 +16,7 @@ export class GraphglService {
   constructor(
     private tokenService: TokenService,
     private loaderService: LoaderService,
+    private toasterService: ToasterService,
   ) {
     this.error$ = new Subject<GraphglErrorInterface>();
   }
@@ -33,12 +35,14 @@ export class GraphglService {
         request$.next(data);
         request$.complete();
         this.loaderService.complete();
+        this.toasterService.setMessage(ToasterMessageEnum.Success);
       })
-      .catch((error) => {
+      .catch((error: GraphglErrorInterface) => {
         const _error = this.parseGraphqlError(error);
         request$.error(_error);
         this.error$.next(_error);
         this.loaderService.complete();
+        this.toasterService.setMessage(ToasterMessageEnum.Error);
       });
 
     this.loaderService.start();

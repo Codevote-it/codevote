@@ -33,6 +33,7 @@ import {
   LoaderComponent,
   SpinnerComponent,
   SkeletonComponent,
+  HorizontalScrollItemComponent,
 } from './';
 
 const COMPONENTS = [
@@ -64,6 +65,7 @@ const COMPONENTS = [
   LoaderComponent,
   SpinnerComponent,
   SkeletonComponent,
+  HorizontalScrollItemComponent,
 ];
 
 @NgModule({

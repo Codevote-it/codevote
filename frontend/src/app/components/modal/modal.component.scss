@@ -21,7 +21,7 @@
     max-width: $large;
     width: 100%;
     background-color: $color-dark;
-    border-radius: $unit-default;
+    border-radius: $border-radius;
     box-shadow: $box-shadow;
     transform: scale(0); // initial animation state
 	animation: scale-in .3s .3s;

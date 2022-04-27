@@ -1,12 +1,17 @@
 @import 'settings';
 
+:host {
+    display: block;
+}
+
 .snippet-preview {
     margin-bottom: $unit-default;
     margin-right: $unit-default;
     position: relative;
     cursor: pointer;
     max-width: 64rem;
-    border-radius: $unit-default;
+    min-width: 32rem;
+    border-radius: $border-radius;
     background-color: $color-dark;
     transform: scale(1);
     transition-duration: .3s;
@@ -23,7 +28,7 @@
 }
 
 .snippet-preview__content {
-    border-radius: $unit-default;
+    border-radius: $border-radius;
     background-color: $color-dark;
 }
 

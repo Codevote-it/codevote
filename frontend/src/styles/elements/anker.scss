@@ -3,16 +3,9 @@ a {
 	transition-property: color;
 	transition-duration: .3s;
 	transition-timing-function: $ease-in-out-quad;
-	border-radius: $unit-default;
+	border-radius: $border-radius;
 }
 
 a:hover {
 	color: darken($color-light, 5%);
 }
-
-// a:focus {
-// 	outline-color: $color-light;
-// 	outline-style: solid;
-// 	outline-width: $unit-default / 2;
-// 	outline-offset: $unit-default / 2;
-// }

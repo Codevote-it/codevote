@@ -1,4 +1,4 @@
-import { GraphglErrorInterface } from '@app/data';
+import { GraphglErrorInterface } from '@app/core';
 import { Observable } from 'rxjs';
 export class PageBaseComponent {
   public disabled: boolean;

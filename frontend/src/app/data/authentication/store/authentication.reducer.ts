@@ -1,4 +1,4 @@
-import { TokenService } from '@app/data/services';
+import { TokenService } from '@app/core/services';
 import { createReducer, on } from '@ngrx/store';
 import {
   saveTokenAction,

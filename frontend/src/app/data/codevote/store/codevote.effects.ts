@@ -10,10 +10,10 @@ import {
   getCodevoteErrorAction,
   getCodevoteSuccessAction,
 } from './codevote.actions';
-import { CodevoteGraphqlService } from '../services';
 import { of } from 'rxjs';
 import { CreateCodevoteRequest } from '../interfaces';
-import { StoreCommunicationService } from '@app/data/services';
+import { StoreCommunicationService } from '@app/core/services';
+import { CodevoteGraphqlService } from '../services';
 
 @Injectable()
 export class CodevoteEffects {

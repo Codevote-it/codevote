@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { MeResponse } from '@app/data/authentication/interfaces';
-import { GraphglService } from '@app/data/services';
+import { GraphglService } from '@app/core/services';
 import { Observable } from 'rxjs';
 import { getMeQuery } from '../queries';
 

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { GraphglService } from '@app/data/services';
+import { GraphglService } from '@app/core/services';
 import { Observable } from 'rxjs';
 import {
   AllCodevotesResponse,

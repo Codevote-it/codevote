@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { TokenService } from '@app/data/services';
+import { TokenService } from '@app/core/services';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { catchError, map, switchMap } from 'rxjs/operators';
 import { AuthenticationGraphqlService } from '@app/data/authentication/services';

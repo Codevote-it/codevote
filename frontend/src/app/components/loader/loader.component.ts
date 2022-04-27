@@ -1,5 +1,5 @@
 import { Component, Input, OnInit, OnDestroy } from '@angular/core';
-import { LoaderService } from '@app/data/services';
+import { LoaderService } from '@app/core/services';
 
 @Component({
   selector: 'app-loader',

@@ -2,8 +2,13 @@ import { Injectable } from '@angular/core';
 import { environment } from 'environments/environment';
 import { GraphQLClient } from 'graphql-request';
 import { Observable, Subject } from 'rxjs';
-import { GraphglErrorInterface, TokenService, LoaderService } from './';
-import { ToasterMessageEnum, ToasterService } from './toaster.service';
+import {
+  TokenService,
+  LoaderService,
+  ToasterMessageEnum,
+  ToasterService,
+} from '@app/core/services';
+import { GraphglErrorInterface } from '@app/core/interfaces';
 
 const GRAPHQL_URL = `${environment.endpoint}/graphql`;
 
@@ -35,7 +40,6 @@ export class GraphglService {
         request$.next(data);
         request$.complete();
         this.loaderService.complete();
-        this.toasterService.setMessage(ToasterMessageEnum.Success);
       })
       .catch((error: GraphglErrorInterface) => {
         const _error = this.parseGraphqlError(error);

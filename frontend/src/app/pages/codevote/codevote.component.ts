@@ -8,13 +8,17 @@ import {
   SnippetInterface,
 } from '@app/data/codevote';
 import { Subscription } from 'rxjs';
+import { PageBaseComponent } from '../_abstract';
 import { CodevoteParamsEnum } from './codevote.params.enum';
 
 @Component({
   selector: 'app-codevote',
   templateUrl: './codevote.component.html',
 })
-export class CodevoteComponent implements OnInit, OnDestroy {
+export class CodevoteComponent
+  extends PageBaseComponent
+  implements OnInit, OnDestroy
+{
   public codevote: CodevoteInterface | null;
   public editModal: boolean;
   public subscription: Subscription;
@@ -31,6 +35,8 @@ export class CodevoteComponent implements OnInit, OnDestroy {
     private codevoteSelectorService: CodevoteSelectorService,
     private authenticationSelectorService: AuthenticationSelectorService,
   ) {
+    super();
+
     this.codevote = null;
     this.editModal = false;
     this.subscription = new Subscription();

@@ -1,6 +1,6 @@
-<app-section>
+<app-section *ngIf="codevote; else skeleton">
     <app-row>
-        <app-creator [creator]="codevote?.creator" createdAt="20-02-2022"></app-creator>
+        <app-creator [creator]="codevote?.creator" [createdAt]="codevote?.createdAt | date:'shortDate'"></app-creator>
     </app-row>
     <app-row>
         <app-col>
@@ -21,6 +21,26 @@
         </app-col>
     </app-row>
 </app-section>
+
+<ng-template #skeleton>
+    <app-section>
+        <app-row>
+            <app-col>
+                <app-skeleton height="6rem"></app-skeleton>
+            </app-col>
+        </app-row>
+        <app-row>
+            <app-col>
+                <app-skeleton height="46rem"></app-skeleton>
+                <app-skeleton height="11rem"></app-skeleton>
+            </app-col>
+            <app-col>
+                <app-skeleton height="46rem"></app-skeleton>
+                <app-skeleton height="11rem"></app-skeleton>
+            </app-col>
+        </app-row>
+    </app-section>
+</ng-template>
 
 <app-modal *ngIf="editModal"
     (close)="onCloseEditModal()"

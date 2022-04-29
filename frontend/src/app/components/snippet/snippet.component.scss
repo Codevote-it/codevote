@@ -4,7 +4,7 @@
     background-color: $color-dark;
     margin-bottom: $unit-default;
     position: relative;
-    border-radius: $unit-default;
+    border-radius: $border-radius;
     cursor: pointer;
     transform: scale(1);
     transition-duration: .3s;
@@ -13,6 +13,11 @@
 
 .snippet:hover {
     transform: scale(.95);
+}
+
+// Feels little crappy
+.snippet ::ng-deep textarea {
+    cursor: pointer;
 }
 
 .snippet__title {

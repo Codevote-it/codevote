@@ -10,7 +10,12 @@
                 placeholder="Title snippet 2"
                 [(value)]="titleSnippet2"
             ></app-input>
-            <app-button [disabled]="isInvalid()" (click)="onCreateCodevote()">Create codevote</app-button>
+            <app-button
+                [disabled]="isInvalid() || disabled"
+                [loading]="loading"
+                (click)="onCreateCodevote()"
+            >Create codevote
+            </app-button>
         </app-col>
     </app-row>
 </app-section>

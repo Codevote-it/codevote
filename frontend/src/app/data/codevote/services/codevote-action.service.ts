@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { StoreCommunicationService } from '@app/data/services';
+import { StoreCommunicationService } from '@app/core/services';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { CreateCodevoteRequest, CreateCodevoteResponse } from '../interfaces';

@@ -29,6 +29,11 @@ import {
   CodeComponent,
   SnippetPreviewComponent,
   HorizontalScrollComponent,
+  ToasterComponent,
+  LoaderComponent,
+  SpinnerComponent,
+  SkeletonComponent,
+  HorizontalScrollItemComponent,
 } from './';
 
 const COMPONENTS = [
@@ -56,6 +61,11 @@ const COMPONENTS = [
   CodeComponent,
   SnippetPreviewComponent,
   HorizontalScrollComponent,
+  ToasterComponent,
+  LoaderComponent,
+  SpinnerComponent,
+  SkeletonComponent,
+  HorizontalScrollItemComponent,
 ];
 
 @NgModule({

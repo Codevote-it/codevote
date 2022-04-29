@@ -11,7 +11,7 @@
     max-width: $max-screen;
     display: flex;
     align-items: center;
-    padding: $unit-default 0;
+    height: 60px; // sticky footer
 }
 
 .header__brand {

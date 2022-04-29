@@ -1,0 +1,18 @@
+.loader {
+    position: fixed;
+    margin: 0;
+    padding: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 99999;
+}
+
+.loader__progress {
+    margin: 0;
+    padding: 0;
+    z-index: 99998;
+    box-shadow: 0 0 10px 0;
+    height: 2px;
+    opacity: 0;
+}

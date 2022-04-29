@@ -1,3 +1,14 @@
-<button class="button" ngClass="button--{{ size }}" [disabled]="disabled">
-    <ng-content></ng-content>
+<button class="button"
+    [class.button--small]="size === 'small'"
+    [class.button--default]="size === 'default'"
+    [class.button--large]="size === 'large'"
+    [class.button--loading]="loading"
+    [disabled]="disabled"
+>
+    <div class="button__spinner">
+        <app-spinner></app-spinner>
+    </div>
+    <div class="button__content">
+        <ng-content></ng-content>
+    </div>
 </button>

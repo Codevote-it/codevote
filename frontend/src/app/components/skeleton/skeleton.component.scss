@@ -1,0 +1,25 @@
+@import 'settings';
+
+:host {
+    margin-right: $unit-default;
+    margin-bottom: $unit-default;
+}
+
+.skeleton {
+    border-radius: $border-radius;
+    background: linear-gradient(-45deg, $color-dark, $color-mid);
+    background-size: 200% 100%;
+    animation: gradient 3s ease infinite;
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}

@@ -2,12 +2,13 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { CodevoteActionService, CreateCodevoteRequest } from '@app/data';
 import { AppRoutingEnum } from '@app/routing';
+import { PageBaseComponent } from '../_abstract';
 
 @Component({
   selector: 'app-create',
   templateUrl: './create.component.html',
 })
-export class CreateComponent {
+export class CreateComponent extends PageBaseComponent {
   public titleSnippet1: string;
   public titleSnippet2: string;
 
@@ -15,6 +16,8 @@ export class CreateComponent {
     private codevoteActionService: CodevoteActionService,
     private router: Router,
   ) {
+    super();
+
     this.titleSnippet1 = '';
     this.titleSnippet2 = '';
   }
@@ -39,11 +42,9 @@ export class CreateComponent {
       return;
     }
 
-    this.codevoteActionService
-      .createCodevote(request)
-      .subscribe(({ createCodevote }) =>
-        this.onCreateCodevoteSuccess(createCodevote.id),
-      );
+    this.request$(this.codevoteActionService.createCodevote(request)).subscribe(
+      ({ createCodevote }) => this.onCreateCodevoteSuccess(createCodevote.id),
+    );
   }
 
   private onCreateCodevoteSuccess(id: string): void {

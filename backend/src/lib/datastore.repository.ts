@@ -26,7 +26,7 @@ export class DatastoreRepository<T extends DatastoreEntity> {
      * Creates or updates entity. Does not check for existance
      * @return ID of the created item
      */
-    async save(entity: Partial<T>): Promise<string> {
+    async save(entity: T): Promise<string> {
         const key = this.createKey(entity.id);
         const datastoreEntity = {
             key,
@@ -34,7 +34,7 @@ export class DatastoreRepository<T extends DatastoreEntity> {
         };
         await this.datastore.save(datastoreEntity);
         logger.log(`Saved ${this.kind} ${key.name}`);
-        return key.name;
+        return key.name!;
     }
 
     /**

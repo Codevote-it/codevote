@@ -106,3 +106,4 @@ dist
 # Angular Cache
 .angular
 /backend/src/generated/
+.idea

@@ -1,5 +1,5 @@
 import { Component, Input, SimpleChanges } from '@angular/core';
-import { CodevoteInterface, SnippetInterface } from '@app/data';
+import { SnippetInterface } from '@app/data';
 
 @Component({
   selector: 'app-snippet-percentage',

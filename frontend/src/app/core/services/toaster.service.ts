@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 
 export enum ToasterMessageEnum {
-  Success = 'Request is successfull',
+  Success = 'Request is successful',
   Error = 'Request has error',
 }
 

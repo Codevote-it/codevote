@@ -9,14 +9,14 @@
 </app-section>
 
 <app-section color="mid">
-    <app-row>
-        <app-col>
-            <h2>Top {{ allCodevotes.length }} codevotes:</h2>
-        </app-col>
-    </app-row>
-    <app-row>
-        <app-col>
-            <ng-container *ngIf="allCodevotes.length; else skeleton">
+    <ng-container *ngIf="allCodevotes; else skeleton">
+        <app-row>
+            <app-col>
+                <h2>Top {{ allCodevotes.length }} codevotes:</h2>
+            </app-col>
+        </app-row>
+        <app-row>
+            <app-col>
                 <app-horizontal-scroll>
                     <app-horizontal-scroll-item *ngFor="let codevote of allCodevotes">
                         <app-snippet-preview
@@ -26,10 +26,11 @@
                         </app-snippet-preview>
                     </app-horizontal-scroll-item>
                 </app-horizontal-scroll>
-            </ng-container>
-            <ng-template #skeleton>
-                <app-skeleton height="34.9rem"></app-skeleton>
-            </ng-template>
-        </app-col>
-    </app-row>
+            </app-col>
+        </app-row>
+    </ng-container>
+    <ng-template #skeleton>
+        <app-skeleton height="5.2rem"></app-skeleton>
+        <app-skeleton height="34.9rem"></app-skeleton>
+    </ng-template>
 </app-section>

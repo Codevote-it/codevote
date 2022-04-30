@@ -11,11 +11,11 @@ import { selectAllCodevotes, selectCodevote } from '../store';
 export class CodevoteSelectorService {
   constructor(private store: Store<AppState>) {}
 
-  public getCodevote$(): Observable<CodevoteInterface | null> {
+  public getCodevote$(): Observable<CodevoteInterface> {
     return this.store.select(selectCodevote);
   }
 
-  public getAllCodevotes$(): Observable<CodevoteInterface[] | []> {
+  public getAllCodevotes$(): Observable<CodevoteInterface[]> {
     return this.store.select(selectAllCodevotes);
   }
 }

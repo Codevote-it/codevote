@@ -1,11 +1,8 @@
 import { CodevoteInterface } from '@app/data/codevote/interfaces';
 
 export interface CodevoteState {
-  codevote: CodevoteInterface | null;
-  allCodevotes: CodevoteInterface[] | [];
+  codevote: CodevoteInterface;
+  allCodevotes: CodevoteInterface[];
 }
 
-export const initialCodevoteState: CodevoteState = {
-  codevote: null,
-  allCodevotes: [],
-};
+export const initialCodevoteState = {};

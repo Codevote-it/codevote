@@ -7,11 +7,14 @@ import {
   CreateCodevoteRequest,
   CreateCodevoteResponse,
 } from '../interfaces';
+import { VoteRequest } from '../interfaces/vote.request';
+import { VoteResponse } from '../interfaces/vote.response';
 import {
   getAllCodevotesQuery,
   getCodevoteQuery,
   createCodevoteMutation,
 } from '../queries';
+import { voteMutation } from '../queries/vote.mutation';
 
 @Injectable({
   providedIn: 'root',
@@ -31,5 +34,9 @@ export class CodevoteGraphqlService {
     request: CreateCodevoteRequest,
   ): Observable<CreateCodevoteResponse> {
     return this.graphglService.request$(createCodevoteMutation(request));
+  }
+
+  public vote$(request: VoteRequest): Observable<VoteResponse> {
+    return this.graphglService.request$(voteMutation(request));
   }
 }

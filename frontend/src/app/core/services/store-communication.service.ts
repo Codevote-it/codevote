@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 
+/**
+ * @deprecated write actions without communication service
+ */
 @Injectable({
   providedIn: 'root',
 })

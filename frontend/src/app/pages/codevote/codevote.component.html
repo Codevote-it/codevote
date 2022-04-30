@@ -6,17 +6,31 @@
         <app-col>
             <app-snippet [snippet]="codevote?.snippet1"></app-snippet>
             <app-snippet-bar>
-                <app-snippet-love-button *ngIf="isAuthenticated"></app-snippet-love-button>
+                <app-snippet-love-button
+                    *ngIf="isAuthenticated"
+                    [loading]="loading"
+                    (click)="onVote({
+                        codevoteId: codevote.id,
+                        snippetId: codevote.snippet1.id
+                    })">
+                </app-snippet-love-button>
                 <app-snippet-edit-button *ngIf="canEdit" (click)="onEdit(codevote?.snippet1)"></app-snippet-edit-button>
-                <app-snippet-percentage percentage="40"></app-snippet-percentage>
+                <app-snippet-percentage [snippet]="codevote?.snippet1" [counterSnippet]="codevote?.snippet2"></app-snippet-percentage>
             </app-snippet-bar>
         </app-col>
         <app-col>
             <app-snippet [snippet]="codevote?.snippet2"></app-snippet>
             <app-snippet-bar>
-                <app-snippet-love-button *ngIf="isAuthenticated"></app-snippet-love-button>
+                <app-snippet-love-button
+                    *ngIf="isAuthenticated"
+                    [loading]="loading"
+                    (click)="onVote({
+                        codevoteId: codevote.id,
+                        snippetId: codevote.snippet2.id
+                    })">
+                </app-snippet-love-button>
                 <app-snippet-edit-button *ngIf="canEdit" (click)="onEdit(codevote?.snippet2)"></app-snippet-edit-button>
-                <app-snippet-percentage percentage="60"></app-snippet-percentage>
+                <app-snippet-percentage [snippet]="codevote?.snippet2" [counterSnippet]="codevote?.snippet1"></app-snippet-percentage>
             </app-snippet-bar>
         </app-col>
     </app-row>

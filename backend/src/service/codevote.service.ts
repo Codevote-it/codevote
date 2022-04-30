@@ -13,6 +13,7 @@ import { Authenticated, UserService } from './user.service';
 import { DatastoreRepository } from '../lib/datastore.repository';
 import ShortUniqueId from 'short-unique-id';
 import { logger } from '../logger';
+import { ForbiddenError } from 'apollo-server-express';
 
 const generateId = new ShortUniqueId({ length: 12 });
 
@@ -83,6 +84,30 @@ export class CodevoteService {
     return this.getCodevote(ctx, id);
   }
 
+  @Authenticated()
+  async editCodevote(
+    ctx: Ctx,
+    id: string,
+    input: CodevoteInput,
+  ): Promise<Codevote> {
+    const codevote = await this.getOrThrow(id);
+    if (ctx.user?.id !== codevote.userId) {
+      throw new ForbiddenError(`You are not allowed to edit Codevote ${id}`);
+    }
+    await this.codevoteRepo.update(id, {
+      ...codevote,
+      snippet1: {
+        ...codevote.snippet1,
+        ...input.snippet1,
+      },
+      snippet2: {
+        ...codevote.snippet2,
+        ...input.snippet2,
+      },
+    });
+    return this.getCodevote(ctx, id);
+  }
+
   async getCodevote(ctx: Ctx, id: string): Promise<Codevote> {
     const codevote = await this.getOrThrow(id);
     const creatorId = codevote.userId;
@@ -93,14 +118,9 @@ export class CodevoteService {
       userIds1?.length ? this.userService.getUsers(userIds1) : [],
       userIds2?.length ? this.userService.getUsers(userIds2) : [],
     ]);
-    if (!creator) {
-      throw Error(
-        `Creator with userId ${creatorId} does not exist for Codevote ${id}`,
-      );
-    }
     return {
       ...codevote,
-      creator: creator,
+      creator,
       snippet1: this.mapToSnippet(codevote.snippet1, voters1),
       snippet2: this.mapToSnippet(codevote.snippet2, voters2),
     };

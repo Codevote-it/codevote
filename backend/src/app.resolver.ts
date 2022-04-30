@@ -44,6 +44,15 @@ export class AppResolver {
   }
 
   @Mutation()
+  async editCodevote(
+    @Context() ctx: Ctx,
+    @Args('id') id: string,
+    @Args('input') input: CodevoteInput,
+  ): Promise<Codevote> {
+    return this.codevoteService.editCodevote(ctx, id, input);
+  }
+
+  @Mutation()
   async vote(
     @Context() ctx: Ctx,
     @Args('input') input: VoteInput,

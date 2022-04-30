@@ -1,9 +1,13 @@
 import { gql } from 'graphql-request';
+import { VoteRequest } from '../interfaces/vote.request';
 
-export const getCodevoteQuery = function (props: { id: string }): string {
+export const voteMutation = function (request: VoteRequest): string {
   return gql`
-    {
-      codevote(id: "${props.id}") {
+    mutation {
+      vote(input: {
+        codevoteId: "${request.codevoteId}"
+        snippetId: "${request.snippetId}"
+      }) {
         id
         createdAt
         snippet1 {

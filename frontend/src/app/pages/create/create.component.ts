@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { ToasterMessageEnum, ToasterService } from '@app/core';
 import { CodevoteActionService, CreateCodevoteRequest } from '@app/data';
 import { AppRoutingEnum } from '@app/routing';
 import { PageBaseComponent } from '../_abstract';
@@ -15,6 +16,7 @@ export class CreateComponent extends PageBaseComponent {
   constructor(
     private codevoteActionService: CodevoteActionService,
     private router: Router,
+    private toasterService: ToasterService,
   ) {
     super();
 
@@ -48,6 +50,7 @@ export class CreateComponent extends PageBaseComponent {
   }
 
   private onCreateCodevoteSuccess(id: string): void {
+    this.toasterService.setMessage(ToasterMessageEnum.Success);
     this.router.navigate([AppRoutingEnum.Codevote, id]);
   }
 }

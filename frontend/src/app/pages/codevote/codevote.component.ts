@@ -7,6 +7,7 @@ import {
   CodevoteInterface,
   SnippetInterface,
 } from '@app/data/codevote';
+import { VoteRequest } from '@app/data/codevote/interfaces/vote.request';
 import { Subscription } from 'rxjs';
 import { PageBaseComponent } from '../_abstract';
 import { CodevoteParamsEnum } from './codevote.params.enum';
@@ -19,7 +20,7 @@ export class CodevoteComponent
   extends PageBaseComponent
   implements OnInit, OnDestroy
 {
-  public codevote: CodevoteInterface | null;
+  public codevote!: CodevoteInterface;
   public editModal: boolean;
   public subscription: Subscription;
   public me: MeInterface | null;
@@ -37,7 +38,6 @@ export class CodevoteComponent
   ) {
     super();
 
-    this.codevote = null;
     this.editModal = false;
     this.subscription = new Subscription();
     this.me = null;
@@ -87,6 +87,13 @@ export class CodevoteComponent
 
   public get canEdit(): boolean {
     return Boolean(this.me?.id === this.codevote?.creator?.id);
+  }
+
+  public onVote(request: VoteRequest): void {
+    this.request$(this.codevoteActionService.vote(request)).subscribe(
+      () => this.onSuccess(),
+      (error) => this.onError(error),
+    );
   }
 
   private handleParams(params: ParamMap): void {

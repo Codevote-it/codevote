@@ -3,6 +3,7 @@ import {
   getAllCodevotesSuccessAction,
   getCodevoteSuccessAction,
   resetCodevoteAction,
+  voteSuccessAction,
 } from './codevote.actions';
 import { initialCodevoteState } from './codevote.state';
 
@@ -15,6 +16,10 @@ export const codevoteReducer = createReducer(
   on(getAllCodevotesSuccessAction, (state, { response }) => ({
     ...state,
     ...response,
+  })),
+  on(voteSuccessAction, (state, { response }) => ({
+    ...state,
+    codevote: response.vote,
   })),
   on(resetCodevoteAction, () => initialCodevoteState),
 );

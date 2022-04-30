@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { faHeart, IconDefinition } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
@@ -8,8 +8,10 @@ import { faHeart, IconDefinition } from '@fortawesome/free-solid-svg-icons';
 })
 export class SnippetLoveButtonComponent {
   public faHeart: IconDefinition;
+  @Input() loading: boolean;
 
   constructor() {
     this.faHeart = faHeart;
+    this.loading = false;
   }
 }

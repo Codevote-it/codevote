@@ -3,7 +3,7 @@
     [class.button--default]="size === 'default'"
     [class.button--large]="size === 'large'"
     [class.button--loading]="loading"
-    [disabled]="disabled"
+    [disabled]="disabled || loading"
 >
     <div class="button__spinner">
         <app-spinner></app-spinner>

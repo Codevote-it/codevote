@@ -8,7 +8,8 @@ type Query {
 }
 
 type Mutation {
-    createCodevote(input: CodevoteInput): Codevote
+    createCodevote(input: CodevoteInput): Codevote!
+    editCodevote(input: CodevoteInput): Codevote!
     vote(input:  VoteInput!): Codevote!
 }
 
@@ -32,7 +33,7 @@ type Codevote {
     createdAt: Date!
     snippet1: Snippet!
     snippet2: Snippet!
-    creator: User!
+    creator: User
 }
 
 type Snippet {
@@ -45,7 +46,7 @@ type Snippet {
 type Vote {
     id: ID!
     createdAt: Date!
-    user: User!
+    user: User
 }
 
 type User {

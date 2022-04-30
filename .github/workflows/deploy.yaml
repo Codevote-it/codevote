@@ -12,7 +12,6 @@ jobs:
       run:
         shell: bash
         working-directory: backend
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -30,3 +29,15 @@ jobs:
           SECRET_VARS: ${{secrets.ENV}}
       - name: Deploy prod
         run: ./deploy.sh
+  build:
+    name: Build frontend
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+        working-directory: frontend
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Build
+        run: npm install && npm run build

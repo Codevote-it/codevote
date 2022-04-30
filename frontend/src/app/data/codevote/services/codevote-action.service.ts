@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { StoreCommunicationService } from '@app/core/services';
+import { StoreCommunicationService, ToasterService } from '@app/core/services';
 import { Store } from '@ngrx/store';
 import { Observable, Subject } from 'rxjs';
 import { CreateCodevoteRequest, CreateCodevoteResponse } from '../interfaces';
@@ -22,6 +22,7 @@ export class CodevoteActionService {
     private store: Store,
     private storeCommunicationService: StoreCommunicationService,
     private codevoteGraphqlService: CodevoteGraphqlService,
+    private toaserService: ToasterService,
   ) {}
 
   public getCodevote(props: { id: string }): void {
@@ -32,6 +33,7 @@ export class CodevoteActionService {
     this.store.dispatch(getAllCodevotesAction());
   }
 
+  // TODO: write actions without communication service
   public createCodevote(
     request: CreateCodevoteRequest,
   ): Observable<CreateCodevoteResponse> {
@@ -47,6 +49,8 @@ export class CodevoteActionService {
     this.codevoteGraphqlService.vote$(request).subscribe(
       (response) => {
         this.store.dispatch(voteSuccessAction({ response }));
+        this.toaserService.setMessage('Voted!');
+
         action$.next();
         action$.complete();
       },

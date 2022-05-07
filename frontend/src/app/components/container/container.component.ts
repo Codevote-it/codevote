@@ -1,5 +1,5 @@
 import { Component, HostListener } from '@angular/core';
-import { ScreenheightService } from '@app/core';
+import { ScreensizeService } from '@app/core';
 
 @Component({
   selector: 'app-container',
@@ -13,12 +13,12 @@ export class ContainerComponent {
     this.setMinHeight();
   }
 
-  constructor(private screenheightService: ScreenheightService) {
+  constructor(private screensizeService: ScreensizeService) {
     this.setMinHeight();
   }
 
   private setMinHeight(): void {
-    const screenHeight = this.screenheightService.getHeight();
+    const screenHeight = this.screensizeService.getHeight();
     const margin = 120; // header + footer
     const minHeight = screenHeight - margin;
 

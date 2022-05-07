@@ -8,7 +8,7 @@ import {
   Output,
   Renderer2,
 } from '@angular/core';
-import { ScreenheightService } from '@app/core';
+import { ScreensizeService } from '@app/core';
 import { faSlash, IconDefinition } from '@fortawesome/free-solid-svg-icons';
 
 const BODY_CSS_CLASS = 'body-freeze';
@@ -32,7 +32,7 @@ export class ModalComponent {
   constructor(
     private renderer: Renderer2,
     @Inject(DOCUMENT) private document: Document,
-    private screenheightService: ScreenheightService,
+    private screensizeService: ScreensizeService,
   ) {
     this.faSlash = faSlash;
     this.setMaxHeight();
@@ -70,7 +70,7 @@ export class ModalComponent {
   }
 
   private setMaxHeight(): void {
-    const screenHeight = this.screenheightService.getHeight() - 48;
+    const screenHeight = this.screensizeService.getHeight();
     this.maxHeight = `${screenHeight}px`;
   }
 }

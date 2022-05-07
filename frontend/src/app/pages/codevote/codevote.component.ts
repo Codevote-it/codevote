@@ -5,9 +5,7 @@ import {
   CodevoteActionService,
   CodevoteSelectorService,
   CodevoteInterface,
-  EditCodevoteRequest,
 } from '@app/data/codevote';
-import { VoteRequest } from '@app/data/codevote/interfaces/vote.request';
 import { Subscription } from 'rxjs';
 import { PageBaseComponent } from '../_abstract';
 import { CodevoteParamsEnum } from './codevote.params.enum';
@@ -25,7 +23,6 @@ export class CodevoteComponent
   public subscription: Subscription;
   public me: MeInterface | null;
   public isAuthenticated: boolean;
-  public form: EditCodevoteRequest;
 
   constructor(
     private route: ActivatedRoute,
@@ -39,13 +36,12 @@ export class CodevoteComponent
     this.subscription = new Subscription();
     this.me = null;
     this.isAuthenticated = false;
-    this.form = this.createForm();
   }
 
   ngOnInit(): void {
     const getCodevote$ = this.codevoteSelectorService
       .getCodevote$()
-      .subscribe((codevote) => this.onGetCodevote(codevote));
+      .subscribe((codevote) => (this.codevote = codevote));
 
     const getMe$ = this.authenticationSelectorService
       .getMe$()
@@ -78,29 +74,8 @@ export class CodevoteComponent
     this.editModal = false;
   }
 
-  public onEditCodevote(): void {
-    const _request = this.codevoteActionService.editCodevote(this.form);
-
-    this.request$(_request).subscribe(
-      () => {
-        this.onSuccess();
-        this.editModal = false;
-      },
-      (errors) => this.onError(errors),
-    );
-  }
-
   public get canEdit(): boolean {
     return Boolean(this.me?.id === this.codevote?.creator?.id);
-  }
-
-  public onVote(request: VoteRequest): void {
-    const _request = this.codevoteActionService.vote(request);
-
-    this.request$(_request).subscribe(
-      () => this.onSuccess(),
-      (error) => this.onError(error),
-    );
   }
 
   private handleParams(params: ParamMap): void {
@@ -110,38 +85,5 @@ export class CodevoteComponent
     }
 
     this.codevoteActionService.getCodevote({ id });
-  }
-
-  private onGetCodevote(codevote: CodevoteInterface): void {
-    this.codevote = codevote;
-    this.form = {
-      id: codevote?.id,
-      input: {
-        snippet1: {
-          title: codevote?.snippet1.title,
-          content: codevote?.snippet1.content,
-        },
-        snippet2: {
-          title: codevote?.snippet2.title,
-          content: codevote?.snippet2.content,
-        },
-      },
-    };
-  }
-
-  private createForm(): EditCodevoteRequest {
-    return {
-      id: '',
-      input: {
-        snippet1: {
-          title: '',
-          content: '',
-        },
-        snippet2: {
-          title: '',
-          content: '',
-        },
-      },
-    };
   }
 }

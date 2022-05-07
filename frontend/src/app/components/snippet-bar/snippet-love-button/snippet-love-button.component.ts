@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { CodevoteActionService, VoteRequest } from '@app/data';
 import { faHeart, IconDefinition } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
@@ -8,10 +9,31 @@ import { faHeart, IconDefinition } from '@fortawesome/free-solid-svg-icons';
 })
 export class SnippetLoveButtonComponent {
   public faHeart: IconDefinition;
-  @Input() loading: boolean;
+  public loading: boolean;
 
-  constructor() {
+  @Input() codevoteId: string | undefined;
+  @Input() snippetId: string | undefined;
+
+  constructor(private codevoteActionService: CodevoteActionService) {
     this.faHeart = faHeart;
+    this.loading = false;
+    this.codevoteId = '';
+    this.snippetId = '';
+  }
+
+  public onVote(request: VoteRequest): void {
+    this.loading = true;
+    this.codevoteActionService.vote(request).subscribe(
+      () => this.onSuccess(),
+      () => this.onError(),
+    );
+  }
+
+  private onSuccess(): void {
+    this.loading = false;
+  }
+
+  private onError(): void {
     this.loading = false;
   }
 }

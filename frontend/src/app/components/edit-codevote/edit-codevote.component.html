@@ -1,0 +1,23 @@
+<app-tabs>
+    <app-tabs-content [title]="form.input.snippet1.title" id="snippet1" [visible]="true">
+        <app-input
+            placeholder="Title"
+            [(value)]="form.input.snippet1.title">
+        </app-input>
+        <app-textarea
+            placeholder="Content"
+            [(value)]="form.input.snippet1.content">
+        </app-textarea>
+    </app-tabs-content>
+    <app-tabs-content [title]="form.input.snippet2.title" id="snippet2">
+        <app-input
+            placeholder="Title"
+            [(value)]="form.input.snippet2.title">
+        </app-input>
+        <app-textarea
+            placeholder="Content"
+            [(value)]="form.input.snippet2.content">
+        </app-textarea>
+    </app-tabs-content>
+</app-tabs>
+<app-button [loading]="loading" (click)="onEditCodevote()">Save</app-button>

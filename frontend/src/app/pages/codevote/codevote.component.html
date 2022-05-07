@@ -7,12 +7,9 @@
             <app-snippet [snippet]="codevote?.snippet1"></app-snippet>
             <app-snippet-bar>
                 <app-snippet-love-button
-                    *ngIf="isAuthenticated"
-                    [loading]="loading"
-                    (click)="onVote({
-                        codevoteId: codevote.id,
-                        snippetId: codevote.snippet1.id
-                    })">
+                    [snippetId]="codevote?.snippet1?.id"
+                    [codevoteId]="codevote?.id"
+                    *ngIf="isAuthenticated">
                 </app-snippet-love-button>
                 <app-snippet-edit-button *ngIf="canEdit" (click)="onOpenEditModal()"></app-snippet-edit-button>
                 <app-snippet-percentage [snippet]="codevote?.snippet1" [counterSnippet]="codevote?.snippet2"></app-snippet-percentage>
@@ -22,12 +19,9 @@
             <app-snippet [snippet]="codevote?.snippet2"></app-snippet>
             <app-snippet-bar>
                 <app-snippet-love-button
-                    *ngIf="isAuthenticated"
-                    [loading]="loading"
-                    (click)="onVote({
-                        codevoteId: codevote.id,
-                        snippetId: codevote.snippet2.id
-                    })">
+                    [snippetId]="codevote?.snippet2?.id"
+                    [codevoteId]="codevote?.id"
+                    *ngIf="isAuthenticated">
                 </app-snippet-love-button>
                 <app-snippet-edit-button *ngIf="canEdit" (click)="onOpenEditModal()"></app-snippet-edit-button>
                 <app-snippet-percentage [snippet]="codevote?.snippet2" [counterSnippet]="codevote?.snippet1"></app-snippet-percentage>
@@ -39,29 +33,7 @@
 <app-modal *ngIf="editModal"
     (close)="onCloseEditModal()"
     title="Edit snippets">
-    <app-tabs>
-        <app-tabs-content [title]="form.input.snippet1.title" id="snippet1" [visible]="true">
-            <app-input
-                placeholder="Title"
-                [(value)]="form.input.snippet1.title">
-            </app-input>
-            <app-textarea
-                placeholder="Content"
-                [(value)]="form.input.snippet1.content">
-            </app-textarea>
-        </app-tabs-content>
-        <app-tabs-content [title]="form.input.snippet2.title" id="snippet2">
-            <app-input
-                placeholder="Title"
-                [(value)]="form.input.snippet2.title">
-            </app-input>
-            <app-textarea
-                placeholder="Content"
-                [(value)]="form.input.snippet2.content">
-            </app-textarea>
-        </app-tabs-content>
-    </app-tabs>
-    <app-button (click)="onEditCodevote()">Save</app-button>
+    <app-edit-codevote [codevote]="codevote"></app-edit-codevote>
 </app-modal>
 
 <ng-template #skeleton>

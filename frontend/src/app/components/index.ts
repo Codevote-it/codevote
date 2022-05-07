@@ -3,6 +3,7 @@ export * from './code';
 export * from './col';
 export * from './container';
 export * from './creator';
+export * from './edit-codevote';
 export * from './footer';
 export * from './header';
 export * from './horizontal-scroll';

@@ -1,5 +1,6 @@
 import { createReducer, on } from '@ngrx/store';
 import {
+  editCodevoteSuccessAction,
   getAllCodevotesSuccessAction,
   getCodevoteSuccessAction,
   resetCodevoteAction,
@@ -20,6 +21,10 @@ export const codevoteReducer = createReducer(
   on(voteSuccessAction, (state, { response }) => ({
     ...state,
     codevote: response.vote,
+  })),
+  on(editCodevoteSuccessAction, (state, { response }) => ({
+    ...state,
+    codevote: response.editCodevote,
   })),
   on(resetCodevoteAction, () => initialCodevoteState),
 );

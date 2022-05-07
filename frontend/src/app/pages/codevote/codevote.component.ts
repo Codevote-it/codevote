@@ -5,7 +5,7 @@ import {
   CodevoteActionService,
   CodevoteSelectorService,
   CodevoteInterface,
-  SnippetInterface,
+  EditCodevoteRequest,
 } from '@app/data/codevote';
 import { VoteRequest } from '@app/data/codevote/interfaces/vote.request';
 import { Subscription } from 'rxjs';
@@ -25,10 +25,7 @@ export class CodevoteComponent
   public subscription: Subscription;
   public me: MeInterface | null;
   public isAuthenticated: boolean;
-  public snippetForm: {
-    title: string;
-    content: string;
-  };
+  public form: EditCodevoteRequest;
 
   constructor(
     private route: ActivatedRoute,
@@ -42,16 +39,13 @@ export class CodevoteComponent
     this.subscription = new Subscription();
     this.me = null;
     this.isAuthenticated = false;
-    this.snippetForm = {
-      title: '',
-      content: '',
-    };
+    this.form = this.createForm();
   }
 
   ngOnInit(): void {
     const getCodevote$ = this.codevoteSelectorService
       .getCodevote$()
-      .subscribe((codevote) => (this.codevote = codevote));
+      .subscribe((codevote) => this.onGetCodevote(codevote));
 
     const getMe$ = this.authenticationSelectorService
       .getMe$()
@@ -61,28 +55,39 @@ export class CodevoteComponent
       .isAuthenticated$()
       .subscribe((isAuthenticated) => (this.isAuthenticated = isAuthenticated));
 
-    this.route.paramMap.subscribe((params) => this.handleParams(params));
+    const paramMap = this.route.paramMap.subscribe((params) =>
+      this.handleParams(params),
+    );
 
-    this.subscription.add(getCodevote$).add(isAuthenticated$).add(getMe$);
+    this.subscription
+      .add(getCodevote$)
+      .add(isAuthenticated$)
+      .add(getMe$)
+      .add(paramMap);
   }
 
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
   }
 
-  public onEdit(snippet: SnippetInterface | undefined): void {
-    const title = snippet?.title ? snippet.title : '';
-    const content = snippet?.content ? snippet.content : '';
-
+  public onOpenEditModal(): void {
     this.editModal = true;
-    this.snippetForm = {
-      title,
-      content,
-    };
   }
 
   public onCloseEditModal(): void {
     this.editModal = false;
+  }
+
+  public onEditCodevote(): void {
+    const _request = this.codevoteActionService.editCodevote(this.form);
+
+    this.request$(_request).subscribe(
+      () => {
+        this.onSuccess();
+        this.editModal = false;
+      },
+      (errors) => this.onError(errors),
+    );
   }
 
   public get canEdit(): boolean {
@@ -90,7 +95,9 @@ export class CodevoteComponent
   }
 
   public onVote(request: VoteRequest): void {
-    this.request$(this.codevoteActionService.vote(request)).subscribe(
+    const _request = this.codevoteActionService.vote(request);
+
+    this.request$(_request).subscribe(
       () => this.onSuccess(),
       (error) => this.onError(error),
     );
@@ -103,5 +110,38 @@ export class CodevoteComponent
     }
 
     this.codevoteActionService.getCodevote({ id });
+  }
+
+  private onGetCodevote(codevote: CodevoteInterface): void {
+    this.codevote = codevote;
+    this.form = {
+      id: codevote?.id,
+      input: {
+        snippet1: {
+          title: codevote?.snippet1.title,
+          content: codevote?.snippet1.content,
+        },
+        snippet2: {
+          title: codevote?.snippet2.title,
+          content: codevote?.snippet2.content,
+        },
+      },
+    };
+  }
+
+  private createForm(): EditCodevoteRequest {
+    return {
+      id: '',
+      input: {
+        snippet1: {
+          title: '',
+          content: '',
+        },
+        snippet2: {
+          title: '',
+          content: '',
+        },
+      },
+    };
   }
 }

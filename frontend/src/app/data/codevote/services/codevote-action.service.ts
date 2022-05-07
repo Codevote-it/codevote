@@ -2,7 +2,11 @@ import { Injectable } from '@angular/core';
 import { StoreCommunicationService, ToasterService } from '@app/core/services';
 import { Store } from '@ngrx/store';
 import { Observable, Subject } from 'rxjs';
-import { CreateCodevoteRequest, CreateCodevoteResponse } from '../interfaces';
+import {
+  CreateCodevoteRequest,
+  CreateCodevoteResponse,
+  EditCodevoteRequest,
+} from '../interfaces';
 import { VoteRequest } from '../interfaces/vote.request';
 import {
   createCodevoteAction,
@@ -11,6 +15,7 @@ import {
   resetCodevoteAction,
   codevoteActionTypes,
   voteSuccessAction,
+  editCodevoteSuccessAction,
 } from '../store';
 import { CodevoteGraphqlService } from './codevote-graphql.service';
 
@@ -50,6 +55,23 @@ export class CodevoteActionService {
       (response) => {
         this.store.dispatch(voteSuccessAction({ response }));
         this.toaserService.setMessage('Voted!');
+
+        action$.next();
+        action$.complete();
+      },
+      (error) => action$.error(error),
+    );
+
+    return action$.asObservable();
+  }
+
+  public editCodevote(request: EditCodevoteRequest): Observable<void> {
+    const action$ = new Subject<void>();
+
+    this.codevoteGraphqlService.editCodevote$(request).subscribe(
+      (response) => {
+        this.store.dispatch(editCodevoteSuccessAction({ response }));
+        this.toaserService.setMessage('Codevote edit successfull!');
 
         action$.next();
         action$.complete();

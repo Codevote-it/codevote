@@ -14,7 +14,7 @@
                         snippetId: codevote.snippet1.id
                     })">
                 </app-snippet-love-button>
-                <app-snippet-edit-button *ngIf="canEdit" (click)="onEdit(codevote?.snippet1)"></app-snippet-edit-button>
+                <app-snippet-edit-button *ngIf="canEdit" (click)="onOpenEditModal()"></app-snippet-edit-button>
                 <app-snippet-percentage [snippet]="codevote?.snippet1" [counterSnippet]="codevote?.snippet2"></app-snippet-percentage>
             </app-snippet-bar>
         </app-col>
@@ -29,12 +29,40 @@
                         snippetId: codevote.snippet2.id
                     })">
                 </app-snippet-love-button>
-                <app-snippet-edit-button *ngIf="canEdit" (click)="onEdit(codevote?.snippet2)"></app-snippet-edit-button>
+                <app-snippet-edit-button *ngIf="canEdit" (click)="onOpenEditModal()"></app-snippet-edit-button>
                 <app-snippet-percentage [snippet]="codevote?.snippet2" [counterSnippet]="codevote?.snippet1"></app-snippet-percentage>
             </app-snippet-bar>
         </app-col>
     </app-row>
 </app-section>
+
+<app-modal *ngIf="editModal"
+    (close)="onCloseEditModal()"
+    title="Edit snippets">
+    <app-tabs>
+        <app-tabs-content [title]="form.input.snippet1.title" id="snippet1" [visible]="true">
+            <app-input
+                placeholder="Title"
+                [(value)]="form.input.snippet1.title">
+            </app-input>
+            <app-textarea
+                placeholder="Content"
+                [(value)]="form.input.snippet1.content">
+            </app-textarea>
+        </app-tabs-content>
+        <app-tabs-content [title]="form.input.snippet2.title" id="snippet2">
+            <app-input
+                placeholder="Title"
+                [(value)]="form.input.snippet2.title">
+            </app-input>
+            <app-textarea
+                placeholder="Content"
+                [(value)]="form.input.snippet2.content">
+            </app-textarea>
+        </app-tabs-content>
+    </app-tabs>
+    <app-button (click)="onEditCodevote()">Save</app-button>
+</app-modal>
 
 <ng-template #skeleton>
     <app-section>
@@ -55,17 +83,3 @@
         </app-row>
     </app-section>
 </ng-template>
-
-<app-modal *ngIf="editModal"
-    (close)="onCloseEditModal()"
-    title="Edit {{ snippetForm.title }}">
-    <app-input
-        placeholder="Title"
-        [(value)]="snippetForm.title">
-    </app-input>
-    <app-textarea
-        placeholder="Content"
-        [(value)]="snippetForm.content">
-    </app-textarea>
-    <app-button>Save</app-button>
-</app-modal>

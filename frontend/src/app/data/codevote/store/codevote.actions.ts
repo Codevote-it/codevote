@@ -2,6 +2,7 @@ import {
   AllCodevotesResponse,
   CodevoteResponse,
   CreateCodevoteRequest,
+  EditCodevoteResponse,
 } from '@app/data/codevote/interfaces';
 import { createAction, props } from '@ngrx/store';
 import { VoteRequest } from '../interfaces/vote.request';
@@ -23,6 +24,8 @@ export const enum codevoteActionTypes {
   VOTE = '[Codevote Action Service] Vote',
   VOTE_SUCCESS = '[Codevote Action Effect] Vote Success',
   VOTE_ERROR = '[Codevote Action Effect] Vote Error',
+
+  EDIT_CODEVOTE_SUCCESS = '[Codevote Action Effect] Edit codevote',
 
   RESET = '[Codevote Action Service] Reset',
 }
@@ -75,6 +78,11 @@ export const voteAction = createAction(
 export const voteSuccessAction = createAction(
   codevoteActionTypes.VOTE_SUCCESS,
   props<{ response: VoteResponse }>(),
+);
+
+export const editCodevoteSuccessAction = createAction(
+  codevoteActionTypes.EDIT_CODEVOTE_SUCCESS,
+  props<{ response: EditCodevoteResponse }>(),
 );
 
 export const voteErrorAction = createAction(codevoteActionTypes.VOTE_ERROR);

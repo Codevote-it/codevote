@@ -70,7 +70,7 @@ export class ModalComponent {
   }
 
   private setMaxHeight(): void {
-    const screenHeight = this.screenheightService.getHeight();
+    const screenHeight = this.screenheightService.getHeight() - 48;
     this.maxHeight = `${screenHeight}px`;
   }
 }

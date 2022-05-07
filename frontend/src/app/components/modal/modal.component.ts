@@ -2,11 +2,13 @@ import { DOCUMENT } from '@angular/common';
 import {
   Component,
   EventEmitter,
+  HostListener,
   Inject,
   Input,
   Output,
   Renderer2,
 } from '@angular/core';
+import { ScreenheightService } from '@app/core';
 import { faSlash, IconDefinition } from '@fortawesome/free-solid-svg-icons';
 
 const BODY_CSS_CLASS = 'body-freeze';
@@ -18,15 +20,22 @@ const BODY_CSS_CLASS = 'body-freeze';
 })
 export class ModalComponent {
   public faSlash: IconDefinition;
+  public maxHeight!: string;
 
   @Input() title = '';
   @Output() close = new EventEmitter<void>();
 
+  @HostListener('window:resize', ['$event']) onResize() {
+    this.setMaxHeight();
+  }
+
   constructor(
     private renderer: Renderer2,
     @Inject(DOCUMENT) private document: Document,
+    private screenheightService: ScreenheightService,
   ) {
     this.faSlash = faSlash;
+    this.setMaxHeight();
   }
 
   ngOnInit(): void {
@@ -58,5 +67,10 @@ export class ModalComponent {
     const body = elements[0];
 
     return body;
+  }
+
+  private setMaxHeight(): void {
+    const screenHeight = this.screenheightService.getHeight();
+    this.maxHeight = `${screenHeight}px`;
   }
 }

@@ -1,5 +1,5 @@
-import { DOCUMENT } from '@angular/common';
-import { Component, HostListener, Inject } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
+import { ScreenheightService } from '@app/core';
 
 @Component({
   selector: 'app-container',
@@ -10,15 +10,15 @@ export class ContainerComponent {
   public minHeight = 'auto';
 
   @HostListener('window:resize', ['$event']) onResize() {
-    this.setContainerMinHeight();
+    this.setMinHeight();
   }
 
-  constructor(@Inject(DOCUMENT) private document: Document) {
-    this.setContainerMinHeight();
+  constructor(private screenheightService: ScreenheightService) {
+    this.setMinHeight();
   }
 
-  public setContainerMinHeight(): void {
-    const screenHeight = this.document.documentElement.clientHeight;
+  private setMinHeight(): void {
+    const screenHeight = this.screenheightService.getHeight();
     const margin = 120; // header + footer
     const minHeight = screenHeight - margin;
 

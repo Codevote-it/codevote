@@ -52,7 +52,7 @@ export class CodevoteComponent
       .subscribe((isAuthenticated) => (this.isAuthenticated = isAuthenticated));
 
     const paramMap = this.route.paramMap.subscribe((params) =>
-      this.handleParams(params),
+      this.handleParamMap(params),
     );
 
     this.subscription
@@ -78,7 +78,7 @@ export class CodevoteComponent
     return Boolean(this.me?.id === this.codevote?.creator?.id);
   }
 
-  private handleParams(params: ParamMap): void {
+  private handleParamMap(params: ParamMap): void {
     const id = params.get(CodevoteParamsEnum.Segment1);
     if (!id) {
       return;

@@ -1,5 +1,5 @@
 <app-tabs>
-    <app-tabs-content [title]="form.input.snippet1.title" id="snippet1" [visible]="true">
+    <app-tabs-content title="Snippet 1" id="snippet1" [visible]="true">
         <app-input
             placeholder="Title"
             [(value)]="form.input.snippet1.title">
@@ -9,7 +9,7 @@
             [(value)]="form.input.snippet1.content">
         </app-textarea>
     </app-tabs-content>
-    <app-tabs-content [title]="form.input.snippet2.title" id="snippet2">
+    <app-tabs-content title="Snippet 2" id="snippet2">
         <app-input
             placeholder="Title"
             [(value)]="form.input.snippet2.title">
@@ -20,4 +20,5 @@
         </app-textarea>
     </app-tabs-content>
 </app-tabs>
+<app-error [errors]="errors"></app-error>
 <app-button [loading]="loading" (click)="onEditCodevote()">Save</app-button>

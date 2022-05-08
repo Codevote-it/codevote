@@ -25,8 +25,6 @@ export class TabsComponent implements AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    this.tabsContentComponents.changes.subscribe(() => console.log('CHANGED'));
-
     this.tabsContentComponents.forEach((tabsContent) => {
       // Set initial selected tab
       if (tabsContent.visible) {

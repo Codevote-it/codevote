@@ -1,23 +1,34 @@
-import { Component, Input, SimpleChanges } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+  SimpleChanges,
+} from '@angular/core';
+import { ErrorInterface } from '@app/core';
 import {
   CodevoteActionService,
   CodevoteInterface,
   EditCodevoteRequest,
 } from '@app/data';
-import { PageBaseComponent } from '@app/pages';
 
 @Component({
   selector: 'app-edit-codevote',
   templateUrl: './edit-codevote.component.html',
   styleUrls: ['./edit-codevote.component.scss'],
 })
-export class EditCodevoteComponent extends PageBaseComponent {
+export class EditCodevoteComponent {
   @Input() codevote!: CodevoteInterface;
+  @Output() readonly onSuccess: EventEmitter<void>;
+
   public form: EditCodevoteRequest;
+  public loading: boolean;
+  public errors!: ErrorInterface[];
 
   constructor(private codevoteActionService: CodevoteActionService) {
-    super();
     this.form = this.createForm();
+    this.loading = false;
+    this.onSuccess = new EventEmitter();
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -27,12 +38,23 @@ export class EditCodevoteComponent extends PageBaseComponent {
   }
 
   public onEditCodevote(): void {
-    const request = this.codevoteActionService.editCodevote(this.form);
-
-    this.request$(request).subscribe(
-      () => this.onSuccess(),
-      (errors) => this.onError(errors),
+    this.codevoteActionService.editCodevote(this.form).subscribe(
+      () => this.onEditCodevoteSuccess(),
+      (errors: ErrorInterface[]) => this.onEditCodevoteError(errors),
     );
+
+    this.loading = true;
+    this.errors = [];
+  }
+
+  private onEditCodevoteSuccess(): void {
+    this.loading = false;
+    this.onSuccess.emit();
+  }
+
+  private onEditCodevoteError(errors: ErrorInterface[]): void {
+    this.errors = errors;
+    this.loading = false;
   }
 
   private setCodevote(codevote: CodevoteInterface): void {

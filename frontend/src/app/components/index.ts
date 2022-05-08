@@ -4,6 +4,7 @@ export * from './col';
 export * from './container';
 export * from './creator';
 export * from './edit-codevote';
+export * from './error';
 export * from './footer';
 export * from './header';
 export * from './horizontal-scroll';

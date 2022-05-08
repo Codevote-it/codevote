@@ -35,6 +35,7 @@ import {
   SkeletonComponent,
   HorizontalScrollItemComponent,
   EditCodevoteComponent,
+  ErrorComponent,
 } from './';
 
 const COMPONENTS = [
@@ -68,6 +69,7 @@ const COMPONENTS = [
   SkeletonComponent,
   HorizontalScrollItemComponent,
   EditCodevoteComponent,
+  ErrorComponent,
 ];
 
 @NgModule({

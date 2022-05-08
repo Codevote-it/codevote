@@ -43,7 +43,7 @@ export class GraphglService {
       })
       .catch((error: GraphglErrorInterface) => {
         const _error = this.parseGraphqlError(error);
-        request$.error(_error);
+        request$.error(_error.response.errors);
         this.error$.next(_error);
         this.loaderService.complete();
         this.toasterService.setMessage(ToasterMessageEnum.Error);

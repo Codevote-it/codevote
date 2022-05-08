@@ -7,12 +7,16 @@ export const getAllCodevotesQuery = function (): string {
         id
         createdAt
         snippet1 {
+          id
           title
           content
+          voteCount
         }
         snippet2 {
+          id
           title
           content
+          voteCount
         }
         creator {
           id

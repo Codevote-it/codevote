@@ -1,16 +1,11 @@
 @import "settings";
 
 .tabs {
-    border: solid 2px $color-mid;
-    border-radius: $border-radius;
-    padding: $unit-default;
     margin-bottom: $unit-default;
 }
 
 .tabs__header {
     border-bottom: solid 2px $color-mid;
-    margin-left: -$unit-default;
-    margin-right: -$unit-default;
 }
 
 .tabs__button {

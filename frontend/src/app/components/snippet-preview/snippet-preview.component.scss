@@ -52,7 +52,11 @@
 }
 
 .snippet-preview__code {
-    padding: $unit-large;
+    padding: $unit-large 0;
+    margin: 0 $unit-large;
+    position: relative;
+    max-width: 27rem;
+    overflow: hidden;
     display: block;
 }
 

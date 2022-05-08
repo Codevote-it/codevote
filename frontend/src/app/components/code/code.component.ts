@@ -1,4 +1,5 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, SimpleChanges } from '@angular/core';
+import { CodeService } from './code.service';
 
 @Component({
   selector: 'app-code',
@@ -6,5 +7,15 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./code.component.scss'],
 })
 export class CodeComponent {
+  public value!: string;
+
+  constructor(private codeService: CodeService) {}
+
   @Input() code: string | undefined = '';
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['code'].currentValue) {
+      this.value = this.codeService.highlight(changes['code'].currentValue);
+    }
+  }
 }

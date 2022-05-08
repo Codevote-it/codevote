@@ -33,7 +33,10 @@
 <app-modal *ngIf="editModal"
     (close)="onCloseEditModal()"
     title="Edit snippets">
-    <app-edit-codevote [codevote]="codevote"></app-edit-codevote>
+    <app-edit-codevote
+        [codevote]="codevote"
+        (onSuccess)="onCloseEditModal()">
+    </app-edit-codevote>
 </app-modal>
 
 <ng-template #skeleton>

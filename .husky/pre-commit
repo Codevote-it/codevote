@@ -1,6 +1,6 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
-npm run lint-frontend
-npm run lint-backend
+yarn run lint:app
+yarn run lint:server
 git add --all
